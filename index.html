@@ -22,23 +22,23 @@ const CREATORS = [
   { name: "Electrow",        rate: 1, featured: 0, epic: 5, legendary: 1, mythic: 0,
     description: "Known for her long effect layouts.",
     facts: ["Has the most XL-length levels"] },
-  { name: "JPCPro",          rate: 1, featured: 5, epic: 2, legendary: 0, mythic: 0,
+  { name: "JPCPro",          rate: 2, featured: 5, epic: 2, legendary: 0, mythic: 0,
     description: "An up and coming creator who builds quickly and has improved a lot.",
     facts: ["Created the Caesium Factorial series"] },
-  { name: "EpikGuy",         rate: 3, featured: 3, epic: 2, legendary: 0, mythic: 0,
+  { name: "EpikGuy",         rate: 3, featured: 2, epic: 3, legendary: 0, mythic: 0,
     description: "Known for difficult effect layouts. He rarely releases levels anymore, but when he does, they're worth playing.",
     facts: ["Created the Shining series", "Created EGG NEVER CLEAR RE, a former top 1 demon"] },
-  { name: "Xc4pk",           rate: 2, featured: 4, epic: 0, legendary: 1, mythic: 0,
+  { name: "Xc4pk",           rate: 1, featured: 5, epic: 0, legendary: 1, mythic: 0,
     description: "Has some of the best decoration on the server. He doesn't release much these days, but his levels still stand out." },
-  { name: "Firelia",         rate: 4, featured: 1, epic: 1, legendary: 2, mythic: 0,
+  { name: "Firelia",         rate: 2, featured: 3, epic: 2, legendary: 2, mythic: 0,
     description: "Rarely makes legendaries, but when they do, they're worth the wait." },
-  { name: "Wizard",          rate: 0, featured: 1, epic: 1, legendary: 2, mythic: 0,
+  { name: "Wizard",          rate: 0, featured: 1, epic: 2, legendary: 2, mythic: 0,
     description: "Makes polished, easy modern levels.",
-    facts: ["Half of his rated levels are legendary"] },
+    facts: ["Created the legendaries Starfall and Colorsway"] },
   { name: "Quacc",           rate: 0, featured: 3, epic: 2, legendary: 0, mythic: 0,
     description: "Has given a lot to the community, both through his levels and through the server.",
     facts: ["Created the Goldenfyre demonlist", "Server admin"] },
-  { name: "Absoluteinf1",    rate: 1, featured: 1, epic: 1, legendary: 0, mythic: 0 },
+  { name: "Absoluteinf1",    rate: 2, featured: 1, epic: 1, legendary: 0, mythic: 0 },
   { name: "Emmber",          rate: 1, featured: 5, epic: 0, legendary: 0, mythic: 0, page: true,
     description: "Balances being a top player and a top creator, a skill few have." },
   { name: "Nange",           rate: 2, featured: 1, epic: 1, legendary: 1, mythic: 0, page: true, monthly: true,
@@ -48,7 +48,7 @@ const CREATORS = [
   { name: "3Doffisa",        rate: 1, featured: 1, epic: 2, legendary: 0, mythic: 0, page: true, monthly: true,
     description: "Contributed heavily to the community, created Miokii Always Clear and Hosted GDPS News..",
     facts: ["Currently hosting the Grarrief megacollab"] },
-  { name: "AltifyNeverDies", rate: 1, featured: 4, epic: 0, legendary: 0, mythic: 0 },
+  { name: "AltifyNeverDies", rate: 1, featured: 5, epic: 0, legendary: 0, mythic: 0 },
   { name: "Alya",            rate: 0, featured: 1, epic: 1, legendary: 1, mythic: 0 },
   { name: "[67] Spec",       rate: 0, featured: 0, epic: 1, legendary: 1, mythic: 0 },
   { name: "Luna",            rate: 1, featured: 1, epic: 0, legendary: 1, mythic: 0 },
@@ -62,30 +62,35 @@ const CREATORS = [
     facts: ["Created The Abyss, the current top 1 demon"] },
   { name: "Unnatural",       rate: 0, featured: 2, epic: 0, legendary: 0, mythic: 0 },
   { name: "Lemonix",         rate: 0, featured: 0, epic: 0, legendary: 1, mythic: 0, page: true,
-    facts: ["First creator to make a legendary (Starlit)"] },
+    facts: ["Created Starlit, the oldest legendary still rated"] },
   { name: "[CLN] Ke2",       rate: 1, featured: 1, epic: 0, legendary: 0, mythic: 0 },
   { name: "Hyperfixation",   rate: 3, featured: 0, epic: 0, legendary: 0, mythic: 0 },
   { name: "qwerty2048",      rate: 0, featured: 0, epic: 1, legendary: 0, mythic: 0 },
   { name: "Kimichii",        rate: 0, featured: 0, epic: 1, legendary: 0, mythic: 0 },
   { name: "Umi",             rate: 0, featured: 0, epic: 1, legendary: 0, mythic: 0 },
   { name: "Willow",          rate: 0, featured: 0, epic: 1, legendary: 0, mythic: 0 },
-  { name: "NinoNakano",      rate: 0, featured: 0, epic: 1, legendary: 0, mythic: 0 },
   { name: "Spaace",          rate: 0, featured: 0, epic: 1, legendary: 0, mythic: 0 },
   { name: "RecorderChannel", rate: 2, featured: 0, epic: 0, legendary: 0, mythic: 0 },
   { name: "Lumez",           rate: 0, featured: 1, epic: 0, legendary: 0, mythic: 0 },
   { name: "Charlie11111",    rate: 0, featured: 1, epic: 0, legendary: 0, mythic: 0 },
-  { name: "(ICY) icicle2",   rate: 0, featured: 1, epic: 0, legendary: 0, mythic: 0 },
   { name: "nonnagon",        rate: 0, featured: 1, epic: 0, legendary: 0, mythic: 0 },
   { name: "cheese",          rate: 1, featured: 0, epic: 0, legendary: 0, mythic: 0 },
 ];
-/* end
+/* end */
 
 /* =====================================================================
    (history tab)
    Every rated level, oldest first. Add new ones at the BOTTOM.
-   Types: R = rate, F = featured, E = epic, L = legendary, M = mythic
 
-     ["Some Level", "Beeguy", "E", "2026-10-25"],
+     ["Level name", "Creator", "Type", "YYYY-MM-DD"],
+
+   Types: R = rate, F = featured, E = epic, L = legendary, M = mythic
+   The date is the day it was rated (no time needed). Ratings from the
+   same day count in the order they're listed. A level with no date
+   still works: its date is estimated from the dated lines around it.
+   (Every level currently has an exact date from the rates channel.)
+   If a level gets rerated, change its letter. If it gets unrated,
+   delete its line.
    ===================================================================== */
 
 const FIRST_RATE = "2026-06-29";
@@ -93,156 +98,164 @@ const LAST_RATE  = "2026-10-19";
 const GROWTH = 1.5;
 
 // the creators drawn on the chart
-const HISTORY_CREATORS = ["Beeguy", "Syne", "Electrow", "JPCPro", "EpikGuy", "Xc4pk"];
+// History tab is hidden until v1.1. To release it: set this to true and
+// un-comment the two "v1.1" links in the header and on the home page,
+// and the "v1.1" line in route().
+const SHOW_HISTORY = false;
+const HISTORY_CREATORS = ["Beeguy", "Syne", "EpikGuy", "Xc4pk"];
 
 const RATING_LOG = [
-  ["No Surprises", "EpikGuy", "F"],
-  ["Egg Never Clear RE", "EpikGuy", "R"],
-  ["Gloriness", "EpikGuy", "E"],
-  ["Xenoscape", "Hortus", "E"],
-  ["Brightness", "EpikGuy", "F"],
-  ["Moonship Welters", "Goldenfyre101", "E"],
-  ["Growing On Me", "qwerty2048", "E"],
-  ["Say So", "Pure", "R"],
-  ["Coral Caved", "Pure", "E"],
-  ["Cut You Off", "Quacc", "F"],
-  ["Escape The Tsunami", "Quacc", "E"],
-  ["Shining", "EpikGuy", "E"],
-  ["Starlit", "Lemonix", "L"],
-  ["Delightful Dance", "Absoluteinf1", "R"],
-  ["Deadmans Handle", "Luna", "R"],
-  ["New World", "nonnagon", "F"],
-  ["Alessia High", "ShinobiAkira", "R"],
-  ["Goldenfyre Challenge", "Nange", "R"],
-  ["Emp Challenge 2", "Pure", "F"],
-  ["Harinezumi", "Pure", "E"],
-  ["Runaway", "Electrow", "E"],
-  ["Happy Bday Goldie", "Quacc", "F"],
-  ["Not A Hot Rod", "xxLettucex", "R"],
-  ["3Doffisa No Action", "3Doffisa", "R"],
-  ["Her Name", "Quacc", "E"],
-  ["Poltergeist", "(ICY) icicle2", "F"],
-  ["Tower of Simplicity", "EpikGuy", "R"],
-  ["Stroll", "Nange", "R"],
-  ["In The Annexe", "Charlie11111", "F"],
-  ["My Meat", "Gamer862", "E"],
-  ["Jump For Me", "Xc4pk", "R"],
-  ["Tower of Meow", "Emmber", "F"],
-  ["Darkness", "Electrow", "R"],
-  ["Why Do You Do This", "Beeguy", "E"],
-  ["Tower That Body", "Xc4pk", "F"],
-  ["Chess", "3Doffisa", "F"],
-  ["My Big Garden", "Beeguy", "E"],
-  ["Cloudier", "Xc4pk", "F"],
-  ["Blank Planet", "RecorderChannel", "R"],
-  ["Disco Dance", "Xc4pk", "R"],
-  ["Tranquil", "EpikGuy", "R"],
-  ["The Abyss", "Gamer862", "R"],
-  ["Processed Machine", "[67] Spec", "L"],
-  ["Colors", "AltifyNeverDies", "F"],
-  ["Xc4pk Adventures", "Xc4pk", "L"],
-  ["Colon Three Circles", "cheese", "R"],
-  ["Planum Astrale", "[CLN] Ke2", "F"],
-  ["Starfall", "Wizard", "L"],
-  ["Trailblazer", "GooeyG", "F"],
-  ["Radiation Wave", "Wizard", "E"],
-  ["Thumper", "Syne", "L"],
-  ["Russian Heck", "RecorderChannel", "R"],
-  ["Skyland", "Lumez", "F"],
-  ["Stalemate", "GooeyG", "F"],
-  ["Prismania", "Syne", "L"],
-  ["Viprin Spider", "AltifyNeverDies", "R"],
-  ["In Its Right Place", "Beeguy", "E"],
-  ["Rock Right Now", "Hyperfixation", "R"],
-  ["Larp", "[67] Spec", "E"],
-  ["Chaos Construct", "xxLettucex", "F"],
-  ["Heatwave", "Quacc", "F"],
-  ["The City of Battle", "Xc4pk", "F"],
-  ["Reachout", "Electrow", "E"],
-  ["Octane", "Emmber", "R"],
-  ["No Cure", "Nange", "F"],
-  ["Oblivion", "Spaace", "E"],
-  ["Dreamy Path", "Firelia", "L"],
-  ["Blossom Sea", "Firelia", "F"],
-  ["Blank", "Xc4pk", "F", "2026-07-23"],
-  ["Save Me", "Electrow", "L"],
-  ["Gate", "Firelia", "R"],
-  ["Petal", "Beeguy", "E"],
-  ["Sakupenhouse", "Syne", "F"],
-  ["Alti Adventures", "AltifyNeverDies", "F"],
-  ["Going Home", "Firelia", "E"],
+  ["No Surprises", "EpikGuy", "E", "2026-06-29"],
+  ["Egg Never Clear RE", "EpikGuy", "R", "2026-06-29"],
+  ["Gloriness", "EpikGuy", "E", "2026-06-29"],
+  ["Xenoscape", "Hortus", "E", "2026-06-29"],  // was really first that day; kept after EpikGuy's so Hortus doesn't show as top 1
+  ["Brightness", "EpikGuy", "F", "2026-06-29"],
+  ["Moonship Welters", "Goldenfyre101", "E", "2026-06-29"],
+  ["Growing On Me", "qwerty2048", "E", "2026-06-29"],
+  ["Say So", "Pure", "R", "2026-06-30"],
+  ["Coral Caved", "Pure", "E", "2026-06-30"],
+  ["Cut You Off", "Quacc", "F", "2026-06-30"],
+  ["Escape The Tsunami", "Quacc", "E", "2026-06-30"],
+  ["Shining", "EpikGuy", "E", "2026-06-30"],
+  ["Starlit", "Lemonix", "L", "2026-06-30"],
+  ["Delightful Dance", "Absoluteinf1", "R", "2026-06-30"],
+  ["Deadmans Handle", "Luna", "R", "2026-06-30"],
+  ["New World", "nonnagon", "F", "2026-06-30"],
+  ["Alessia High", "ShinobiAkira", "R", "2026-06-30"],
+  ["Goldenfyre Challenge", "Nange", "R", "2026-07-01"],
+  ["Emp Challenge 2", "Pure", "F", "2026-07-01"],
+  ["Harinezumi", "Pure", "E", "2026-07-01"],
+  ["Runaway", "Electrow", "E", "2026-07-01"],
+  ["Happy Bday Goldie", "Quacc", "F", "2026-07-01"],
+  ["Not A Hot Rod", "xxLettucex", "R", "2026-07-01"],
+  ["3Doffisa No Action", "3Doffisa", "R", "2026-07-01"],
+  ["Her Name", "Quacc", "E", "2026-07-02"],
+  ["Tower of Simplicity", "EpikGuy", "R", "2026-07-02"],
+  ["Stroll", "Nange", "R", "2026-07-03"],
+  ["In The Annexe", "Charlie11111", "F", "2026-07-03"],
+  ["My Meat", "Gamer862", "E", "2026-07-04"],
+  ["Jump For Me", "Xc4pk", "F", "2026-07-05"],
+  ["Tower of Meow", "Emmber", "F", "2026-07-05"],
+  ["Darkness", "Electrow", "R", "2026-07-06"],
+  ["Why Do You Do This", "Beeguy", "E", "2026-07-06"],
+  ["Tower That Body", "Xc4pk", "F", "2026-07-08"],
+  ["Chess", "3Doffisa", "F", "2026-07-08"],
+  ["My Big Garden", "Beeguy", "E", "2026-07-08"],
+  ["Cube and Level", "[CLN] Ke2", "R", "2026-07-08"],
+  ["Cloudier", "Xc4pk", "F", "2026-07-10"],
+  ["Blank Planet", "RecorderChannel", "R", "2026-07-10"],
+  ["Disco Dance", "Xc4pk", "R", "2026-07-11"],
+  ["Tranquil", "EpikGuy", "R", "2026-07-14"],
+  ["In Its Right Place", "Beeguy", "E", "2026-07-14"],
+  ["The Abyss", "Gamer862", "R", "2026-07-16"],
+  ["Rock Right Now", "Hyperfixation", "R", "2026-07-16"],
+  ["Larp", "[67] Spec", "E", "2026-07-16"],
+  ["Chaos Construct", "xxLettucex", "F", "2026-07-16"],
+  ["Heatwave", "Quacc", "F", "2026-07-17"],
+  ["The City of Battle", "Xc4pk", "F", "2026-07-18"],
+  ["Reachout", "Electrow", "E", "2026-07-18"],
+  ["Octane", "Emmber", "R", "2026-07-19"],
+  ["No Cure", "Nange", "F", "2026-07-19"],
+  ["Oblivion", "Spaace", "E", "2026-07-20"],
+  ["Dreamy Path", "Firelia", "L", "2026-07-20"],
+  ["Blossom Sea", "Firelia", "F", "2026-07-20"],
+  ["Blank", "Xc4pk", "F", "2026-07-22"],
+  ["Save Me", "Electrow", "L", "2026-07-22"],
+  ["Processed Machine", "[67] Spec", "L", "2026-07-24"],
+  ["Colors", "AltifyNeverDies", "F", "2026-07-25"],
+  ["Xc4pk Adventures", "Xc4pk", "L", "2026-07-25"],
+  ["Colon Three Circles", "cheese", "R", "2026-07-26"],
+  ["Planum Astrale", "[CLN] Ke2", "F", "2026-07-27"],
+  ["Starfall", "Wizard", "L", "2026-07-28"],
+  ["Trailblazer", "GooeyG", "F", "2026-07-30"],
+  ["Radiation Wave", "Wizard", "E", "2026-07-30"],
+  ["Thumper", "Syne", "L", "2026-07-30"],
+  ["Russian Heck", "RecorderChannel", "R", "2026-08-01"],
+  ["Skyland", "Lumez", "F", "2026-08-01"],
+  ["Stalemate", "GooeyG", "F", "2026-08-01"],
+  ["Prismania", "Syne", "L", "2026-08-03"],
+  ["Viprin Spider", "AltifyNeverDies", "R", "2026-08-03"],
+  ["Gate", "Firelia", "R", "2026-08-03"],
+  ["Petal", "Beeguy", "E", "2026-08-05"],
+  ["Sakupenhouse", "Syne", "F", "2026-08-07"],
+  ["Alti Adventures", "AltifyNeverDies", "F", "2026-08-09"],
+  ["Going Home", "Firelia", "E", "2026-08-09"],
   ["Doodle Rush", "Beeguy", "E", "2026-08-09"],
-  ["Firewall", "Syne", "E"],
-  ["Genesis", "AltifyNeverDies", "F"],
-  ["Speaker Happiness", "Emmber", "F"],
-  ["Hail To The Thief", "Beeguy", "E"],
-  ["Colorsway", "Wizard", "L"],
-  ["Future Circles", "Hyperfixation", "R"],
-  ["Cloth Of Roses", "Electrow", "E"],
-  ["Sweet Trip", "Beeguy", "L"],
-  ["Be Right Back", "3Doffisa", "E"],
-  ["The Golden", "NinoNakano", "E"],
-  ["Loser", "Wizard", "F"],
-  ["Motion Picture Soundtrack", "Beeguy", "L"],
-  ["Absent", "Syne", "E"],
-  ["Limbotism", "Unnatural", "F"],
-  ["Abyss Angel", "Beeguy", "L"],
-  ["Miokii Always Clear", "3Doffisa", "E"],
-  ["Atmospheric", "Emmber", "F"],
-  ["To Be Complete", "Beeguy", "L"],
-  ["Stupid Ass 6 Star", "AltifyNeverDies", "F"],
-  ["Tumba", "Syne", "E"],
-  ["Space Voyage", "Syne", "E"],
-  ["Doped Cat", "Willow", "E"],
-  ["Starlit Night", "xxLettucex", "E"],
-  ["Return End", "Absoluteinf1", "F"],
-  ["Penguin", "Firelia", "R"],
-  ["HowToLiveAGoodLife", "Beeguy", "E"],
-  ["Sixx Sevvend", "Syne", "F"],
-  ["Grief Leashed", "Syne", "E"],
-  ["Rare Animal", "Beeguy", "E"],
-  ["XBounce", "JPCPro", "E"],
-  ["Lancer Deltarune", "Beeguy", "R"],
-  ["Deep End", "Electrow", "E"],
-  ["Tartarus", "JPCPro", "F"],
-  ["Caesium Factorial 2", "JPCPro", "F"],
-  ["Xenogenesis", "ShinobiAkira", "F"],
-  ["Chaoz Fantasy", "AFiVGDUP", "E"],
-  ["Happyland", "AFiVGDUP", "F"],
-  ["Hydra", "ShinobiAkira", "E"],
-  ["Caesium Factorial 1", "JPCPro", "F"],
-  ["Counting Stars", "Emmber", "F"],
-  ["Wireframe", "Umi", "E"],
-  ["Caesium Factorial 3", "JPCPro", "F"],
-  ["Polarbear", "Firelia", "R"],
-  ["Every End Leashed", "Syne", "L"],
-  ["Pyrarrmaniac", "Nange", "L"],
-  ["The Killer", "Beeguy", "M"],
-  ["The Aether", "JPCPro", "E"],
-  ["A Moment Apart", "Firelia", "L"],
-  ["Gleaming", "EpikGuy", "F"],
-  ["Sonicbreaker", "Hyperfixation", "R"],
-  ["Budgetscapes", "Beeguy", "F"],
-  ["Limbo but rarr ig", "Luna", "L"],
-  ["Circuit", "Firelia", "R"],
-  ["Fast Travel", "Kimichii", "E"],
-  ["Dancing Until I Fall", "Beeguy", "E"],
-  ["Paparazzi", "Electrow", "E"],
-  ["The Super Catguy", "Beeguy", "F"],
-  ["Aurora", "Emmber", "F"],
-  ["Octagon Force", "JPCPro", "F"],
-  ["Planetrarrium", "Luna", "F"],
-  ["Cove", "JPCPro", "R"],
-  ["The Golden", "Alya", "E"],
-  ["Kinetic Disorption", "Goldenfyre101", "E"],
-  ["Bananas", "Nange", "E"],
-  ["Cries for the Lonely", "Alya", "L"],
-  ["Duality", "Unnatural", "F"],
-  ["Synetosign Leashed", "Alya", "F"],
-  ["Tung Wave Trials", "Syne", "R"],
-  ["Interstellrarr", "Syne", "F"],
-  ["Happiest Days", "Beeguy", "L"],
-  ["1 Up", "Absoluteinf1", "E"],
+  ["Firewall", "Syne", "E", "2026-08-09"],
+  ["Genesis", "AltifyNeverDies", "F", "2026-08-11"],
+  ["Speaker Happiness", "Emmber", "F", "2026-08-11"],
+  ["Hail To The Thief", "Beeguy", "E", "2026-08-11"],
+  ["Colorsway", "Wizard", "L", "2026-08-11"],
+  ["Future Circles", "Hyperfixation", "R", "2026-08-14"],
+  ["Cloth Of Roses", "Electrow", "E", "2026-08-14"],
+  ["Sweet Trip", "Beeguy", "L", "2026-08-14"],
+  ["Be Right Back", "3Doffisa", "E", "2026-08-14"],
+  ["The Golden", "Alya", "E", "2026-08-15"],
+  ["Loser", "Wizard", "F", "2026-08-15"],
+  ["Motion Picture Soundtrack", "Beeguy", "L", "2026-08-26"],
+  ["Absent", "Syne", "E", "2026-08-26"],
+  ["Limbotism", "Unnatural", "F", "2026-08-26"],
+  ["Abyss Angel", "Beeguy", "L", "2026-08-26"],
+  ["Miokii Always Clear", "3Doffisa", "E", "2026-08-26"],
+  ["Atmospheric", "Emmber", "F", "2026-08-26"],
+  ["To Be Complete", "Beeguy", "L", "2026-08-26"],
+  ["Stupid Ass 6 Star", "AltifyNeverDies", "F", "2026-09-04"],
+  ["Tumba", "Syne", "E", "2026-09-04"],
+  ["Space Voyage", "Syne", "E", "2026-09-04"],
+  ["Doped Cat", "Willow", "E", "2026-09-04"],
+  ["Starlit Night", "xxLettucex", "E", "2026-09-06"],
+  ["Return End", "Absoluteinf1", "F", "2026-09-06"],
+  ["HowToLiveAGoodLife", "Beeguy", "E", "2026-09-06"],
+  ["Sixx Sevvend", "Syne", "F", "2026-09-06"],
+  ["Grief Leashed", "Syne", "E", "2026-09-06"],
+  ["Rare Animal", "Beeguy", "E", "2026-09-06"],
+  ["XBounce", "JPCPro", "E", "2026-09-06"],
+  ["Lancer Deltarune", "Beeguy", "R", "2026-09-12"],
+  ["Deep End", "Electrow", "E", "2026-09-12"],
+  ["Tartarus", "JPCPro", "F", "2026-09-15"],
+  ["Caesium Factorial 2", "JPCPro", "F", "2026-09-15"],
+  ["Xenogenesis", "ShinobiAkira", "F", "2026-09-15"],
+  ["Chaoz Fantasy", "AFiVGDUP", "E", "2026-09-15"],
+  ["Happyland", "AFiVGDUP", "F", "2026-09-15"],
+  ["Hydra", "ShinobiAkira", "E", "2026-09-15"],
+  ["Caesium Factorial 1", "JPCPro", "F", "2026-09-15"],
+  ["Counting Stars", "Emmber", "F", "2026-09-15"],
+  ["Wireframe", "Umi", "E", "2026-09-26"],
+  ["Caesium Factorial 3", "JPCPro", "F", "2026-09-26"],
+  ["Polarbear", "Firelia", "R", "2026-09-26"],
+  ["Every End Leashed", "Syne", "L", "2026-09-26"],
+  ["Pyrarrmaniac", "Nange", "L", "2026-09-26"],
+  ["The Killer", "Beeguy", "M", "2026-09-26"],
+  ["The Aether", "JPCPro", "E", "2026-09-30"],
+  ["A Moment Apart", "Firelia", "L", "2026-10-01"],
+  ["Gleaming", "EpikGuy", "F", "2026-10-01"],
+  ["Sonicbreaker", "Hyperfixation", "R", "2026-10-01"],
+  ["Budgetscapes", "Beeguy", "F", "2026-10-02"],
+  ["Limbo but rarr ig", "Luna", "L", "2026-10-06"],
+  ["Circuit", "Firelia", "E", "2026-10-10"],
+  ["Bauro", "Firelia", "F", "2026-10-10"],
+  ["Plasma Pulse X", "Firelia", "F", "2026-10-10"],
+  ["Cubed", "JPCPro", "R", "2026-10-10"],
+  ["Stratus", "AltifyNeverDies", "F", "2026-10-10"],
+  ["Coloured", "Absoluteinf1", "R", "2026-10-10"],
+  ["SwagLess", "Wizard", "E", "2026-10-10"],
+  ["Fast Travel", "Kimichii", "E", "2026-10-10"],
+  ["Dancing Until I Fall", "Beeguy", "E", "2026-10-11"],
+  ["Paparazzi", "Electrow", "E", "2026-10-11"],
+  ["The Super Catguy", "Beeguy", "F", "2026-10-11"],
+  ["Aurora", "Emmber", "F", "2026-10-12"],
+  ["Octagon Force", "JPCPro", "F", "2026-10-12"],
+  ["Planetrarrium", "Luna", "F", "2026-10-14"],
+  ["Cove", "JPCPro", "R", "2026-10-14"],
+  ["Kinetic Disorption", "Goldenfyre101", "E", "2026-10-15"],
+  ["Bananas", "Nange", "E", "2026-10-18"],
+  ["Cries for the Lonely", "Alya", "L", "2026-10-18"],
+  ["Duality", "Unnatural", "F", "2026-10-19"],
+  ["Synetosign Leashed", "Alya", "F", "2026-10-19"],
+  ["Tung Tung Trials", "Syne", "R", "2026-10-19"],
+  ["Interstellrarr", "Syne", "F", "2026-10-19"],
+  ["Happiest Days", "Beeguy", "L", "2026-10-19"],
+  ["1 Up", "Absoluteinf1", "E", "2026-10-19"],
 ];
 /* ======================= END OF HISTORY DATA ======================= */
 </script>
@@ -351,7 +364,7 @@ table { border-collapse: collapse; }
     <a class="logo" href="#home">Goldenfyre CL <small>v1.0</small></a>
     <nav>
       <a href="#list" id="nav-list">List</a>
-      <a href="#history" id="nav-history">History</a>
+      <!-- v1.1: <a href="#history" id="nav-history">History</a> -->
     </nav>
   </div>
 </header>
@@ -412,7 +425,7 @@ function homePage() {
     <p>The official creator point list for the Goldenfyre GDPS.</p>
     <p style="margin:18px 0">
       <a class="btn" href="#list">Creatorlist</a>
-      <a class="btn" href="#history">History</a>
+      <!-- v1.1: <a class="btn" href="#history">History</a> -->
     </p>
     <h2>List Editors</h2>
     <p class="editor"><svg viewBox="0 0 24 24" aria-label="Owner"><path fill="#111" d="M2 7l5 4 5-7 5 7 5-4-2 12H4z"/></svg>Syne_49378</p>
@@ -530,7 +543,7 @@ function buildHistory() {
   CREATORS.forEach((c, i) => order[c.name] = i);
   const pts = {}, lvls = {};
   const series = {};
-  HISTORY_CREATORS.forEach(name => series[name] = [{ t: start, v: 0 }]);
+  CREATORS.forEach(c => series[c.name] = [{ t: start, v: 0 }]);
   const top1 = [];
 
   events.forEach(e => {
@@ -550,42 +563,22 @@ function buildHistory() {
   const now = new Date();
   const today = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
   const lastEvent = events.length ? events[events.length - 1].time : end;
-  return { start, end: Math.max(end, today, lastEvent), series, top1, pts };
+  return { start, end: Math.max(end, today, lastEvent), series, top1, pts, undated: RATING_LOG.filter(r => !r[3]).length };
+}
+
+let histShown = HISTORY_CREATORS.slice();   // who is on the chart (resets on reload)
+const histColor = {};
+function colorFor(name) {
+  if (!histColor[name]) {
+    const used = histShown.filter(n => n !== name).map(n => histColor[n]);
+    histColor[name] = LINE_COLORS.find(c => !used.includes(c)) || LINE_COLORS[Object.keys(histColor).length % LINE_COLORS.length];
+  }
+  return histColor[name];
 }
 
 function historyPage() {
   const H = buildHistory();
-  const W = 760, HT = 380, L = 40, R = 12, T = 12, B = 30;
-  let maxV = 0;
-  Object.values(H.series).forEach(s => s.forEach(p => maxV = Math.max(maxV, p.v)));
-  const yMax = Math.max(10, Math.ceil(maxV / 10) * 10);
-  const x = t => L + (W - L - R) * (t - H.start) / (H.end - H.start || 1);
-  const y = v => T + (HT - T - B) * (1 - v / yMax);
-
-  let svg = "";
-  for (let v = 0; v <= yMax; v += 10) {
-    svg += `<line x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}" stroke="#ddd"/>`;
-    svg += `<text x="${L - 6}" y="${y(v) + 4}" text-anchor="end">${v}</text>`;
-  }
-  const s0 = new Date(H.start);
-  for (let d = new Date(s0.getFullYear(), s0.getMonth() + 1, 1); d.getTime() <= H.end; d.setMonth(d.getMonth() + 1)) {
-    const xx = x(d.getTime());
-    svg += `<line x1="${xx}" x2="${xx}" y1="${T}" y2="${HT - B}" stroke="#eee"/>`;
-    svg += `<text x="${xx}" y="${HT - B + 16}" text-anchor="middle">${d.toLocaleString("en-US", { month: "short" })}</text>`;
-  }
-  svg += `<line x1="${L}" x2="${W - R}" y1="${HT - B}" y2="${HT - B}" stroke="#999"/>`;
-  svg += `<line x1="${L}" x2="${L}" y1="${T}" y2="${HT - B}" stroke="#999"/>`;
-
-  HISTORY_CREATORS.forEach((name, i) => {
-    const pts = H.series[name];
-    let d = `M${x(pts[0].t)},${y(pts[0].v)}`;
-    for (let k = 1; k < pts.length; k++) d += ` H${x(pts[k].t)} V${y(pts[k].v)}`;
-    d += ` H${x(H.end)}`;
-    svg += `<path d="${d}" fill="none" stroke="${LINE_COLORS[i % LINE_COLORS.length]}" stroke-width="2"/>`;
-  });
-
-  const legend = HISTORY_CREATORS.map((name, i) =>
-    `<span><span class="sw" style="background:${LINE_COLORS[i % LINE_COLORS.length]}"></span>${esc(name)} (${H.pts[name] || 0})</span>`).join("");
+  histShown.forEach(colorFor);
 
   const rows = H.top1.slice().reverse().map(seg => {
     const to = seg.to ?? H.end;
@@ -596,8 +589,8 @@ function historyPage() {
   app.innerHTML = `
     <h1>History</h1>
     <p class="muted small">Creator points over time, from ${fmtDay(new Date(H.start))} to today (${fmtDay(new Date(H.end))}).</p>
-    <svg class="chart" viewBox="0 0 ${W} ${HT}" role="img" aria-label="Creator points over time">${svg}</svg>
-    <div class="legend">${legend}</div>
+    <div id="chartbox"></div>
+    <div id="picker" style="margin:10px 0"></div>
 
     <h2>Top 1 creators</h2>
     <div class="tablebox">
@@ -606,18 +599,70 @@ function historyPage() {
         ${rows}
       </table>
     </div>
-    <p class="muted small" style="margin-top:14px">Most dates are estimated.</p>`;
+    ${H.undated ? `<p class="muted small" style="margin-top:14px">Dates for ${H.undated} of ${RATING_LOG.length} ratings are estimated.</p>` : ""}`;
   document.title = "History - GCL";
+
+  function draw() {
+    const W = 760, HT = 380, L = 40, R = 12, T = 12, B = 30;
+    let maxV = 0;
+    histShown.forEach(n => H.series[n].forEach(p => maxV = Math.max(maxV, p.v)));
+    const yMax = Math.max(10, Math.ceil(maxV / 10) * 10);
+    const step = yMax > 100 ? 20 : 10;
+    const x = t => L + (W - L - R) * (t - H.start) / (H.end - H.start || 1);
+    const y = v => T + (HT - T - B) * (1 - v / yMax);
+
+    let svg = "";
+    for (let v = 0; v <= yMax; v += step) {
+      svg += `<line x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}" stroke="#ddd"/>`;
+      svg += `<text x="${L - 6}" y="${y(v) + 4}" text-anchor="end">${v}</text>`;
+    }
+    const s0 = new Date(H.start);
+    for (let d = new Date(s0.getFullYear(), s0.getMonth() + 1, 1); d.getTime() <= H.end; d.setMonth(d.getMonth() + 1)) {
+      const xx = x(d.getTime());
+      svg += `<line x1="${xx}" x2="${xx}" y1="${T}" y2="${HT - B}" stroke="#eee"/>`;
+      svg += `<text x="${xx}" y="${HT - B + 16}" text-anchor="middle">${d.toLocaleString("en-US", { month: "short" })}</text>`;
+    }
+    svg += `<line x1="${L}" x2="${W - R}" y1="${HT - B}" y2="${HT - B}" stroke="#999"/>`;
+    svg += `<line x1="${L}" x2="${L}" y1="${T}" y2="${HT - B}" stroke="#999"/>`;
+    histShown.forEach(name => {
+      const pts = H.series[name];
+      let d = `M${x(pts[0].t)},${y(pts[0].v)}`;
+      for (let k = 1; k < pts.length; k++) d += ` H${x(pts[k].t)} V${y(pts[k].v)}`;
+      d += ` H${x(H.end)}`;
+      svg += `<path d="${d}" fill="none" stroke="${colorFor(name)}" stroke-width="2"/>`;
+    });
+    const legend = histShown.map(name =>
+      `<span><span class="sw" style="background:${colorFor(name)}"></span>${esc(name)} (${H.pts[name] || 0}) <a href="#" class="rm" data-n="${esc(name)}" title="Remove">[x]</a></span>`).join("");
+    document.getElementById("chartbox").innerHTML =
+      `<svg class="chart" viewBox="0 0 ${W} ${HT}" role="img" aria-label="Creator points over time">${svg}</svg><div class="legend">${legend}</div>`;
+
+    const avail = CREATORS.map(c => c.name).filter(n => !histShown.includes(n) && (H.pts[n] || 0) > 0);
+    document.getElementById("picker").innerHTML =
+      `Add creator: <select id="addsel">${avail.map(n => `<option>${esc(n)}</option>`).join("")}</select> ` +
+      `<button id="addbtn">Add</button> <button id="resetbtn">Reset</button> <button id="clearbtn">Clear</button>`;
+    document.querySelectorAll("#chartbox .rm").forEach(a => a.onclick = e => {
+      e.preventDefault();
+      histShown = histShown.filter(n => n !== a.dataset.n);
+      draw();
+    });
+    document.getElementById("addbtn").onclick = () => {
+      const v = document.getElementById("addsel").value;
+      if (v) { histShown.push(v); draw(); }
+    };
+    document.getElementById("clearbtn").onclick = () => { histShown = []; draw(); };
+    document.getElementById("resetbtn").onclick = () => { histShown = HISTORY_CREATORS.slice(); draw(); };
+  }
+  draw();
 }
 
 function route() {
   const h = decodeURIComponent(location.hash.slice(1));
   document.getElementById("nav-list").className = (h && h !== "home" && h !== "history") ? "on" : "";
-  document.getElementById("nav-history").className = h === "history" ? "on" : "";
+  // v1.1: document.getElementById("nav-history").className = h === "history" ? "on" : "";
 
   if (!h || h === "home") homePage();
   else if (h === "list") listPage();
-  else if (h === "history") historyPage();
+  else if (h === "history" && SHOW_HISTORY) historyPage();
   else {
     const c = all.find(x => x.slug === h && x.hasPage);
     if (c) profilePage(c);
