@@ -1,34 +1,12 @@
 <title>Goldenfyre Creatorlist</title>
 
 <script>
-/* =====================================================================
-   GOLDENFYRE CREATORLIST - DATA
-   This is the only part you need to edit.
-
-   To give someone +1 epic, just change their epic number (2 -> 3).
-   Creator points, total levels and ranks are worked out automatically:
-     rate = 1 pt, featured = 2, epic = 3, legendary = 4, mythic = 5
-
-   Ties: if two creators have the same points, the one with FEWER total
-   levels ranks higher. If that's tied too, whoever is higher in this list wins.
-
-   Profile pages: the top 10 always get a page. To give anyone else a
-   page, add  page: true  to their line (like Nange below). Creators
-   without a page show as plain text on the list instead of a link.
-
-   Optional extras for creators with a page:
-     since: "March 2025",              -> "Creator since March 2025"
-     bestLevel: "Level Name",          -> "Best level: Level Name"
-     description: "1-2 sentences."     -> shown under their name
-     facts: ["Former top 1 creator"],  -> any extra facts, as many as you want
-     elite: true,                      -> gives them the Elite Creator tag
-     monthly: true,                    -> gives them the Monthly Awards Winner tag
-
-   Example:
+/* 
+   ex:
    { name: "Beeguy", rate: 1, featured: 2, epic: 9, legendary: 5, mythic: 1,
      since: "March 2025", bestLevel: "Some Level",
      elite: true,
-     description: "Known for detailed effect-heavy levels.",
+     description: "idk",
      facts: ["First creator to get a mythic"] },
    ===================================================================== */
 
@@ -36,40 +14,40 @@ const LAST_UPDATED = "October 20th, 2026";
 
 const CREATORS = [
   { name: "Beeguy",          rate: 1, featured: 2, epic: 9, legendary: 5, mythic: 1, monthly: true,
-    description: "Builds fast, with many levels in his Commatose-inspired style. Best known for his detailed decoration.",
+    description: "Consistently puts out high quality levels, with many in his Commatose-inspired style. Best known for his polished decoration.",
     facts: ["First and only creator to make a mythic"] },
   { name: "Syne",            rate: 1, featured: 3, epic: 5, legendary: 3, mythic: 0, monthly: true,
     description: "Known for difficult levels with polished gameplay.",
     facts: ["Created Every End Leashed, the longest rated level (7:41)"] },
   { name: "Electrow",        rate: 1, featured: 0, epic: 5, legendary: 1, mythic: 0,
-    description: "Known for her long effect layouts backed by solid gameplay.",
+    description: "Known for her long effect layouts.",
     facts: ["Has the most XL-length levels"] },
   { name: "JPCPro",          rate: 1, featured: 5, epic: 2, legendary: 0, mythic: 0,
-    description: "An up-and-coming creator who builds quickly and has improved a lot.",
+    description: "An up and coming creator who builds quickly and has improved a lot.",
     facts: ["Created the Caesium Factorial series"] },
   { name: "EpikGuy",         rate: 3, featured: 3, epic: 2, legendary: 0, mythic: 0,
-    description: "Known for difficult effect layouts. He rarely releases levels anymore, but when he does, they're always worth playing.",
+    description: "Known for difficult effect layouts. He rarely releases levels anymore, but when he does, they're worth playing.",
     facts: ["Created the Shining series", "Created EGG NEVER CLEAR RE, a former top 1 demon"] },
   { name: "Xc4pk",           rate: 2, featured: 4, epic: 0, legendary: 1, mythic: 0,
     description: "Has some of the best decoration on the server. He doesn't release much these days, but his levels still stand out." },
   { name: "Firelia",         rate: 4, featured: 1, epic: 1, legendary: 2, mythic: 0,
-    description: "Doesn't release often, but each new level is worth the wait." },
+    description: "Rarely makes legendaries, but when they do, they're worth the wait." },
   { name: "Wizard",          rate: 0, featured: 1, epic: 1, legendary: 2, mythic: 0,
-    description: "Makes polished, modern levels on the easier side.",
+    description: "Makes polished, easy modern levels.",
     facts: ["Half of his rated levels are legendary"] },
   { name: "Quacc",           rate: 0, featured: 3, epic: 2, legendary: 0, mythic: 0,
-    description: "Has given a lot to the community, both through his levels and behind the scenes.",
+    description: "Has given a lot to the community, both through his levels and through the server.",
     facts: ["Created the Goldenfyre demonlist", "Server admin"] },
   { name: "Absoluteinf1",    rate: 1, featured: 1, epic: 1, legendary: 0, mythic: 0 },
   { name: "Emmber",          rate: 1, featured: 5, epic: 0, legendary: 0, mythic: 0, page: true,
-    description: "Manages to be both a top player and a top creator at the same time." },
+    description: "Balances being a top player and a top creator, a skill few have." },
   { name: "Nange",           rate: 2, featured: 1, epic: 1, legendary: 1, mythic: 0, page: true, monthly: true,
-    description: "Rarely releases levels, but when he does, they're some of the best around.",
-    facts: ["Known for collabs like Pyrarrmaniac", "Created Goldenfyre Challenge, a former top 1 demon"] },
+    description: "Known for hosting popular collabs like Pyrarrmaniac",
+    facts: ["Created Goldenfyre Challenge, a former top 1 demon"] },
   { name: "Pure",            rate: 1, featured: 1, epic: 2, legendary: 0, mythic: 0 },
   { name: "3Doffisa",        rate: 1, featured: 1, epic: 2, legendary: 0, mythic: 0, page: true, monthly: true,
-    description: "Does a lot for the community.",
-    facts: ["Created Miokii Always Clear, one of the best demons on the server", "Hosted GDPS News", "Currently hosting the Grarrief megacollab"] },
+    description: "Contributed heavily to the community, created Miokii Always Clear and Hosted GDPS News..",
+    facts: ["Currently hosting the Grarrief megacollab"] },
   { name: "AltifyNeverDies", rate: 1, featured: 4, epic: 0, legendary: 0, mythic: 0 },
   { name: "Alya",            rate: 0, featured: 1, epic: 1, legendary: 1, mythic: 0 },
   { name: "[67] Spec",       rate: 0, featured: 0, epic: 1, legendary: 1, mythic: 0 },
@@ -100,21 +78,13 @@ const CREATORS = [
   { name: "nonnagon",        rate: 0, featured: 1, epic: 0, legendary: 0, mythic: 0 },
   { name: "cheese",          rate: 1, featured: 0, epic: 0, legendary: 0, mythic: 0 },
 ];
-/* ======================= END OF DATA ======================= */
+/* end
 
 /* =====================================================================
-   HISTORY - RATING LOG (used only by the History tab)
+   (history tab)
    Every rated level, oldest first. Add new ones at the BOTTOM.
    Types: R = rate, F = featured, E = epic, L = legendary, M = mythic
-   If a level gets rerated, just change its letter. If it gets unrated,
-   delete its line.
 
-   Most levels have no real date, so they're spread out between
-   FIRST_RATE and LAST_RATE, with ratings getting more frequent over
-   time as the server grew (GROWTH = 1.5 means 50% more ratings per
-   week now than at the start). Lines with a real date (4th value) are
-   pinned to that date, and the levels around them fill in between.
-   To add a real date to any line, write it as a 4th value, like:
      ["Some Level", "Beeguy", "E", "2026-10-25"],
    ===================================================================== */
 
@@ -378,7 +348,7 @@ table { border-collapse: collapse; }
 
 <header>
   <div class="wrap">
-    <a class="logo" href="#home">Goldenfyre CL <small>v1.0</small></a>
+    <a class="logo" href="#home">Goldenfyre CL <small>v2.0</small></a>
     <nav>
       <a href="#list" id="nav-list">List</a>
       <a href="#history" id="nav-history">History</a>
@@ -441,7 +411,7 @@ function homePage() {
     <h1>Goldenfyre Creatorlist</h1>
     <p>The official creator point list for the Goldenfyre GDPS.</p>
     <p style="margin:18px 0">
-      <a class="btn" href="#list">Creator List</a>
+      <a class="btn" href="#list">Creatorlist</a>
       <a class="btn" href="#history">History</a>
     </p>
     <h2>List Editors</h2>
@@ -465,7 +435,7 @@ function listPage() {
     </tr>`).join("");
 
   app.innerHTML = `
-    <h1>Creator List</h1>
+    <h1>Creatorlist</h1>
     <p class="muted small">Tap an underlined name to see their profile. Last updated: ${esc(LAST_UPDATED)}</p>
     <div class="tablebox" style="margin-top:14px">
       <table class="list">
@@ -479,7 +449,7 @@ function listPage() {
         ${rows}
       </table>
     </div>`;
-  document.title = "Creator List - GCL";
+  document.title = "Creatorlist - GCL";
 }
 
 function profilePage(c) {
