@@ -1,0 +1,661 @@
+<title>Goldenfyre Creatorlist</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+
+<script>
+/* =====================================================================
+   GOLDENFYRE CREATORLIST - DATA
+   This is the only part you need to edit.
+
+   To give someone +1 epic, just change their epic number (2 -> 3).
+   Creator points, total levels and ranks are worked out automatically:
+     rate = 1 pt, featured = 2, epic = 3, legendary = 4, mythic = 5
+
+   Ties: if two creators have the same points, the one with FEWER total
+   levels ranks higher. If that's tied too, whoever is higher in this list wins.
+
+   Profile pages: the top 10 always get a page. To give anyone else a
+   page, add  page: true  to their line (like Nange below). Creators
+   without a page show as plain text on the list instead of a link.
+
+   Optional extras for creators with a page:
+     since: "March 2025",              -> "Creator since March 2025"
+     bestLevel: "Level Name",          -> "Best level: Level Name"
+     facts: ["Former top 1 creator"],  -> any extra facts, as many as you want
+     elite: true,                      -> gives them the Elite Creator tag
+     monthly: true,                    -> gives them the Monthly Awards Winner tag
+     description: "1-2 sentences."     -> shown under their name
+
+   Example:
+   { name: "Beeguy", rate: 1, featured: 2, epic: 9, legendary: 5, mythic: 1,
+     since: "March 2025", bestLevel: "Some Level",
+     facts: ["First creator to get a mythic"],
+     elite: true, description: "Known for detailed effect-heavy levels." },
+   ===================================================================== */
+
+const LAST_UPDATED = "October 20th, 2026";
+
+const CREATORS = [
+  { name: "Beeguy",          rate: 1, featured: 2, epic: 9, legendary: 5, mythic: 1,
+    monthly: true, facts: ["First and only creator to make a mythic"],
+    description: "Builds fast, with many levels in his Commatose-inspired style. Best known for his detailed decoration." },
+  { name: "Syne",            rate: 1, featured: 3, epic: 5, legendary: 3, mythic: 0,
+    monthly: true, facts: ["Created Every End Leashed, the longest rated level (7:41)"],
+    description: "Known for difficult levels with polished gameplay." },
+  { name: "Electrow",        rate: 1, featured: 0, epic: 5, legendary: 1, mythic: 0,
+    facts: ["Has the most XL-length levels"],
+    description: "Known for her long effect layouts backed by solid gameplay." },
+  { name: "JPCPro",          rate: 1, featured: 5, epic: 2, legendary: 0, mythic: 0,
+    facts: ["Created the Caesium Factorial series"],
+    description: "An up-and-coming creator who builds quickly and has improved a lot." },
+  { name: "EpikGuy",         rate: 3, featured: 3, epic: 2, legendary: 0, mythic: 0,
+    facts: ["Created the Shining series", "Created EGG NEVER CLEAR RE, a former top 1 demon"],
+    description: "Known for difficult effect layouts. He rarely releases levels anymore, but when he does, they're always worth playing." },
+  { name: "Xc4pk",           rate: 2, featured: 4, epic: 0, legendary: 1, mythic: 0,
+    description: "Has some of the best decoration on the server. He doesn't release much these days, but his levels still stand out." },
+  { name: "Firelia",         rate: 4, featured: 1, epic: 1, legendary: 2, mythic: 0,
+    description: "Doesn't release often, but each new level is worth the wait." },
+  { name: "Wizard",          rate: 0, featured: 1, epic: 1, legendary: 2, mythic: 0,
+    facts: ["Half of his rated levels are legendary"],
+    description: "Makes polished, modern levels on the easier side." },
+  { name: "Quacc",           rate: 0, featured: 3, epic: 2, legendary: 0, mythic: 0,
+    facts: ["Created the Goldenfyre demonlist", "Server admin"],
+    description: "Has given a lot to the community, both through his levels and behind the scenes." },
+  { name: "Absoluteinf1",    rate: 1, featured: 1, epic: 1, legendary: 0, mythic: 0 },
+  { name: "Emmber",          rate: 1, featured: 5, epic: 0, legendary: 0, mythic: 0, page: true,
+    description: "Manages to be both a top player and a top creator at the same time." },
+  { name: "Nange",           rate: 2, featured: 1, epic: 1, legendary: 1, mythic: 0, page: true,
+    monthly: true, facts: ["Known for collabs like Pyrarrmaniac", "Created Goldenfyre Challenge, a former top 1 demon"],
+    description: "Rarely releases levels, but when he does, they're some of the best around." },
+  { name: "Pure",            rate: 1, featured: 1, epic: 2, legendary: 0, mythic: 0 },
+  { name: "3Doffisa",        rate: 1, featured: 1, epic: 2, legendary: 0, mythic: 0, page: true,
+    monthly: true, facts: ["Created Miokii Always Clear, one of the best demons on the server", "Hosted GDPS News", "Currently hosting the Grarrief megacollab"],
+    description: "Does a lot for the community." },
+  { name: "AltifyNeverDies", rate: 1, featured: 4, epic: 0, legendary: 0, mythic: 0 },
+  { name: "Alya",            rate: 0, featured: 1, epic: 1, legendary: 1, mythic: 0 },
+  { name: "[67] Spec",       rate: 0, featured: 0, epic: 1, legendary: 1, mythic: 0 },
+  { name: "Luna",            rate: 1, featured: 1, epic: 0, legendary: 1, mythic: 0 },
+  { name: "Goldenfyre101",   rate: 0, featured: 0, epic: 2, legendary: 0, mythic: 0 },
+  { name: "ShinobiAkira",    rate: 1, featured: 1, epic: 1, legendary: 0, mythic: 0 },
+  { name: "xxLettucex",      rate: 1, featured: 1, epic: 1, legendary: 0, mythic: 0 },
+  { name: "AFiVGDUP",        rate: 0, featured: 1, epic: 1, legendary: 0, mythic: 0 },
+  { name: "Hortus",          rate: 0, featured: 0, epic: 1, legendary: 0, mythic: 0 },
+  { name: "GooeyG",          rate: 0, featured: 2, epic: 0, legendary: 0, mythic: 0 },
+  { name: "Gamer862",        rate: 1, featured: 0, epic: 1, legendary: 0, mythic: 0, page: true,
+    facts: ["Created The Abyss, the current top 1 demon"] },
+  { name: "Unnatural",       rate: 0, featured: 2, epic: 0, legendary: 0, mythic: 0 },
+  { name: "Lemonix",         rate: 0, featured: 0, epic: 0, legendary: 1, mythic: 0, page: true,
+    facts: ["First creator to make a legendary (Starlit)"] },
+  { name: "[CLN] Ke2",       rate: 1, featured: 1, epic: 0, legendary: 0, mythic: 0 },
+  { name: "Hyperfixation",   rate: 3, featured: 0, epic: 0, legendary: 0, mythic: 0 },
+  { name: "qwerty2048",      rate: 0, featured: 0, epic: 1, legendary: 0, mythic: 0 },
+  { name: "Kimichii",        rate: 0, featured: 0, epic: 1, legendary: 0, mythic: 0 },
+  { name: "Umi",             rate: 0, featured: 0, epic: 1, legendary: 0, mythic: 0 },
+  { name: "Willow",          rate: 0, featured: 0, epic: 1, legendary: 0, mythic: 0 },
+  { name: "NinoNakano",      rate: 0, featured: 0, epic: 1, legendary: 0, mythic: 0 },
+  { name: "Spaace",          rate: 0, featured: 0, epic: 1, legendary: 0, mythic: 0 },
+  { name: "RecorderChannel", rate: 2, featured: 0, epic: 0, legendary: 0, mythic: 0 },
+  { name: "Lumez",           rate: 0, featured: 1, epic: 0, legendary: 0, mythic: 0 },
+  { name: "Charlie11111",    rate: 0, featured: 1, epic: 0, legendary: 0, mythic: 0 },
+  { name: "(ICY) icicle2",   rate: 0, featured: 1, epic: 0, legendary: 0, mythic: 0 },
+  { name: "nonnagon",        rate: 0, featured: 1, epic: 0, legendary: 0, mythic: 0 },
+  { name: "cheese",          rate: 1, featured: 0, epic: 0, legendary: 0, mythic: 0 },
+];
+/* ======================= END OF DATA ======================= */
+
+/* =====================================================================
+   HISTORY - RATING LOG (used only by the History tab)
+   Every rated level, oldest first. Add new ones at the BOTTOM.
+   Types: R = rate, F = featured, E = epic, L = legendary, M = mythic
+   If a level gets rerated, just change its letter. If it gets unrated,
+   delete its line.
+
+   Most levels have no real date, so they're spread out between
+   FIRST_RATE and LAST_RATE, with ratings getting more frequent over
+   time as the server grew (GROWTH = 1.5 means 50% more ratings per
+   week now than at the start). Lines with a real date (4th value) are
+   pinned to that date, and the levels around them fill in between.
+   To add a real date to any line, write it as a 4th value, like:
+     ["Some Level", "Beeguy", "E", "2026-10-25"],
+   ===================================================================== */
+
+const FIRST_RATE = "2026-06-29";
+const LAST_RATE  = "2026-10-19";
+const GROWTH = 1.5;
+
+// the creators drawn on the chart
+const HISTORY_CREATORS = ["Beeguy", "Syne", "Electrow", "JPCPro", "EpikGuy", "Xc4pk"];
+
+const RATING_LOG = [
+  ["No Surprises", "EpikGuy", "F"],
+  ["Egg Never Clear RE", "EpikGuy", "R"],
+  ["Gloriness", "EpikGuy", "E"],
+  ["Xenoscape", "Hortus", "E"],
+  ["Brightness", "EpikGuy", "F"],
+  ["Moonship Welters", "Goldenfyre101", "E"],
+  ["Growing On Me", "qwerty2048", "E"],
+  ["Say So", "Pure", "R"],
+  ["Coral Caved", "Pure", "E"],
+  ["Cut You Off", "Quacc", "F"],
+  ["Escape The Tsunami", "Quacc", "E"],
+  ["Shining", "EpikGuy", "E"],
+  ["Starlit", "Lemonix", "L"],
+  ["Delightful Dance", "Absoluteinf1", "R"],
+  ["Deadmans Handle", "Luna", "R"],
+  ["New World", "nonnagon", "F"],
+  ["Alessia High", "ShinobiAkira", "R"],
+  ["Goldenfyre Challenge", "Nange", "R"],
+  ["Emp Challenge 2", "Pure", "F"],
+  ["Harinezumi", "Pure", "E"],
+  ["Runaway", "Electrow", "E"],
+  ["Happy Bday Goldie", "Quacc", "F"],
+  ["Not A Hot Rod", "xxLettucex", "R"],
+  ["3Doffisa No Action", "3Doffisa", "R"],
+  ["Her Name", "Quacc", "E"],
+  ["Poltergeist", "(ICY) icicle2", "F"],
+  ["Tower of Simplicity", "EpikGuy", "R"],
+  ["Stroll", "Nange", "R"],
+  ["In The Annexe", "Charlie11111", "F"],
+  ["My Meat", "Gamer862", "E"],
+  ["Jump For Me", "Xc4pk", "R"],
+  ["Tower of Meow", "Emmber", "F"],
+  ["Darkness", "Electrow", "R"],
+  ["Why Do You Do This", "Beeguy", "E"],
+  ["Tower That Body", "Xc4pk", "F"],
+  ["Chess", "3Doffisa", "F"],
+  ["My Big Garden", "Beeguy", "E"],
+  ["Cloudier", "Xc4pk", "F"],
+  ["Blank Planet", "RecorderChannel", "R"],
+  ["Disco Dance", "Xc4pk", "R"],
+  ["Tranquil", "EpikGuy", "R"],
+  ["The Abyss", "Gamer862", "R"],
+  ["Processed Machine", "[67] Spec", "L"],
+  ["Colors", "AltifyNeverDies", "F"],
+  ["Xc4pk Adventures", "Xc4pk", "L"],
+  ["Colon Three Circles", "cheese", "R"],
+  ["Planum Astrale", "[CLN] Ke2", "F"],
+  ["Starfall", "Wizard", "L"],
+  ["Trailblazer", "GooeyG", "F"],
+  ["Radiation Wave", "Wizard", "E"],
+  ["Thumper", "Syne", "L"],
+  ["Russian Heck", "RecorderChannel", "R"],
+  ["Skyland", "Lumez", "F"],
+  ["Stalemate", "GooeyG", "F"],
+  ["Prismania", "Syne", "L"],
+  ["Viprin Spider", "AltifyNeverDies", "R"],
+  ["In Its Right Place", "Beeguy", "E"],
+  ["Rock Right Now", "Hyperfixation", "R"],
+  ["Larp", "[67] Spec", "E"],
+  ["Chaos Construct", "xxLettucex", "F"],
+  ["Heatwave", "Quacc", "F"],
+  ["The City of Battle", "Xc4pk", "F"],
+  ["Reachout", "Electrow", "E"],
+  ["Octane", "Emmber", "R"],
+  ["No Cure", "Nange", "F"],
+  ["Oblivion", "Spaace", "E"],
+  ["Dreamy Path", "Firelia", "L"],
+  ["Blossom Sea", "Firelia", "F"],
+  ["Blank", "Xc4pk", "F", "2026-07-23"],
+  ["Save Me", "Electrow", "L"],
+  ["Gate", "Firelia", "R"],
+  ["Petal", "Beeguy", "E"],
+  ["Sakupenhouse", "Syne", "F"],
+  ["Alti Adventures", "AltifyNeverDies", "F"],
+  ["Going Home", "Firelia", "E"],
+  ["Doodle Rush", "Beeguy", "E", "2026-08-09"],
+  ["Firewall", "Syne", "E"],
+  ["Genesis", "AltifyNeverDies", "F"],
+  ["Speaker Happiness", "Emmber", "F"],
+  ["Hail To The Thief", "Beeguy", "E"],
+  ["Colorsway", "Wizard", "L"],
+  ["Future Circles", "Hyperfixation", "R"],
+  ["Cloth Of Roses", "Electrow", "E"],
+  ["Sweet Trip", "Beeguy", "L"],
+  ["Be Right Back", "3Doffisa", "E"],
+  ["The Golden", "NinoNakano", "E"],
+  ["Loser", "Wizard", "F"],
+  ["Motion Picture Soundtrack", "Beeguy", "L"],
+  ["Absent", "Syne", "E"],
+  ["Limbotism", "Unnatural", "F"],
+  ["Abyss Angel", "Beeguy", "L"],
+  ["Miokii Always Clear", "3Doffisa", "E"],
+  ["Atmospheric", "Emmber", "F"],
+  ["To Be Complete", "Beeguy", "L"],
+  ["Stupid Ass 6 Star", "AltifyNeverDies", "F"],
+  ["Tumba", "Syne", "E"],
+  ["Space Voyage", "Syne", "E"],
+  ["Doped Cat", "Willow", "E"],
+  ["Starlit Night", "xxLettucex", "E"],
+  ["Return End", "Absoluteinf1", "F"],
+  ["Penguin", "Firelia", "R"],
+  ["HowToLiveAGoodLife", "Beeguy", "E"],
+  ["Sixx Sevvend", "Syne", "F"],
+  ["Grief Leashed", "Syne", "E"],
+  ["Rare Animal", "Beeguy", "E"],
+  ["XBounce", "JPCPro", "E"],
+  ["Lancer Deltarune", "Beeguy", "R"],
+  ["Deep End", "Electrow", "E"],
+  ["Tartarus", "JPCPro", "F"],
+  ["Caesium Factorial 2", "JPCPro", "F"],
+  ["Xenogenesis", "ShinobiAkira", "F"],
+  ["Chaoz Fantasy", "AFiVGDUP", "E"],
+  ["Happyland", "AFiVGDUP", "F"],
+  ["Hydra", "ShinobiAkira", "E"],
+  ["Caesium Factorial 1", "JPCPro", "F"],
+  ["Counting Stars", "Emmber", "F"],
+  ["Wireframe", "Umi", "E"],
+  ["Caesium Factorial 3", "JPCPro", "F"],
+  ["Polarbear", "Firelia", "R"],
+  ["Every End Leashed", "Syne", "L"],
+  ["Pyrarrmaniac", "Nange", "L"],
+  ["The Killer", "Beeguy", "M"],
+  ["The Aether", "JPCPro", "E"],
+  ["A Moment Apart", "Firelia", "L"],
+  ["Gleaming", "EpikGuy", "F"],
+  ["Sonicbreaker", "Hyperfixation", "R"],
+  ["Budgetscapes", "Beeguy", "F"],
+  ["Limbo but rarr ig", "Luna", "L"],
+  ["Circuit", "Firelia", "R"],
+  ["Fast Travel", "Kimichii", "E"],
+  ["Dancing Until I Fall", "Beeguy", "E"],
+  ["Paparazzi", "Electrow", "E"],
+  ["The Super Catguy", "Beeguy", "F"],
+  ["Aurora", "Emmber", "F"],
+  ["Octagon Force", "JPCPro", "F"],
+  ["Planetrarrium", "Luna", "F"],
+  ["Cove", "JPCPro", "R"],
+  ["The Golden", "Alya", "E"],
+  ["Kinetic Disorption", "Goldenfyre101", "E"],
+  ["Bananas", "Nange", "E"],
+  ["Cries for the Lonely", "Alya", "L"],
+  ["Duality", "Unnatural", "F"],
+  ["Synetosign Leashed", "Alya", "F"],
+  ["Tung Wave Trials", "Syne", "R"],
+  ["Interstellrarr", "Syne", "F"],
+  ["Happiest Days", "Beeguy", "L"],
+  ["1 Up", "Absoluteinf1", "E"],
+];
+/* ======================= END OF HISTORY DATA ======================= */
+</script>
+
+
+<style>
+:root {
+  --bg: #ffffff;
+  --text: #111111;
+  --muted: #666666;
+  --header: #e3a63b;
+  --link: #b06f00;
+
+  --rate: #9ba1aa;
+  --featured: #c0773b;
+  --epic: #f0c22e;
+  --legendary: #e15bd7;
+  --mythic: #4fd0ea;
+  color-scheme: light;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+}
+
+.wrap {
+  max-width: 800px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+header { background: var(--header); }
+header .wrap {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding-block: 10px;
+}
+.logo { color: white; font-weight: 700; font-size: 20px; text-decoration: none; }
+.logo small { font-size: 11px; font-weight: 400; opacity: .7; }
+header nav { display: flex; gap: 20px; }
+header nav a { color: white; text-decoration: none; padding-bottom: 4px; }
+header nav span { color: white; opacity: .55; }
+
+main { padding-block: 20px 40px; }
+h1 { font-size: 34px; margin: 0 0 12px; }
+h2 { font-size: 22px; margin: 28px 0 10px; }
+
+a.name { color: var(--link); text-decoration: underline; }
+
+.btn {
+  display: inline-block;
+  background: var(--header);
+  color: white;
+  padding: 6px 12px;
+  text-decoration: none;
+  margin-right: 6px;
+}
+.btn.off { background: #dddddd; color: #888888; }
+
+.muted { color: var(--muted); }
+.editor { margin: 6px 0; display: flex; align-items: center; gap: 8px; }
+.editor svg { width: 18px; height: 18px; }
+.small { font-size: 13px; }
+
+/* list */
+.tablebox { overflow-x: auto; }
+table { border-collapse: collapse; }
+.list { width: 100%; min-width: 680px; }
+.list th { text-align: center; font-size: 13px; padding: 6px; }
+.list td { padding: 7px 6px; text-align: center; }
+.list .left { text-align: left; }
+.list .c { width: 84px; min-width: 84px; max-width: 84px; box-sizing: border-box; }
+.list td.c { color: #111; font-weight: 600; }
+.list .pts { color: #111; background: var(--epic); font-size: 22px; font-weight: 700; padding-left: 12px; padding-right: 16px; }
+.list th.pts { font-size: 14px; }
+.list td.c.zero { background: #fff !important; color: #111; font-weight: 400; }
+.list .rk { font-weight: 700; }
+
+/* profile */
+.info td { padding: 3px 18px 3px 0; }
+.info td:first-child { font-weight: 700; text-transform: uppercase; }
+.tag { display: inline-block; font-size: 12px; color: white; padding: 2px 7px; margin: 10px 4px 0 0; }
+.cats { display: flex; flex-wrap: wrap; gap: 8px 26px; }
+.cats div { text-align: center; }
+.cats b { display: block; text-transform: uppercase; font-size: 13px; padding: 3px 8px; margin-bottom: 4px; color: #111; }
+.facts p { margin: 6px 0; }
+.facts ul { margin: 0; padding-left: 20px; }
+.facts li { margin: 5px 0; }
+
+/* history */
+.chart { width: 100%; max-width: 760px; height: auto; display: block; }
+.chart text { font-family: Arial, Helvetica, sans-serif; font-size: 11px; fill: #555; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 10px; font-size: 14px; }
+.legend span.sw { display: inline-block; width: 12px; height: 12px; margin-right: 5px; vertical-align: -1px; }
+.top1 td, .top1 th { padding: 5px 16px 5px 0; text-align: left; }
+</style>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#home">Goldenfyre CL <small>v1.0</small></a>
+    <nav>
+      <a href="#list" id="nav-list">List</a>
+      <a href="#history" id="nav-history">History</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="app"></main>
+
+<script>
+const TYPES = [
+  { key: "rate",      name: "Rates",     pts: 1 },
+  { key: "featured",  name: "Features",  pts: 2 },
+  { key: "epic",      name: "Epics",     pts: 3 },
+  { key: "legendary", name: "Legendary", pts: 4 },
+  { key: "mythic",    name: "Mythics",   pts: 5 },
+];
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[ch]);
+}
+function slug(name) {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+}
+
+// work out points, levels and ranks
+const all = CREATORS.map((c, i) => {
+  const out = Object.assign({}, c, { order: i, levels: 0, points: 0, slug: slug(c.name) });
+  TYPES.forEach(t => {
+    const n = Number(c[t.key]) || 0;
+    out[t.key] = n;
+    out.levels += n;
+    out.points += n * t.pts;
+  });
+  return out;
+});
+const ranked = all
+  .slice()
+  .sort((a, b) => b.points - a.points || a.levels - b.levels || a.order - b.order);
+ranked.forEach((c, i) => {
+  c.rank = i + 1;
+  c.hasPage = c.rank <= 10 || c.page === true;
+});
+
+// record roles, worked out automatically (ties all get the role)
+const RECORDS = [
+  { name: "Most Levels",   get: c => c.levels },
+  { name: "Most Rates",    get: c => c.rate,      color: "rate" },
+  { name: "Most Features", get: c => c.featured,  color: "featured" },
+  { name: "Most Epics",    get: c => c.epic,      color: "epic" },
+  { name: "Most Legendaries", get: c => c.legendary, color: "legendary" },
+  { name: "Most Mythics",  get: c => c.mythic,    color: "mythic" },
+];
+RECORDS.forEach(r => r.max = Math.max(...all.map(r.get)));
+
+const app = document.getElementById("app");
+
+function homePage() {
+  app.innerHTML = `
+    <h1>Goldenfyre Creatorlist</h1>
+    <p>The official creator point list for the Goldenfyre GDPS.</p>
+    <p style="margin:18px 0">
+      <a class="btn" href="#list">Creator List</a>
+      <a class="btn" href="#history">History</a>
+    </p>
+    <h2>List Editors</h2>
+    <p class="editor"><svg viewBox="0 0 24 24" aria-label="Owner"><path fill="#111" d="M2 7l5 4 5-7 5 7 5-4-2 12H4z"/></svg>Syne_49378</p>
+    <p class="editor"><svg viewBox="0 0 24 24" aria-label="Helper"><circle cx="9" cy="7" r="4" fill="#111"/><path fill="#111" d="M1 21c0-4.4 3.6-8 8-8 1.5 0 2.9.4 4.1 1.1A6 6 0 0 0 12 21z"/><circle cx="18" cy="18" r="3.2" fill="none" stroke="#111" stroke-width="2"/><path stroke="#111" stroke-width="2" d="M18 12.5v2M18 21.5v2M12.5 18h2M21.5 18h2M14.1 14.1l1.4 1.4M20.5 20.5l1.4 1.4M14.1 21.9l1.4-1.4M20.5 15.5l1.4-1.4"/></svg>Mesh9596</p>
+
+    <h2>How points work</h2>
+    <p>Rate = 1 point<br>Featured = 2 points<br>Epic = 3 points<br>Legendary = 4 points<br>Mythic = 5 points</p>
+    <p class="muted small" style="margin-top:14px">Last updated: ${esc(LAST_UPDATED)}</p>`;
+  document.title = "Goldenfyre Creatorlist";
+}
+
+function listPage() {
+  const rows = ranked.map(c => `
+    <tr>
+      <td class="rk">#${c.rank}</td>
+      <td class="left">${c.hasPage ? `<a class="name" href="#${c.slug}">${esc(c.name)}</a>` : esc(c.name)}</td>
+      <td class="pts">${c.points}</td>
+      <td class="c">${c.levels}</td>
+      ${TYPES.map(t => `<td class="c${c[t.key] ? "" : " zero"}" style="background:var(--${t.key})">${c[t.key]}</td>`).join("")}
+    </tr>`).join("");
+
+  app.innerHTML = `
+    <h1>Creator List</h1>
+    <p class="muted small">Tap an underlined name to see their profile. Last updated: ${esc(LAST_UPDATED)}</p>
+    <div class="tablebox" style="margin-top:14px">
+      <table class="list">
+        <tr>
+          <th>Rank</th>
+          <th class="left">Creator</th>
+          <th class="pts">Creator Points</th>
+          <th class="c">Levels</th>
+          ${TYPES.map(t => `<th class="c" style="background:var(--${t.key})">${t.name}</th>`).join("")}
+        </tr>
+        ${rows}
+      </table>
+    </div>`;
+  document.title = "Creator List - GCL";
+}
+
+function profilePage(c) {
+  const facts = [];
+  if (c.since) facts.push("Creator since " + c.since);
+  if (c.bestLevel) facts.push("Best level: " + c.bestLevel);
+  (c.facts || []).forEach(f => facts.push(f));
+
+  app.innerHTML = `
+    <p><a class="name small" href="#list">&lt; Back to list</a></p>
+    <h1>${esc(c.name)}</h1>
+    <table class="info">
+      <tr><td>Rank</td><td>${c.rank ? "#" + c.rank : "Unplaced"}</td></tr>
+      <tr><td>Creator Points</td><td>${c.points}</td></tr>
+      <tr><td>Rated Levels</td><td>${c.levels}</td></tr>
+    </table>
+    ${c.rank === 1 ? `<span class="tag" style="background:#d9473c">Top 1 Creator</span>` : ""}
+    ${c.rank !== 1 && buildHistory().top1.some(t => t.name === c.name) ? `<span class="tag" style="background:#8a6d1f">Former Top 1 Creator</span>` : ""}
+    ${c.elite ? `<span class="tag" style="background:#3b4fd1">Elite Creator</span>` : ""}
+    ${c.monthly ? `<span class="tag" style="background:#2e8b57">Monthly Awards Winner</span>` : ""}
+    ${RECORDS.filter(r => r.max > 0 && r.get(c) === r.max).map(r => `<span class="tag" style="${r.color ? `background:var(--${r.color});color:#111` : "background:#555"}">${r.name}</span>`).join("")}
+    ${c.description ? `<p style="margin-top:16px">${esc(c.description)}</p>` : ""}
+
+    <h2>Levels</h2>
+    <div class="tablebox">
+      <table class="list" style="width:auto;min-width:0">
+        <tr>${TYPES.map(t => `<th class="c" style="background:var(--${t.key})">${t.name}</th>`).join("")}</tr>
+        <tr>${TYPES.map(t => `<td class="c${c[t.key] ? "" : " zero"}" style="background:var(--${t.key})">${c[t.key]}</td>`).join("")}</tr>
+      </table>
+    </div>
+
+    <h2>Facts</h2>
+    <div class="facts">
+      ${facts.length ? `<ul>${facts.map(f => `<li>${esc(f)}</li>`).join("")}</ul>` : `<p class="muted">No facts yet.</p>`}
+    </div>`;
+  document.title = c.name + " - GCL";
+}
+
+// ---------- history ----------
+const LINE_COLORS = ["#e6194b", "#3cb44b", "#4363d8", "#f58231", "#911eb4",
+  "#42d4f4", "#f032e6", "#9a6324", "#808000", "#000075"];
+const PTS = { R: 1, F: 2, E: 3, L: 4, M: 5 };
+
+function parseDay(str) {
+  const [y, m, d] = str.split("-").map(Number);
+  return new Date(y, m - 1, d);
+}
+function fmtDay(dt) {
+  return (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + String(dt.getFullYear()).slice(2);
+}
+
+function buildHistory() {
+  const start = parseDay(FIRST_RATE).getTime();
+  const end = parseDay(LAST_RATE).getTime();
+  const n = RATING_LOG.length;
+  // spread levels out so the rating rate grows linearly up to GROWTH x
+  const g = GROWTH - 1;
+  const spread = f => g === 0 ? f : (-1 + Math.sqrt(1 + 2 * g * f * (1 + g / 2))) / g;
+  const guess = RATING_LOG.map((r, i) => start + (end - start) * spread(n > 1 ? i / (n - 1) : 0));
+  // pin dated lines, and stretch the undated ones between pins
+  const pins = [{ i: 0, t: start }];
+  RATING_LOG.forEach((r, i) => { if (r[3]) pins.push({ i, t: parseDay(r[3]).getTime() }); });
+  pins.push({ i: n - 1, t: end });
+  const times = guess.slice();
+  for (let k = 0; k < pins.length - 1; k++) {
+    const a = pins[k], b = pins[k + 1];
+    const ga = guess[a.i], gb = guess[b.i];
+    for (let i = a.i; i <= b.i; i++) {
+      times[i] = RATING_LOG[i][3] ? parseDay(RATING_LOG[i][3]).getTime()
+        : a.t + (b.t - a.t) * (gb === ga ? 0 : (guess[i] - ga) / (gb - ga));
+    }
+  }
+  const events = RATING_LOG.map((r, i) => ({
+    level: r[0], creator: r[1], type: r[2], time: times[i],
+  })).sort((a, b) => a.time - b.time);
+
+  const order = {};
+  CREATORS.forEach((c, i) => order[c.name] = i);
+  const pts = {}, lvls = {};
+  const series = {};
+  HISTORY_CREATORS.forEach(name => series[name] = [{ t: start, v: 0 }]);
+  const top1 = [];
+
+  events.forEach(e => {
+    pts[e.creator] = (pts[e.creator] || 0) + (PTS[e.type] || 0);
+    lvls[e.creator] = (lvls[e.creator] || 0) + 1;
+    if (series[e.creator]) series[e.creator].push({ t: e.time, v: pts[e.creator] });
+
+    const leader = Object.keys(pts).sort((a, b) =>
+      pts[b] - pts[a] || lvls[a] - lvls[b] || (order[a] ?? 999) - (order[b] ?? 999))[0];
+    const last = top1[top1.length - 1];
+    if (!last || last.name !== leader) {
+      if (last) last.to = e.time;
+      top1.push({ name: leader, from: e.time, to: null });
+    }
+  });
+  // the chart runs up to today, so the current top 1's reign keeps counting
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+  const lastEvent = events.length ? events[events.length - 1].time : end;
+  return { start, end: Math.max(end, today, lastEvent), series, top1, pts };
+}
+
+function historyPage() {
+  const H = buildHistory();
+  const W = 760, HT = 380, L = 40, R = 12, T = 12, B = 30;
+  let maxV = 0;
+  Object.values(H.series).forEach(s => s.forEach(p => maxV = Math.max(maxV, p.v)));
+  const yMax = Math.max(10, Math.ceil(maxV / 10) * 10);
+  const x = t => L + (W - L - R) * (t - H.start) / (H.end - H.start || 1);
+  const y = v => T + (HT - T - B) * (1 - v / yMax);
+
+  let svg = "";
+  for (let v = 0; v <= yMax; v += 10) {
+    svg += `<line x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}" stroke="#ddd"/>`;
+    svg += `<text x="${L - 6}" y="${y(v) + 4}" text-anchor="end">${v}</text>`;
+  }
+  const s0 = new Date(H.start);
+  for (let d = new Date(s0.getFullYear(), s0.getMonth() + 1, 1); d.getTime() <= H.end; d.setMonth(d.getMonth() + 1)) {
+    const xx = x(d.getTime());
+    svg += `<line x1="${xx}" x2="${xx}" y1="${T}" y2="${HT - B}" stroke="#eee"/>`;
+    svg += `<text x="${xx}" y="${HT - B + 16}" text-anchor="middle">${d.toLocaleString("en-US", { month: "short" })}</text>`;
+  }
+  svg += `<line x1="${L}" x2="${W - R}" y1="${HT - B}" y2="${HT - B}" stroke="#999"/>`;
+  svg += `<line x1="${L}" x2="${L}" y1="${T}" y2="${HT - B}" stroke="#999"/>`;
+
+  HISTORY_CREATORS.forEach((name, i) => {
+    const pts = H.series[name];
+    let d = `M${x(pts[0].t)},${y(pts[0].v)}`;
+    for (let k = 1; k < pts.length; k++) d += ` H${x(pts[k].t)} V${y(pts[k].v)}`;
+    d += ` H${x(H.end)}`;
+    svg += `<path d="${d}" fill="none" stroke="${LINE_COLORS[i % LINE_COLORS.length]}" stroke-width="2"/>`;
+  });
+
+  const legend = HISTORY_CREATORS.map((name, i) =>
+    `<span><span class="sw" style="background:${LINE_COLORS[i % LINE_COLORS.length]}"></span>${esc(name)} (${H.pts[name] || 0})</span>`).join("");
+
+  const rows = H.top1.slice().reverse().map(seg => {
+    const to = seg.to ?? H.end;
+    const days = Math.max(1, Math.round((to - seg.from) / 86400000));
+    return `<tr><td><b>${esc(seg.name)}</b></td><td>${fmtDay(new Date(seg.from))}</td><td>${seg.to ? fmtDay(new Date(seg.to)) : "now"}</td><td>${days} day${days === 1 ? "" : "s"}</td></tr>`;
+  }).join("");
+
+  app.innerHTML = `
+    <h1>History</h1>
+    <p class="muted small">Creator points over time, from ${fmtDay(new Date(H.start))} to today (${fmtDay(new Date(H.end))}).</p>
+    <svg class="chart" viewBox="0 0 ${W} ${HT}" role="img" aria-label="Creator points over time">${svg}</svg>
+    <div class="legend">${legend}</div>
+
+    <h2>Top 1 creators</h2>
+    <div class="tablebox">
+      <table class="top1">
+        <tr><th>Creator</th><th>From</th><th>To</th><th>Held for</th></tr>
+        ${rows}
+      </table>
+    </div>
+    <p class="muted small" style="margin-top:14px">Most dates are estimated.</p>`;
+  document.title = "History - GCL";
+}
+
+function route() {
+  const h = decodeURIComponent(location.hash.slice(1));
+  document.getElementById("nav-list").className = (h && h !== "home" && h !== "history") ? "on" : "";
+  document.getElementById("nav-history").className = h === "history" ? "on" : "";
+
+  if (!h || h === "home") homePage();
+  else if (h === "list") listPage();
+  else if (h === "history") historyPage();
+  else {
+    const c = all.find(x => x.slug === h && x.hasPage);
+    if (c) profilePage(c);
+    else app.innerHTML = `<p>That creator doesn't have a page yet. <a class="name" href="#list">Back to list</a></p>`;
+  }
+  window.scrollTo(0, 0);
+}
+
+window.addEventListener("hashchange", route);
+route();
+</script>
