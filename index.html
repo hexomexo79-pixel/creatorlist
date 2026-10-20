@@ -20,56 +20,57 @@
    Optional extras for creators with a page:
      since: "March 2025",              -> "Creator since March 2025"
      bestLevel: "Level Name",          -> "Best level: Level Name"
+     description: "1-2 sentences."     -> shown under their name
      facts: ["Former top 1 creator"],  -> any extra facts, as many as you want
      elite: true,                      -> gives them the Elite Creator tag
      monthly: true,                    -> gives them the Monthly Awards Winner tag
-     description: "1-2 sentences."     -> shown under their name
 
    Example:
    { name: "Beeguy", rate: 1, featured: 2, epic: 9, legendary: 5, mythic: 1,
      since: "March 2025", bestLevel: "Some Level",
-     facts: ["First creator to get a mythic"],
-     elite: true, description: "Known for detailed effect-heavy levels." },
+     elite: true,
+     description: "Known for detailed effect-heavy levels.",
+     facts: ["First creator to get a mythic"] },
    ===================================================================== */
 
 const LAST_UPDATED = "October 20th, 2026";
 
 const CREATORS = [
-  { name: "Beeguy",          rate: 1, featured: 2, epic: 9, legendary: 5, mythic: 1,
-    monthly: true, facts: ["First and only creator to make a mythic"],
-    description: "Builds fast, with many levels in his Commatose-inspired style. Best known for his detailed decoration." },
-  { name: "Syne",            rate: 1, featured: 3, epic: 5, legendary: 3, mythic: 0,
-    monthly: true, facts: ["Created Every End Leashed, the longest rated level (7:41)"],
-    description: "Known for difficult levels with polished gameplay." },
+  { name: "Beeguy",          rate: 1, featured: 2, epic: 9, legendary: 5, mythic: 1, monthly: true,
+    description: "Builds fast, with many levels in his Commatose-inspired style. Best known for his detailed decoration.",
+    facts: ["First and only creator to make a mythic"] },
+  { name: "Syne",            rate: 1, featured: 3, epic: 5, legendary: 3, mythic: 0, monthly: true,
+    description: "Known for difficult levels with polished gameplay.",
+    facts: ["Created Every End Leashed, the longest rated level (7:41)"] },
   { name: "Electrow",        rate: 1, featured: 0, epic: 5, legendary: 1, mythic: 0,
-    facts: ["Has the most XL-length levels"],
-    description: "Known for her long effect layouts backed by solid gameplay." },
+    description: "Known for her long effect layouts backed by solid gameplay.",
+    facts: ["Has the most XL-length levels"] },
   { name: "JPCPro",          rate: 1, featured: 5, epic: 2, legendary: 0, mythic: 0,
-    facts: ["Created the Caesium Factorial series"],
-    description: "An up-and-coming creator who builds quickly and has improved a lot." },
+    description: "An up-and-coming creator who builds quickly and has improved a lot.",
+    facts: ["Created the Caesium Factorial series"] },
   { name: "EpikGuy",         rate: 3, featured: 3, epic: 2, legendary: 0, mythic: 0,
-    facts: ["Created the Shining series", "Created EGG NEVER CLEAR RE, a former top 1 demon"],
-    description: "Known for difficult effect layouts. He rarely releases levels anymore, but when he does, they're always worth playing." },
+    description: "Known for difficult effect layouts. He rarely releases levels anymore, but when he does, they're always worth playing.",
+    facts: ["Created the Shining series", "Created EGG NEVER CLEAR RE, a former top 1 demon"] },
   { name: "Xc4pk",           rate: 2, featured: 4, epic: 0, legendary: 1, mythic: 0,
     description: "Has some of the best decoration on the server. He doesn't release much these days, but his levels still stand out." },
   { name: "Firelia",         rate: 4, featured: 1, epic: 1, legendary: 2, mythic: 0,
     description: "Doesn't release often, but each new level is worth the wait." },
   { name: "Wizard",          rate: 0, featured: 1, epic: 1, legendary: 2, mythic: 0,
-    facts: ["Half of his rated levels are legendary"],
-    description: "Makes polished, modern levels on the easier side." },
+    description: "Makes polished, modern levels on the easier side.",
+    facts: ["Half of his rated levels are legendary"] },
   { name: "Quacc",           rate: 0, featured: 3, epic: 2, legendary: 0, mythic: 0,
-    facts: ["Created the Goldenfyre demonlist", "Server admin"],
-    description: "Has given a lot to the community, both through his levels and behind the scenes." },
+    description: "Has given a lot to the community, both through his levels and behind the scenes.",
+    facts: ["Created the Goldenfyre demonlist", "Server admin"] },
   { name: "Absoluteinf1",    rate: 1, featured: 1, epic: 1, legendary: 0, mythic: 0 },
   { name: "Emmber",          rate: 1, featured: 5, epic: 0, legendary: 0, mythic: 0, page: true,
     description: "Manages to be both a top player and a top creator at the same time." },
-  { name: "Nange",           rate: 2, featured: 1, epic: 1, legendary: 1, mythic: 0, page: true,
-    monthly: true, facts: ["Known for collabs like Pyrarrmaniac", "Created Goldenfyre Challenge, a former top 1 demon"],
-    description: "Rarely releases levels, but when he does, they're some of the best around." },
+  { name: "Nange",           rate: 2, featured: 1, epic: 1, legendary: 1, mythic: 0, page: true, monthly: true,
+    description: "Rarely releases levels, but when he does, they're some of the best around.",
+    facts: ["Known for collabs like Pyrarrmaniac", "Created Goldenfyre Challenge, a former top 1 demon"] },
   { name: "Pure",            rate: 1, featured: 1, epic: 2, legendary: 0, mythic: 0 },
-  { name: "3Doffisa",        rate: 1, featured: 1, epic: 2, legendary: 0, mythic: 0, page: true,
-    monthly: true, facts: ["Created Miokii Always Clear, one of the best demons on the server", "Hosted GDPS News", "Currently hosting the Grarrief megacollab"],
-    description: "Does a lot for the community." },
+  { name: "3Doffisa",        rate: 1, featured: 1, epic: 2, legendary: 0, mythic: 0, page: true, monthly: true,
+    description: "Does a lot for the community.",
+    facts: ["Created Miokii Always Clear, one of the best demons on the server", "Hosted GDPS News", "Currently hosting the Grarrief megacollab"] },
   { name: "AltifyNeverDies", rate: 1, featured: 4, epic: 0, legendary: 0, mythic: 0 },
   { name: "Alya",            rate: 0, featured: 1, epic: 1, legendary: 1, mythic: 0 },
   { name: "[67] Spec",       rate: 0, featured: 0, epic: 1, legendary: 1, mythic: 0 },
