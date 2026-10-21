@@ -6,6 +6,7 @@
    { name: "Beeguy", rate: 1, featured: 2, epic: 9, legendary: 5, mythic: 1,
      since: "March 2025", bestLevel: "Some Level",
      elite: true,
+     gauntlet: true,     // Prismatic Gauntlet role
      description: "idk",
      facts: ["First creator to get a mythic"] },
    ===================================================================== */
@@ -16,10 +17,10 @@ const CREATORS = [
   { name: "Beeguy",          rate: 1, featured: 2, epic: 9, legendary: 5, mythic: 1, monthly: true,
     description: "Consistently puts out high quality levels, with many in his Commatose-inspired style. Best known for his polished decoration.",
     facts: ["First and only creator to make a mythic"] },
-  { name: "Syne",            rate: 1, featured: 3, epic: 5, legendary: 3, mythic: 0, monthly: true,
+  { name: "Syne",            rate: 1, featured: 3, epic: 5, legendary: 3, mythic: 0, gauntlet: true, monthly: true,
     description: "Known for difficult levels with polished gameplay.",
     facts: ["Created Every End Leashed, the longest rated level (7:41)"] },
-  { name: "Electrow",        rate: 1, featured: 0, epic: 5, legendary: 1, mythic: 0,
+  { name: "Electrow",        rate: 1, featured: 0, epic: 5, legendary: 1, mythic: 0, gauntlet: true,
     description: "Known for her long effect layouts.",
     facts: ["Has the most XL-length levels"] },
   { name: "JPCPro",          rate: 2, featured: 5, epic: 2, legendary: 0, mythic: 0,
@@ -28,11 +29,11 @@ const CREATORS = [
   { name: "EpikGuy",         rate: 3, featured: 2, epic: 3, legendary: 0, mythic: 0,
     description: "Known for difficult effect layouts. He rarely releases levels anymore, but when he does, they're worth playing.",
     facts: ["Created the Shining series", "Created EGG NEVER CLEAR RE, a former top 1 demon"] },
-  { name: "Xc4pk",           rate: 1, featured: 5, epic: 0, legendary: 1, mythic: 0,
+  { name: "Xc4pk",           rate: 1, featured: 5, epic: 0, legendary: 1, mythic: 0, gauntlet: true,
     description: "Has some of the best decoration on the server. He doesn't release much these days, but his levels still stand out." },
   { name: "Firelia",         rate: 2, featured: 3, epic: 2, legendary: 2, mythic: 0,
-   description: "Makes well decorated levels quickly, often easy but they'll occasionally release an absurdly difficulty level." },
-  { name: "Wizard",          rate: 0, featured: 1, epic: 2, legendary: 2, mythic: 0,
+    description: "Makes well decorated levels quickly, often easy but they'll occasionally release an absurdly difficult level." },
+  { name: "Wizard",          rate: 0, featured: 1, epic: 2, legendary: 2, mythic: 0, gauntlet: true,
     description: "Makes polished, easy modern levels.",
     facts: ["Created the legendaries Starfall and Colorsway"] },
   { name: "Quacc",           rate: 0, featured: 3, epic: 2, legendary: 0, mythic: 0,
@@ -46,9 +47,9 @@ const CREATORS = [
     facts: ["Created Goldenfyre Challenge, a former top 1 demon"] },
   { name: "Pure",            rate: 1, featured: 1, epic: 2, legendary: 0, mythic: 0 },
   { name: "3Doffisa",        rate: 1, featured: 1, epic: 2, legendary: 0, mythic: 0, page: true, monthly: true,
-    description: "Contributed heavily to the community, created Miokii Always Clear and Hosted GDPS News.",
+    description: "Contributed heavily to the community, created Miokii Always Clear and Hosted GDPS News..",
     facts: ["Currently hosting the Grarrief megacollab"] },
-  { name: "AltifyNeverDies", rate: 1, featured: 5, epic: 0, legendary: 0, mythic: 0 },
+  { name: "AltifyNeverDies", rate: 1, featured: 5, epic: 0, legendary: 0, mythic: 0, gauntlet: true, page: true },
   { name: "Alya",            rate: 0, featured: 1, epic: 1, legendary: 1, mythic: 0 },
   { name: "[67] Spec",       rate: 0, featured: 0, epic: 1, legendary: 1, mythic: 0 },
   { name: "Luna",            rate: 1, featured: 1, epic: 0, legendary: 1, mythic: 0 },
@@ -483,6 +484,7 @@ function profilePage(c) {
     ${c.rank !== 1 && buildHistory().top1.some(t => t.name === c.name) ? `<span class="tag" style="background:#8a6d1f">Former Top 1 Creator</span>` : ""}
     ${c.elite ? `<span class="tag" style="background:#3b4fd1">Elite Creator</span>` : ""}
     ${c.monthly ? `<span class="tag" style="background:#2e8b57">Monthly Awards Winner</span>` : ""}
+    ${c.gauntlet ? `<span class="tag" style="background:#7b3fa0">Prismatic Gauntlet Creator</span>` : ""}
     ${RECORDS.filter(r => r.max > 0 && r.get(c) === r.max).map(r => `<span class="tag" style="${r.color ? `background:var(--${r.color});color:#111` : "background:#555"}">${r.name}</span>`).join("")}
     ${c.description ? `<p style="margin-top:16px">${esc(c.description)}</p>` : ""}
 
