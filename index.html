@@ -61,7 +61,7 @@ const CREATORS = [
   { name: "Alya",            rate: 0, featured: 1, epic: 1, legendary: 1, mythic: 0 },
   { name: "[67] Spec",       rate: 0, featured: 0, epic: 1, legendary: 1, mythic: 0 },
   { name: "Luna",            rate: 1, featured: 1, epic: 0, legendary: 1, mythic: 0, page: true,
-    description: "A skillful creator who has recently started releasing more levels, recently creating her first legendary: Limbo But Rarr Ig" },
+    description: "A skillful creator who has recently started releasing more levels, recently creating her first legendary: Limbo but rarr ig" },
   { name: "Goldenfyre101",   rate: 0, featured: 0, epic: 2, legendary: 0, mythic: 0, page: true,
     description: "The owner of the server, he doesnt upload often but his levels are always really fun to play.",
     facts: ["Owner of the Goldenfyre GDPS"] },
@@ -368,8 +368,8 @@ table { border-collapse: collapse; }
 .cats { display: flex; flex-wrap: wrap; gap: 8px 26px; }
 .cats div { text-align: center; }
 .cats b { display: block; text-transform: uppercase; font-size: 13px; padding: 3px 8px; margin-bottom: 4px; color: #111; }
-.roles td { padding: 5px 16px 5px 0; vertical-align: middle; }
-.roles td:first-child { white-space: nowrap; }
+.rolebox { display: flex; flex-wrap: wrap; gap: 8px; background: #f1f1f1; padding: 14px; }
+.rolebox .tag { font-size: 14px; padding: 5px 10px; }
 .facts p { margin: 6px 0; }
 .facts ul { margin: 0; padding-left: 20px; }
 .facts li { margin: 5px 0; }
@@ -441,16 +441,16 @@ const RECORDS = [
 RECORDS.forEach(r => r.max = Math.max(...all.map(r.get)));
 
 const ROLE_LIST = [
-  { name: "Top 1 Creator",              bg: "#d9473c", how: "Have the most creator points right now." },
-  { name: "Former Top 1 Creator",       bg: "#8a6d1f", how: "Have been the top 1 creator in the past." },
-  { name: "Monthly Awards Winner",      bg: "#2e8b57", how: "Win a monthly award." },
-  { name: "Prismatic Gauntlet Creator", bg: "#7b3fa0", how: "Get a level into the Prismatic Gauntlet." },
-  { name: "Most Levels",                how: "Have the most rated levels overall." },
-  { name: "Most Rates",                 color: "rate",      how: "Have the most rated levels of the rate tier." },
-  { name: "Most Features",              color: "featured",  how: "Have the most featured levels." },
-  { name: "Most Epics",                 color: "epic",      how: "Have the most epic levels." },
-  { name: "Most Legendaries",           color: "legendary", how: "Have the most legendary levels." },
-  { name: "Most Mythics",               color: "mythic",    how: "Have the most mythic levels." },
+  { name: "Top 1 Creator",              bg: "#d9473c" },
+  { name: "Former Top 1 Creator",       bg: "#8a6d1f" },
+  { name: "Monthly Awards Winner",      bg: "#2e8b57" },
+  { name: "Prismatic Gauntlet Creator", bg: "#7b3fa0" },
+  { name: "Most Levels" },
+  { name: "Most Rates",                 color: "rate" },
+  { name: "Most Features",              color: "featured" },
+  { name: "Most Epics",                 color: "epic" },
+  { name: "Most Legendaries",           color: "legendary" },
+  { name: "Most Mythics",               color: "mythic" },
 ];
 
 const app = document.getElementById("app");
@@ -472,9 +472,9 @@ function homePage() {
     <p style="margin:12px 0"><a class="btn" href="${PROFILE_FORM}" target="_blank" rel="noopener">Profile change form</a></p>
 
     <h2>Roles</h2>
-    <table class="roles">
-      ${ROLE_LIST.map(r => `<tr><td><span class="tag" style="margin:0;${r.color ? `background:var(--${r.color});color:#111` : `background:${r.bg || "#555"}`}">${r.name}</span></td><td>${r.how}</td></tr>`).join("")}
-    </table>
+    <div class="rolebox">
+      ${ROLE_LIST.map(r => `<span class="tag" style="margin:0;${r.color ? `background:var(--${r.color});color:#111` : `background:${r.bg || "#555"}`}">${r.name}</span>`).join("")}
+    </div>
 
     <h2>How points work</h2>
     <p>Rate = 1 point<br>Featured = 2 points<br>Epic = 3 points<br>Legendary = 4 points<br>Mythic = 5 points</p>
