@@ -7,78 +7,86 @@
      since: "March 2025", bestLevel: "Some Level",
     
      gauntlet: true,     // Prismatic Gauntlet role
+     top1Demon: true,    // made a level that was top 1 on the demon list
+     mostLiked: true,    // Most Liked Level role
      color: "#d9473c",   // optional: their own profile colour (default is gold)
      description: "idk",
      facts: ["First creator to get a mythic"] },
    ===================================================================== */
 
-const LAST_UPDATED = "October 20th, 2026";
+const LAST_UPDATED = "October 23rd, 2026";
 
 // every profile uses this colour, unless a creator has their own  color: "#hex"
 const DEFAULT_COLOR = "#e3a63b";
 
 // profile change form (shown on the home page)
-const PROFILE_FORM = "https://forms.gle/kijCVDCNSZupHCU56";
+const PROFILE_FORM = "https://docs.google.com/forms/d/1SHdD6qr_GkyHzcorMLH0AMQ3vJPFjp3hRA4trKH1EoU/viewform";
 
 const CREATORS = [
-  { name: "Beeguy",          rate: 1, featured: 2, epic: 9, legendary: 5, mythic: 1, monthly: true,
+  { name: "Beeguy",          rate: 1, featured: 2, epic: 9, legendary: 5, mythic: 1, color: "#ffb6d0", monthly: true,
     description: "Consistently puts out high quality levels, with many in his Commatose-inspired style. Best known for his polished decoration.",
     facts: ["First and only creator to make a mythic"] },
-  { name: "Syne",            rate: 1, featured: 3, epic: 5, legendary: 3, mythic: 0, gauntlet: true, monthly: true,
+  { name: "Syne",            rate: 1, featured: 3, epic: 5, legendary: 3, mythic: 0, color: "#5ce8b5", gauntlet: true, mostLiked: true, monthly: true,
     description: "Known for difficult levels with polished gameplay.",
     facts: ["Created Every End Leashed, the longest rated level (7:41)"] },
-  { name: "Electrow",        rate: 1, featured: 0, epic: 5, legendary: 1, mythic: 0, gauntlet: true,
+  { name: "Electrow",        rate: 1, featured: 0, epic: 5, legendary: 1, mythic: 0, color: "#00d9c0", gauntlet: true,
     description: "Known for her long effect layouts.",
     facts: ["Has the most XL-length levels"] },
-  { name: "JPCPro",          rate: 2, featured: 5, epic: 2, legendary: 0, mythic: 0,
+  { name: "JPCPro",          rate: 2, featured: 5, epic: 2, legendary: 0, mythic: 0, color: "#d1103a",
     description: "An up and coming creator who builds quickly and has improved a lot.",
     facts: ["Created the Caesium Factorial series"] },
-  { name: "EpikGuy",         rate: 3, featured: 2, epic: 3, legendary: 0, mythic: 0,
+  { name: "EpikGuy",         rate: 3, featured: 2, epic: 3, legendary: 0, mythic: 0, top1Demon: true, color: "#e3a63b",
     description: "Known for difficult effect layouts. He rarely releases levels anymore, but when he does, they're worth playing.",
     facts: ["Created the Shining series", "Created EGG NEVER CLEAR RE, a former top 1 demon"] },
-  { name: "Xc4pk",           rate: 1, featured: 5, epic: 0, legendary: 1, mythic: 0, gauntlet: true,
+  { name: "Xc4pk",           rate: 1, featured: 5, epic: 0, legendary: 1, mythic: 0, color: "#3366ff", gauntlet: true,
     description: "Has some of the best decoration on the server. He doesn't release much these days, but when he does, its peak." },
-  { name: "Firelia",         rate: 2, featured: 3, epic: 2, legendary: 2, mythic: 0,
+  { name: "Firelia",         rate: 2, featured: 3, epic: 2, legendary: 2, mythic: 0, color: "#a8ff1a",
     description: "Makes well decorated levels quickly, often easy but they'll occasionally release an absurdly difficult level." },
-  { name: "Wizard",          rate: 0, featured: 1, epic: 2, legendary: 2, mythic: 0, gauntlet: true,
+  { name: "Wizard",          rate: 0, featured: 1, epic: 2, legendary: 2, mythic: 0, color: "#8a1fff", gauntlet: true,
     description: "Makes well polished easy modern levels.",
     facts: ["Created the legendaries Starfall and Colorsway"] },
-  { name: "Quacc",           rate: 0, featured: 3, epic: 2, legendary: 0, mythic: 0,
+  { name: "Quacc",           rate: 0, featured: 3, epic: 2, legendary: 0, mythic: 0, mostLiked: true, color: "#ffee00",
     description: "Heavily contributed to the community, both through his levels and through the server.",
     facts: ["Created the Goldenfyre demonlist", "Server admin"] },
-  { name: "Absoluteinf1",    rate: 1, featured: 1, epic: 1, legendary: 0, mythic: 0, page: true,
-    description: "An up and coming creator and player who has improved a lot." },
-  { name: "Emmber",          rate: 1, featured: 5, epic: 0, legendary: 0, mythic: 0, page: true,
-    description: "Balances being a top player and a top creator, a skill few have." },
-  { name: "Nange",           rate: 2, featured: 1, epic: 1, legendary: 1, mythic: 0, page: true, monthly: true,
-    description: "Known for hosting popular collabs like Pyrarrmaniac",
-    facts: ["Created Goldenfyre Challenge, a former top 1 demon"] },
+  { name: "Absoluteinf1",    rate: 1, featured: 1, epic: 1, legendary: 0, mythic: 0, color: "#ffd60a", page: true,
+    description: "An upcoming, improving creator trying to get a legendary or mythic level with minimal decorating experience." },
+  { name: "Emmber",          rate: 1, featured: 5, epic: 0, legendary: 0, mythic: 0, color: "#ff8000", page: true,
+    description: "Typically a layout creator who, despite the lacking decoration, puts a lot of time into the gameplay so that most people enjoy it." },
+  { name: "Nange",           rate: 2, featured: 1, epic: 1, legendary: 1, mythic: 0, top1Demon: true, color: "#ffb04d", page: true, monthly: true,
+    description: "Likes making projects featuring iconic parts or themes :) I've made a few popular levels, but they wouldn't be as special without you guys. Thank you :3 rarr rarr! - Nange",
+    facts: ["Created Goldenfyre Challenge, a former top 1 demon", "Started the rarr naming scheme for levels"] },
   { name: "Pure",            rate: 1, featured: 1, epic: 2, legendary: 0, mythic: 0 },
-  { name: "3Doffisa",        rate: 1, featured: 1, epic: 2, legendary: 0, mythic: 0, page: true, monthly: true,
+  { name: "3Doffisa",        rate: 1, featured: 1, epic: 2, legendary: 0, mythic: 0, color: "#3ddc5a", page: true, monthly: true,
     description: "Contributed heavily to the community, created Miokii Always Clear and Hosted GDPS News..",
     facts: ["Currently hosting the Grarrief megacollab"] },
-  { name: "AltifyNeverDies", rate: 1, featured: 5, epic: 0, legendary: 0, mythic: 0, gauntlet: true, page: true },
-  { name: "Alya",            rate: 0, featured: 1, epic: 1, legendary: 1, mythic: 0 },
-  { name: "[67] Spec",       rate: 0, featured: 0, epic: 1, legendary: 1, mythic: 0 },
-  { name: "Luna",            rate: 1, featured: 1, epic: 0, legendary: 1, mythic: 0, page: true,
+  { name: "AltifyNeverDies", rate: 1, featured: 5, epic: 0, legendary: 0, mythic: 0, color: "#00e5ff", gauntlet: true, page: true,
+    description: "A very dedicated creator who, despite being new and up and coming, has had a big impact on the community." },
+  { name: "Alya",            rate: 0, featured: 1, epic: 1, legendary: 1, mythic: 0, color: "#9caf88", page: true,
+    description: "A new creator who makes modern effect levels." },
+  { name: "[67] Spec",       rate: 0, featured: 0, epic: 1, legendary: 1, mythic: 0, color: "#721D75", page: true,
+    description: "A simple layout creator who is very focused on gameplay.",
+    facts: ["Has the most creator points of any creator with only 2 levels"] },
+  { name: "Luna",            rate: 1, featured: 1, epic: 0, legendary: 1, mythic: 0, color: "#1fa9ff", page: true,
     description: "A skillful creator who has recently started releasing more levels, recently creating her first legendary: Limbo but rarr ig" },
-  { name: "Goldenfyre101",   rate: 0, featured: 0, epic: 2, legendary: 0, mythic: 0, page: true,
+  { name: "Goldenfyre101",   rate: 0, featured: 0, epic: 2, legendary: 0, mythic: 0, color: "#e3a63b", page: true,
     description: "The owner of the server, he doesnt upload often but his levels are always really fun to play.",
     facts: ["Owner of the Goldenfyre GDPS"] },
-  { name: "ShinobiAkira",    rate: 1, featured: 1, epic: 1, legendary: 0, mythic: 0 },
+  { name: "ShinobiAkira",    rate: 1, featured: 1, epic: 1, legendary: 0, mythic: 0, mostLiked: true, page: true },
   { name: "xxLettucex",      rate: 1, featured: 1, epic: 1, legendary: 0, mythic: 0 },
   { name: "AFiVGDUP",        rate: 0, featured: 1, epic: 1, legendary: 0, mythic: 0 },
   { name: "Hortus",          rate: 0, featured: 0, epic: 1, legendary: 0, mythic: 0 },
   { name: "GooeyG",          rate: 0, featured: 2, epic: 0, legendary: 0, mythic: 0 },
-  { name: "Gamer862",        rate: 1, featured: 0, epic: 1, legendary: 0, mythic: 0, page: true,
+  { name: "Gamer862",        rate: 1, featured: 0, epic: 1, legendary: 0, mythic: 0, top1Demon: true, color: "#ff1a1a", page: true,
     facts: ["Created The Abyss, the current top 1 demon"] },
   { name: "Unnatural",       rate: 0, featured: 2, epic: 0, legendary: 0, mythic: 0 },
-  { name: "Lemonix",         rate: 0, featured: 0, epic: 0, legendary: 1, mythic: 0, page: true,
+  { name: "Lemonix",         rate: 0, featured: 0, epic: 0, legendary: 1, mythic: 0, color: "#ffe11a", page: true,
     facts: ["Created Starlit, the first legendary"] },
   { name: "[CLN] Ke2",       rate: 1, featured: 1, epic: 0, legendary: 0, mythic: 0 },
-  { name: "Hyperfixation",   rate: 3, featured: 0, epic: 0, legendary: 0, mythic: 0, page: true },
+  { name: "Hyperfixation",   rate: 3, featured: 0, epic: 0, legendary: 0, mythic: 0, color: "#b24dff", page: true },
   { name: "qwerty2048",      rate: 0, featured: 0, epic: 1, legendary: 0, mythic: 0 },
-  { name: "Kimichii",        rate: 0, featured: 0, epic: 1, legendary: 0, mythic: 0 },
+  { name: "Kimichii",        rate: 0, featured: 0, epic: 1, legendary: 0, mythic: 0, page: true,
+    description: "A creator who does her best to make fun and balanced gameplay, and is learning the basics of decoration.",
+    facts: ["Created Fast Travel, an epic rated layout"] },
   { name: "Umi",             rate: 0, featured: 0, epic: 1, legendary: 0, mythic: 0 },
   { name: "Willow",          rate: 0, featured: 0, epic: 1, legendary: 0, mythic: 0 },
   { name: "Spaace",          rate: 0, featured: 0, epic: 1, legendary: 0, mythic: 0 },
@@ -113,6 +121,12 @@ const GROWTH = 1.5;
 // History tab is hidden until v1.1. To release it: set this to true and
 // un-comment the two "v1.1" links in the header and on the home page,
 // and the "v1.1" line in route().
+//
+// TODO for when History is released:
+//  - add role "Completionist": has at least one level in all 5 tiers
+//  - add role "Rising Star": gained 10 or more creator points in 1 month
+//  - later: a separate role board for roles that aren't self-explanatory
+//    (like these), and give those unique roles gradients instead of flat colours
 const SHOW_HISTORY = false;
 const HISTORY_CREATORS = ["Beeguy", "Syne", "EpikGuy", "Xc4pk"];
 
@@ -322,15 +336,15 @@ h2 { font-size: 22px; margin: 28px 0 10px; }
 
 a.name { display: block; box-sizing: border-box; width: 170px; padding: 9px 12px; color: #111; text-decoration: none; background: transparent; font-weight: 700; -webkit-tap-highlight-color: transparent; }
 a.name:not(.plain)::after { content: "\203A"; float: right; font-size: 20px; line-height: 15px; }
-a.name:hover, a.name:active { background: var(--accent, #e3a63b); color: #fff; }
+a.name:hover, a.name:active { background: var(--accent, #e3a63b); color: var(--on, #fff); }
 .nolink { display: block; box-sizing: border-box; padding: 9px 12px; font-weight: 700; }
-a.name.first { background: var(--accent, #e3a63b); color: #fff; }
+a.name.first { background: var(--accent, #e3a63b); color: var(--on, #fff); }
 a.name.first:hover, a.name.first:active { filter: brightness(.88); }
 .list td.left { width: 190px; white-space: nowrap; }
 a.name.plain { display: inline; width: auto; background: none; border: 0; padding: 0; font-weight: 400; color: var(--link); text-decoration: underline; }
 a.name.plain:hover, a.name.plain:active { background: none; color: var(--link); }
-.prof h1 { display: inline-block; background: var(--accent, #e3a63b); color: #fff; padding: 6px 16px; margin: 4px 0 14px; }
-.prof h2 { display: inline-block; background: var(--accent, #e3a63b); color: #fff; padding: 4px 12px; font-size: 18px; margin: 28px 0 12px; }
+.prof h1 { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; width: fit-content; min-width: min(100%, 340px); max-width: 100%; background: var(--accent, #e3a63b); color: var(--on, #fff); padding: 6px 16px; margin: 4px 0 14px; }
+.prof h2 { display: table; background: var(--accent, #e3a63b); color: var(--on, #fff); padding: 4px 12px; font-size: 18px; margin: 28px 0 12px; }
 
 .btn {
   display: inline-block;
@@ -368,7 +382,16 @@ table { border-collapse: collapse; }
 .cats { display: flex; flex-wrap: wrap; gap: 8px 26px; }
 .cats div { text-align: center; }
 .cats b { display: block; text-transform: uppercase; font-size: 13px; padding: 3px 8px; margin-bottom: 4px; color: #111; }
+/* home page: two columns on wide screens (phones stay one column) */
+@media (min-width: 900px) {
+  body.home header .wrap, body.home main.wrap { max-width: 1040px; }
+  .homegrid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 56px; align-items: start; }
+  .homegrid > div:last-child > h2:first-child { margin-top: 12px; }
+}
 .rolebox { display: flex; flex-wrap: wrap; gap: 8px; background: #f1f1f1; padding: 14px; }
+.rolebox.special { display: grid; grid-template-columns: max-content 1fr; gap: 12px 16px; align-items: center; }
+.rolebox.special .tag { justify-self: start; }
+.rolebox.special p { margin: 0; font-size: 14px; }
 .rolebox .tag { font-size: 14px; padding: 5px 10px; }
 .facts p { margin: 6px 0; }
 .facts ul { margin: 0; padding-left: 20px; }
@@ -384,7 +407,7 @@ table { border-collapse: collapse; }
 
 <header>
   <div class="wrap">
-    <a class="logo" href="#home">Goldenfyre CL <small>v1.1</small></a>
+    <a class="logo" href="#home">Goldenfyre CL <small>v1.2</small></a>
     <nav>
       <a href="#list" id="nav-list">List</a>
       <!-- v1.1: <a href="#history" id="nav-history">History</a> -->
@@ -440,11 +463,26 @@ const RECORDS = [
 ];
 RECORDS.forEach(r => r.max = Math.max(...all.map(r.get)));
 
+// roles that need an explanation; they get gradients instead of flat colours
+const SPECIAL_ROLES = [
+  { name: "Top 1 Level", flag: "top1Demon", bg: "linear-gradient(90deg,#fff3a3,#ffb81f,#f0542b)", dark: true,
+    how: "For creators who have made a top 1 level, past and present." },
+  { name: "Prismatic Gauntlet", flag: "gauntlet", bg: "linear-gradient(90deg,#00d9c0,#1f6bff,#b04dff)",
+    how: "For creators whose level got into the first gauntlet, the Prismatic Gauntlet." },
+  { name: "Monthly Awards", flag: "monthly", bg: "linear-gradient(90deg,#ffd23f,#8fdc4a,#1fbf75)", dark: true,
+    how: "For the winners of the monthly awards, hosted by Syne." },
+];
+
+// faint gradients, in the legendary and mythic colour families
+const LEGENDARY_BG = "linear-gradient(90deg,#d63fcb,#c43bb9)";
+const MYTHIC_BG = "linear-gradient(90deg,#27aed0,#2299b9)";
+
 const ROLE_LIST = [
   { name: "Top 1 Creator",              bg: "#d9473c" },
-  { name: "Former Top 1 Creator",       bg: "#8a6d1f" },
-  { name: "Monthly Awards Winner",      bg: "#2e8b57" },
-  { name: "Prismatic Gauntlet Creator", bg: "#7b3fa0" },
+  { name: "Former Top 1 Creator",       bg: "#f27c1a" },
+  { name: "Legendary Creator",          bg: LEGENDARY_BG },
+  { name: "Mythic Creator",             bg: MYTHIC_BG },
+  { name: "Most Liked Level",          bg: "#4ccd4c", dark: true },
   { name: "Most Levels" },
   { name: "Most Rates",                 color: "rate" },
   { name: "Most Features",              color: "featured" },
@@ -453,10 +491,22 @@ const ROLE_LIST = [
   { name: "Most Mythics",               color: "mythic" },
 ];
 
+// black text on bright colours, white text on dark ones
+function onColor(hex) {
+  const n = parseInt(hex.slice(1), 16), r = n >> 16, g = (n >> 8) & 255, b = n & 255;
+  if (hex.toLowerCase() === DEFAULT_COLOR.toLowerCase()) return "#fff";   // keep the gold look
+  return (0.299 * r + 0.587 * g + 0.114 * b) > 150 ? "#111" : "#fff";
+}
+function accentStyle(c) {
+  const col = c.color || DEFAULT_COLOR;
+  return `--accent:${col};--on:${onColor(col)}`;
+}
+
 const app = document.getElementById("app");
 
 function homePage() {
   app.innerHTML = `
+    <div class="homegrid"><div>
     <h1>Goldenfyre Creatorlist</h1>
     <p>The official creator point list for the Goldenfyre GDPS.</p>
     <p style="margin:18px 0">
@@ -471,14 +521,19 @@ function homePage() {
     <p>Want to change your description, facts or profile color? Fill out the form.</p>
     <p style="margin:12px 0"><a class="btn" href="${PROFILE_FORM}" target="_blank" rel="noopener">Profile change form</a></p>
 
+    </div><div>
+
     <h2>Roles</h2>
     <div class="rolebox">
-      ${ROLE_LIST.map(r => `<span class="tag" style="margin:0;${r.color ? `background:var(--${r.color});color:#111` : `background:${r.bg || "#555"}`}">${r.name}</span>`).join("")}
+      ${ROLE_LIST.map(r => `<span class="tag" style="margin:0;${r.color ? `background:var(--${r.color});color:#111` : `background:${r.bg || "#555"}${r.dark ? ";color:#111" : ""}`}">${r.name}</span>`).join("")}
     </div>
 
-    <h2>How points work</h2>
-    <p>Rate = 1 point<br>Featured = 2 points<br>Epic = 3 points<br>Legendary = 4 points<br>Mythic = 5 points</p>
-    <p class="muted small" style="margin-top:14px">Last updated: ${esc(LAST_UPDATED)}</p>`;
+    <h2>Special Roles</h2>
+    <div class="rolebox special">
+      ${SPECIAL_ROLES.map(r => `<span class="tag" style="margin:0;background:${r.bg}${r.dark ? ";color:#111" : ""}">${r.name}</span><p>${r.how}</p>`).join("")}
+    </div>
+
+    </div></div>`;
   document.title = "Goldenfyre Creatorlist";
 }
 
@@ -486,7 +541,7 @@ function listPage() {
   const rows = ranked.map(c => `
     <tr>
       <td class="rk">#${c.rank}</td>
-      <td class="left">${c.hasPage ? `<a class="name${c.rank === 1 ? " first" : ""}" style="--accent:${c.color || DEFAULT_COLOR}" href="#${c.slug}">${esc(c.name)}</a>` : `<span class="nolink">${esc(c.name)}</span>`}</td>
+      <td class="left">${c.hasPage ? `<a class="name${c.rank === 1 ? " first" : ""}" style="${accentStyle(c)}" href="#${c.slug}">${esc(c.name)}</a>` : `<span class="nolink">${esc(c.name)}</span>`}</td>
       <td class="pts">${c.points}</td>
       <td class="c">${c.levels}</td>
       ${TYPES.map(t => `<td class="c${c[t.key] ? "" : " zero"}" style="background:var(--${t.key})">${c[t.key]}</td>`).join("")}
@@ -494,7 +549,7 @@ function listPage() {
 
   app.innerHTML = `
     <h1>Creatorlist</h1>
-    <p class="muted small">Tap a name button to open their profile. Last updated: ${esc(LAST_UPDATED)}</p>
+    <p class="muted small">Not every creator has a profile. Last updated: ${esc(LAST_UPDATED)}</p>
     <div class="tablebox" style="margin-top:14px">
       <table class="list">
         <tr>
@@ -517,19 +572,22 @@ function profilePage(c) {
   (c.facts || []).forEach(f => facts.push(f));
 
   app.innerHTML = `
-    <div class="prof" style="--accent:${c.color || DEFAULT_COLOR}">
+    <div class="prof" style="${accentStyle(c)}">
     <p><a class="name plain small" href="#list">&lt; Back to list</a></p>
-    <h1>${esc(c.name)}</h1>
+    <h1><span>${esc(c.name)}</span><span class="rk">#${c.rank}</span></h1>
     <table class="info">
-      <tr><td>Rank</td><td>${c.rank ? "#" + c.rank : "Unplaced"}</td></tr>
       <tr><td>Creator Points</td><td>${c.points}</td></tr>
-      <tr><td>Rated Levels</td><td>${c.levels}</td></tr>
+      <tr><td>Levels</td><td>${c.levels}</td></tr>
     </table>
+    ${SPECIAL_ROLES.some(r => c[r.flag]) ? `<div>${SPECIAL_ROLES.filter(r => c[r.flag]).map(r => `<span class="tag" style="background:${r.bg}${r.dark ? ";color:#111" : ""}">${r.name}</span>`).join("")}</div>` : ""}
+    <div style="margin-top:${SPECIAL_ROLES.some(r => c[r.flag]) ? "4px" : "0"}">
     ${c.rank === 1 ? `<span class="tag" style="background:#d9473c">Top 1 Creator</span>` : ""}
-    ${c.rank !== 1 && buildHistory().top1.some(t => t.name === c.name) ? `<span class="tag" style="background:#8a6d1f">Former Top 1 Creator</span>` : ""}
-    ${c.monthly ? `<span class="tag" style="background:#2e8b57">Monthly Awards Winner</span>` : ""}
-    ${c.gauntlet ? `<span class="tag" style="background:#7b3fa0">Prismatic Gauntlet Creator</span>` : ""}
+    ${c.rank !== 1 && buildHistory().top1.some(t => t.name === c.name) ? `<span class="tag" style="background:#f27c1a">Former Top 1 Creator</span>` : ""}
+    ${c.legendary > 0 ? `<span class="tag" style="background:${LEGENDARY_BG}">Legendary Creator</span>` : ""}
+    ${c.mythic > 0 ? `<span class="tag" style="background:${MYTHIC_BG}">Mythic Creator</span>` : ""}
+    ${c.mostLiked ? `<span class="tag" style="background:#4ccd4c;color:#111">Most Liked Level</span>` : ""}
     ${RECORDS.filter(r => r.max > 0 && r.get(c) === r.max).map(r => `<span class="tag" style="${r.color ? `background:var(--${r.color});color:#111` : "background:#555"}">${r.name}</span>`).join("")}
+    </div>
     ${c.description ? `<p style="margin-top:16px">${esc(c.description)}</p>` : ""}
 
     <h2>Levels</h2>
@@ -704,6 +762,7 @@ function historyPage() {
 
 function route() {
   const h = decodeURIComponent(location.hash.slice(1));
+  document.body.classList.toggle("home", !h || h === "home");
   document.getElementById("nav-list").className = (h && h !== "home" && h !== "history") ? "on" : "";
   // v1.1: document.getElementById("nav-history").className = h === "history" ? "on" : "";
 
