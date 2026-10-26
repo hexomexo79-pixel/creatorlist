@@ -6,7 +6,8 @@
    { name: "Beeguy", rate: 1, featured: 2, epic: 9, legendary: 5, mythic: 1,
      since: "March 2025", bestLevel: "Some Level",
     
-     gauntlet: true,     // Prismatic Gauntlet role
+     gauntlets: { "Prismatic Gauntlet": ["Level A"] },   // gauntlets they got into, with their levels there (gives Gauntlet Creator, listed on the profile)
+     packs: { "Arcade Trilogy": ["Level A", "Level B"] },   // map packs they are in, with their levels there (hover a pack to see them)
      top1Demon: true,    // made a level that was top 1 on the demon list
      mostLiked: true,    // Most Liked Level role
      color: "#d9473c",   // optional: their own profile colour (default is gold)
@@ -20,16 +21,29 @@ const LAST_UPDATED = "October 23rd, 2026";
 const DEFAULT_COLOR = "#e3a63b";
 
 // profile change form (shown on the home page)
-const PROFILE_FORM = "https://docs.google.com/forms/d/1SHdD6qr_GkyHzcorMLH0AMQ3vJPFjp3hRA4trKH1EoU/viewform";
+const PROFILE_FORM = "https://docs.google.com/forms/d/1NpXxjZQJBfApNI-GsScqj59VGiW2i7knS7r6YsF9K78/viewform";
+
+// gauntlets and map packs, shown as small chips on profiles (hover a pack for the levels).
+// bg can be a colour or a gradient; dark: true gives black text.
+const GAUNTLETS = [
+  { name: "Prismatic Gauntlet",   bg: "linear-gradient(90deg,#00d9c0,#1f6bff,#b04dff)" },
+];
+const MAPPACKS = [
+  { name: "Arcade Trilogy",       bg: "linear-gradient(90deg,#ff3d9a,#ff8a3d)" },
+  { name: "Pizza in the Oven",    bg: "linear-gradient(90deg,#ef4b3a,#f5a03a,#ffd95c)", dark: true },
+  { name: "30 Second Challenges", bg: "linear-gradient(90deg,#ffe14d,#ffa62e)", dark: true },
+];
 
 const CREATORS = [
   { name: "Beeguy",          rate: 1, featured: 2, epic: 9, legendary: 5, mythic: 1, color: "#ffb6d0", monthly: true,
     description: "Consistently puts out high quality levels, with many in his Commatose-inspired style. Best known for his polished decoration.",
     facts: ["First and only creator to make a mythic"] },
-  { name: "Syne",            rate: 1, featured: 3, epic: 5, legendary: 3, mythic: 0, color: "#5ce8b5", gauntlet: true, mostLiked: true, monthly: true,
+  { name: "Syne",            rate: 1, featured: 3, epic: 5, legendary: 3, mythic: 0, color: "#5ce8b5", gauntlets: { "Prismatic Gauntlet": ["Prismania"] }, monthly: true, mostLiked: true, mappack: true,
+    packs: { "Arcade Trilogy": ["Tumba", "Thumper", "Prismania"], "Pizza in the Oven": ["Every End Leashed"] },
     description: "Known for difficult levels with polished gameplay.",
     facts: ["Created Every End Leashed, the longest rated level (7:41)"] },
-  { name: "Electrow",        rate: 1, featured: 0, epic: 5, legendary: 1, mythic: 0, color: "#00d9c0", gauntlet: true,
+  { name: "Electrow",        rate: 1, featured: 0, epic: 5, legendary: 1, mythic: 0, color: "#00d9c0", gauntlets: { "Prismatic Gauntlet": ["Reachout"] }, mappack: true,
+    packs: { "Pizza in the Oven": ["Save Me"] },
     description: "Known for her long effect layouts.",
     facts: ["Has the most XL-length levels"] },
   { name: "JPCPro",          rate: 2, featured: 5, epic: 2, legendary: 0, mythic: 0, color: "#d1103a",
@@ -38,11 +52,12 @@ const CREATORS = [
   { name: "EpikGuy",         rate: 3, featured: 2, epic: 3, legendary: 0, mythic: 0, top1Demon: true, color: "#e3a63b",
     description: "Known for difficult effect layouts. He rarely releases levels anymore, but when he does, they're worth playing.",
     facts: ["Created the Shining series", "Created EGG NEVER CLEAR RE, a former top 1 demon"] },
-  { name: "Xc4pk",           rate: 1, featured: 5, epic: 0, legendary: 1, mythic: 0, color: "#3366ff", gauntlet: true,
+  { name: "Xc4pk",           rate: 1, featured: 5, epic: 0, legendary: 1, mythic: 0, color: "#3366ff", gauntlets: { "Prismatic Gauntlet": ["Xc4pk Adventures"] }, mappack: true,
+    packs: { "30 Second Challenges": ["Cloudier", "Blank"] },
     description: "Has some of the best decoration on the server. He doesn't release much these days, but when he does, its peak." },
   { name: "Firelia",         rate: 2, featured: 3, epic: 2, legendary: 2, mythic: 0, color: "#a8ff1a",
     description: "Makes well decorated levels quickly, often easy but they'll occasionally release an absurdly difficult level." },
-  { name: "Wizard",          rate: 0, featured: 1, epic: 2, legendary: 2, mythic: 0, color: "#8a1fff", gauntlet: true,
+  { name: "Wizard",          rate: 0, featured: 1, epic: 2, legendary: 2, mythic: 0, color: "#8a1fff", gauntlets: { "Prismatic Gauntlet": ["Colorsway"] },
     description: "Makes well polished easy modern levels.",
     facts: ["Created the legendaries Starfall and Colorsway"] },
   { name: "Quacc",           rate: 0, featured: 3, epic: 2, legendary: 0, mythic: 0, mostLiked: true, color: "#ffee00",
@@ -59,7 +74,7 @@ const CREATORS = [
   { name: "3Doffisa",        rate: 1, featured: 1, epic: 2, legendary: 0, mythic: 0, color: "#3ddc5a", page: true, monthly: true,
     description: "Contributed heavily to the community, created Miokii Always Clear and Hosted GDPS News..",
     facts: ["Currently hosting the Grarrief megacollab"] },
-  { name: "AltifyNeverDies", rate: 1, featured: 5, epic: 0, legendary: 0, mythic: 0, color: "#00e5ff", gauntlet: true, page: true,
+  { name: "AltifyNeverDies", rate: 1, featured: 5, epic: 0, legendary: 0, mythic: 0, color: "#00e5ff", gauntlets: { "Prismatic Gauntlet": ["Colors"] }, page: true,
     description: "A dedicated creator, despite being new, he's had a big impact on the community." },
   { name: "Alya",            rate: 0, featured: 1, epic: 1, legendary: 1, mythic: 0, color: "#9caf88", page: true,
     description: "A new creator who makes modern effect levels." },
@@ -71,19 +86,22 @@ const CREATORS = [
   { name: "Goldenfyre101",   rate: 0, featured: 0, epic: 2, legendary: 0, mythic: 0, color: "#e3a63b", page: true,
     description: "The owner of the server, he doesnt upload often but his levels are always really fun to play.",
     facts: ["Owner of the Goldenfyre GDPS"] },
-  { name: "ShinobiAkira",    rate: 1, featured: 1, epic: 1, legendary: 0, mythic: 0, mostLiked: true, page: true },
+  { name: "ShinobiAkira",    rate: 1, featured: 1, epic: 1, legendary: 0, mythic: 0, mostLiked: true, mappack: true, page: true,
+    packs: { "30 Second Challenges": ["Alessia High"] } },
   { name: "xxLettucex",      rate: 1, featured: 1, epic: 1, legendary: 0, mythic: 0 },
   { name: "AFiVGDUP",        rate: 0, featured: 1, epic: 1, legendary: 0, mythic: 0 },
-  { name: "Hortus",          rate: 0, featured: 0, epic: 1, legendary: 0, mythic: 0 },
+  { name: "Hortus",          rate: 0, featured: 0, epic: 0, legendary: 1, mythic: 0, page: true,
+    facts: ["Created Xenoscape, the first legendary"] },
   { name: "GooeyG",          rate: 0, featured: 2, epic: 0, legendary: 0, mythic: 0 },
   { name: "Gamer862",        rate: 1, featured: 0, epic: 1, legendary: 0, mythic: 0, top1Demon: true, color: "#ff1a1a", page: true,
     facts: ["Created The Abyss, the current top 1 demon"] },
   { name: "Unnatural",       rate: 0, featured: 2, epic: 0, legendary: 0, mythic: 0 },
   { name: "Lemonix",         rate: 0, featured: 0, epic: 0, legendary: 1, mythic: 0, color: "#ffe11a", page: true,
-    facts: ["Created Starlit, the first legendary"] },
+    facts: ["Created Starlit, the second legendary"] },
   { name: "[CLN] Ke2",       rate: 1, featured: 1, epic: 0, legendary: 0, mythic: 0 },
   { name: "Hyperfixation",   rate: 3, featured: 0, epic: 0, legendary: 0, mythic: 0, color: "#b24dff", page: true },
-  { name: "qwerty2048",      rate: 0, featured: 0, epic: 1, legendary: 0, mythic: 0 },
+  { name: "qwerty2048",      rate: 0, featured: 0, epic: 1, legendary: 0, mythic: 0, mappack: true, page: true,
+    packs: { "Pizza in the Oven": ["Growing On Me"] } },
   { name: "Kimichii",        rate: 0, featured: 0, epic: 1, legendary: 0, mythic: 0, page: true,
     description: "A creator who does her best to make fun and balanced gameplay, and is learning the basics of decoration.",
     facts: ["Created Fast Travel, an epic rated layout"] },
@@ -97,6 +115,51 @@ const CREATORS = [
   { name: "cheese",          rate: 1, featured: 0, epic: 0, legendary: 0, mythic: 0 },
 ];
 /* end */
+
+/* =====================================================================
+   Levels that were the daily level or the weekly level.
+   Format:  ["Level name", "Creator"],
+   A creator with at least one weekly gets the "Weekly Demon" role.
+   (The daily list is kept for later, no role uses it right now.)
+   ===================================================================== */
+const DAILY_LEVELS = [
+  ["Cove", "JPCPro"],
+  ["Bauro", "Firelia"],
+  ["A Moment Apart", "Firelia"],
+  ["Wireframe", "Umi"],
+  ["Counting Stars", "Emmber"],
+  ["HowToLiveAGoodLife", "Beeguy"],
+  ["Abyss Angel", "Beeguy"],
+  ["Sweet Trip", "Beeguy"],
+  ["Speaker Happiness", "Emmber"],
+  ["Prismania", "Syne"],
+  ["Trailblazer", "GooeyG"],
+  ["Starfall", "Wizard"],
+  ["Xc4pk Adventures", "Xc4pk"],
+  ["Blank", "Xc4pk"],
+  ["Oblivion", "Spaace"],
+  ["Rock Right Now", "Hyperfixation"],
+  ["Reachout", "Electrow"],
+  ["Cloudier", "Xc4pk"],
+  ["My Big Garden", "Beeguy"],
+  ["Why Do You Do This", "Beeguy"],
+  ["In The Annexe", "Charlie11111"],
+  ["Not A Hot Rod", "xxLettucex"],
+  ["Harinezumi", "Pure"],
+  ["Starlit", "Lemonix"],
+  ["Coral Caved", "Pure"]
+];
+const WEEKLY_LEVELS = [
+  ["Paparazzi", "Electrow"],
+  ["Budgetscapes", "Beeguy"],
+  ["The Killer", "Beeguy"],
+  ["Radiation Wave", "Wizard"],
+  ["To Be Complete", "Beeguy"],
+  ["Future Circles", "Hyperfixation"],
+  ["Thumper", "Syne"],
+  ["Cut You Off", "Quacc"],
+  ["No Surprises", "EpikGuy"]
+];
 
 /* =====================================================================
    (history tab)
@@ -134,7 +197,7 @@ const RATING_LOG = [
   ["No Surprises", "EpikGuy", "E", "2026-06-29"],
   ["Egg Never Clear RE", "EpikGuy", "R", "2026-06-29"],
   ["Gloriness", "EpikGuy", "E", "2026-06-29"],
-  ["Xenoscape", "Hortus", "E", "2026-06-29"],  // was really first that day; kept after EpikGuy's so Hortus doesn't show as top 1
+  ["Xenoscape", "Hortus", "L", "2026-06-29"],  // was really first that day; kept after EpikGuy's so Hortus doesn't show as top 1
   ["Brightness", "EpikGuy", "F", "2026-06-29"],
   ["Moonship Welters", "Goldenfyre101", "E", "2026-06-29"],
   ["Growing On Me", "qwerty2048", "E", "2026-06-29"],
@@ -388,7 +451,9 @@ table { border-collapse: collapse; }
   .homegrid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 56px; align-items: start; }
   .homegrid > div:last-child > h2:first-child { margin-top: 12px; }
 }
-.rolebox { display: flex; flex-wrap: wrap; gap: 8px; background: #f1f1f1; padding: 14px; }
+.rolebox { background: #f1f1f1; padding: 14px; }
+.rolebox .rolerow { display: flex; flex-wrap: wrap; gap: 8px; }
+.rolebox .rolerow + .rolerow { margin-top: 14px; }
 .rolebox.special { display: grid; grid-template-columns: max-content 1fr; gap: 12px 16px; align-items: center; }
 .rolebox.special .tag { justify-self: start; }
 .rolebox.special p { margin: 0; font-size: 14px; }
@@ -396,6 +461,13 @@ table { border-collapse: collapse; }
 .facts p { margin: 6px 0; }
 .facts ul { margin: 0; padding-left: 20px; }
 .facts li { margin: 5px 0; }
+
+/* level pop-up */
+.tip { cursor: pointer; }
+#tip { display: none; position: absolute; z-index: 10; background: #fff; border: 1px solid #777; padding: 8px 12px; font-size: 14px; max-width: 280px; pointer-events: none; }
+#tip b { display: inline-block; color: #111; padding: 2px 8px; margin-bottom: 6px; }
+#tip div { padding: 2px 0; }
+#tip .sw { display: inline-block; width: 10px; height: 10px; margin-right: 7px; }
 
 /* history */
 .chart { width: 100%; max-width: 760px; height: auto; display: block; }
@@ -407,7 +479,7 @@ table { border-collapse: collapse; }
 
 <header>
   <div class="wrap">
-    <a class="logo" href="#home">Goldenfyre CL <small>v1.2</small></a>
+    <a class="logo" href="#home">Goldenfyre CL <small>v1.3</small></a>
     <nav>
       <a href="#list" id="nav-list">List</a>
       <!-- v1.1: <a href="#history" id="nav-history">History</a> -->
@@ -434,8 +506,14 @@ function slug(name) {
 }
 
 // work out points, levels and ranks
+const dailyCreators = new Set(DAILY_LEVELS.map(l => l[1]));
+const weeklyCreators = new Set(WEEKLY_LEVELS.map(l => l[1]));
 const all = CREATORS.map((c, i) => {
-  const out = Object.assign({}, c, { order: i, levels: 0, points: 0, slug: slug(c.name) });
+  const out = Object.assign({}, c, { order: i, levels: 0, points: 0, slug: slug(c.name),
+    daily: dailyCreators.has(c.name), weekly: weeklyCreators.has(c.name) });
+  out.gauntletCreator = Object.keys(c.gauntlets || {}).length > 0;   // Gauntlet Creator role
+  out.mappackCreator = !!c.mappack || Object.keys(c.packs || {}).length > 0;   // Mappack Creator role
+  out.expert = (Number(c.legendary) || 0) + (Number(c.mythic) || 0) > 0;   // Expert Creator role
   TYPES.forEach(t => {
     const n = Number(c[t.key]) || 0;
     out[t.key] = n;
@@ -452,9 +530,30 @@ ranked.forEach((c, i) => {
   c.hasPage = c.rank <= 10 || c.page === true;
 });
 
+// which levels each creator has in each tier, from the rating log
+const LEVEL_KEY = { R: "rate", F: "featured", E: "epic", L: "legendary", M: "mythic" };
+const levelsOf = {};      // creator -> tier -> level names, newest first
+const allLevelsOf = {};   // creator -> every level [name, tier], newest first
+RATING_LOG.slice().reverse().forEach(r => {
+  const key = LEVEL_KEY[r[2]];
+  if (!levelsOf[r[1]]) levelsOf[r[1]] = {};
+  if (!levelsOf[r[1]][key]) levelsOf[r[1]][key] = [];
+  levelsOf[r[1]][key].push(r[0]);
+  if (!allLevelsOf[r[1]]) allLevelsOf[r[1]] = [];
+  allLevelsOf[r[1]].push([r[0], key]);
+});
+// the white "Levels" cell; tap or hover it to see every level
+function levelsCell(c) {
+  return `<td class="c${c.levels ? " tip" : ""}"${c.levels ? ` data-c="${esc(c.name)}" data-t="all"` : ""}>${c.levels}</td>`;
+}
+// a number cell; tap or hover it to see the levels
+function tierCell(c, t) {
+  const n = c[t.key];
+  return `<td class="c${n ? " tip" : " zero"}" style="background:var(--${t.key})"${n ? ` data-c="${esc(c.name)}" data-t="${t.key}"` : ""}>${n}</td>`;
+}
+
 // record roles, worked out automatically (ties all get the role)
 const RECORDS = [
-  { name: "Most Levels",   get: c => c.levels },
   { name: "Most Rates",    get: c => c.rate,      color: "rate" },
   { name: "Most Features", get: c => c.featured,  color: "featured" },
   { name: "Most Epics",    get: c => c.epic,      color: "epic" },
@@ -467,23 +566,30 @@ RECORDS.forEach(r => r.max = Math.max(...all.map(r.get)));
 const SPECIAL_ROLES = [
   { name: "Top 1 Level", flag: "top1Demon", bg: "linear-gradient(90deg,#fff3a3,#ffb81f,#f0542b)", dark: true,
     how: "For creators who have made a top 1 level, past and present." },
-  { name: "Prismatic Gauntlet", flag: "gauntlet", bg: "linear-gradient(90deg,#00d9c0,#1f6bff,#b04dff)",
-    how: "For creators whose level got into the first gauntlet, the Prismatic Gauntlet." },
+  { name: "Gauntlet Creator", flag: "gauntletCreator", bg: "linear-gradient(90deg,#0b3d91,#1580d8,#00cfe8)",
+    how: "For creators whose level got into a gauntlet." },
+  { name: "Mappack Creator", flag: "mappackCreator", bg: "linear-gradient(90deg,#ff2e93,#ff7a1a,#ffd23f)", dark: true,
+    how: "For creators who have a level in a map pack." },
   { name: "Monthly Awards", flag: "monthly", bg: "linear-gradient(90deg,#ffd23f,#8fdc4a,#1fbf75)", dark: true,
     how: "For the winners of the monthly awards, hosted by Syne." },
+  { name: "Expert Creator", flag: "expert", bg: "linear-gradient(90deg,#8ad7ff,#ff9ad5)", dark: true,
+    how: "For creators who have made a legendary or higher level." },
 ];
 
 // faint gradients, in the legendary and mythic colour families
-const LEGENDARY_BG = "linear-gradient(90deg,#d63fcb,#c43bb9)";
 const MYTHIC_BG = "linear-gradient(90deg,#27aed0,#2299b9)";
 
-const ROLE_LIST = [
+// top row of the Roles box
+const ACHIEVEMENT_ROLES = [
   { name: "Top 1 Creator",              bg: "#d9473c" },
   { name: "Former Top 1 Creator",       bg: "#f27c1a" },
-  { name: "Legendary Creator",          bg: LEGENDARY_BG },
-  { name: "Mythic Creator",             bg: MYTHIC_BG },
-  { name: "Most Liked Level",          bg: "#4ccd4c", dark: true },
-  { name: "Most Levels" },
+  // hidden for now (Most Mythics covers it). To bring it back, un-comment this line and the one in profilePage():
+  // { name: "Mythic Creator",             bg: MYTHIC_BG },
+  { name: "Weekly Demon",               bg: "#9b3dff" },
+  { name: "Most Liked Level",           bg: "#22c55e" },
+];
+// bottom row: the "Most ..." records
+const RECORD_ROLES = [
   { name: "Most Rates",                 color: "rate" },
   { name: "Most Features",              color: "featured" },
   { name: "Most Epics",                 color: "epic" },
@@ -525,7 +631,8 @@ function homePage() {
 
     <h2>Roles</h2>
     <div class="rolebox">
-      ${ROLE_LIST.map(r => `<span class="tag" style="margin:0;${r.color ? `background:var(--${r.color});color:#111` : `background:${r.bg || "#555"}${r.dark ? ";color:#111" : ""}`}">${r.name}</span>`).join("")}
+      <div class="rolerow">${ACHIEVEMENT_ROLES.map(r => `<span class="tag" style="margin:0;${r.color ? `background:var(--${r.color});color:#111` : `background:${r.bg || "#555"}${r.dark ? ";color:#111" : ""}`}">${r.name}</span>`).join("")}</div>
+      <div class="rolerow">${RECORD_ROLES.map(r => `<span class="tag" style="margin:0;${r.color ? `background:var(--${r.color});color:#111` : `background:${r.bg || "#555"}${r.dark ? ";color:#111" : ""}`}">${r.name}</span>`).join("")}</div>
     </div>
 
     <h2>Special Roles</h2>
@@ -543,21 +650,21 @@ function listPage() {
       <td class="rk">#${c.rank}</td>
       <td class="left">${c.hasPage ? `<a class="name${c.rank === 1 ? " first" : ""}" style="${accentStyle(c)}" href="#${c.slug}">${esc(c.name)}</a>` : `<span class="nolink">${esc(c.name)}</span>`}</td>
       <td class="pts">${c.points}</td>
-      <td class="c">${c.levels}</td>
-      ${TYPES.map(t => `<td class="c${c[t.key] ? "" : " zero"}" style="background:var(--${t.key})">${c[t.key]}</td>`).join("")}
+      ${levelsCell(c)}
+      ${TYPES.map(t => tierCell(c, t)).join("")}
     </tr>`).join("");
 
   app.innerHTML = `
     <h1>Creatorlist</h1>
-    <p class="muted small">Not every creator has a profile. Last updated: ${esc(LAST_UPDATED)}</p>
+    <p class="muted small" style="line-height:1.6">Tap a number to see the creator's levels.<br>Last updated: ${esc(LAST_UPDATED)}</p>
     <div class="tablebox" style="margin-top:14px">
       <table class="list">
         <tr>
           <th>Rank</th>
           <th class="left">Creator</th>
           <th class="pts">Creator Points</th>
-          <th class="c">Levels</th>
-          ${TYPES.map(t => `<th class="c" style="background:var(--${t.key})">${t.name}</th>`).join("")}
+          <th class="c tip" data-h="levels">Levels</th>
+          ${TYPES.map(t => `<th class="c tip" data-h="${t.key}" style="background:var(--${t.key})">${t.name}</th>`).join("")}
         </tr>
         ${rows}
       </table>
@@ -577,24 +684,30 @@ function profilePage(c) {
     <h1><span>${esc(c.name)}</span><span class="rk">#${c.rank}</span></h1>
     <table class="info">
       <tr><td>Creator Points</td><td>${c.points}</td></tr>
-      <tr><td>Levels</td><td>${c.levels}</td></tr>
     </table>
     ${SPECIAL_ROLES.some(r => c[r.flag]) ? `<div>${SPECIAL_ROLES.filter(r => c[r.flag]).map(r => `<span class="tag" style="background:${r.bg}${r.dark ? ";color:#111" : ""}">${r.name}</span>`).join("")}</div>` : ""}
     <div style="margin-top:${SPECIAL_ROLES.some(r => c[r.flag]) ? "4px" : "0"}">
     ${c.rank === 1 ? `<span class="tag" style="background:#d9473c">Top 1 Creator</span>` : ""}
     ${c.rank !== 1 && buildHistory().top1.some(t => t.name === c.name) ? `<span class="tag" style="background:#f27c1a">Former Top 1 Creator</span>` : ""}
-    ${c.legendary > 0 ? `<span class="tag" style="background:${LEGENDARY_BG}">Legendary Creator</span>` : ""}
-    ${c.mythic > 0 ? `<span class="tag" style="background:${MYTHIC_BG}">Mythic Creator</span>` : ""}
-    ${c.mostLiked ? `<span class="tag" style="background:#4ccd4c;color:#111">Most Liked Level</span>` : ""}
+    ${/* c.mythic > 0 ? `<span class="tag" style="background:${MYTHIC_BG}">Mythic Creator</span>` : */ ""}
+    ${c.weekly ? `<span class="tag" style="background:#9b3dff">Weekly Demon</span>` : ""}
+    ${c.mostLiked ? `<span class="tag" style="background:#22c55e">Most Liked Level</span>` : ""}
     ${RECORDS.filter(r => r.max > 0 && r.get(c) === r.max).map(r => `<span class="tag" style="${r.color ? `background:var(--${r.color});color:#111` : "background:#555"}">${r.name}</span>`).join("")}
     </div>
     ${c.description ? `<p style="margin-top:16px">${esc(c.description)}</p>` : ""}
+    ${(() => {
+      const chip = (i, extra) => `<span class="tag${extra ? " tip" : ""}" ${extra || ""} style="margin:0;font-size:12px;padding:3px 8px;background:${i.bg}${i.dark ? ";color:#111" : ""}">${esc(i.name)}</span>`;
+      const chips = Object.keys(c.gauntlets || {}).map(n => GAUNTLETS.find(g => g.name === n)).filter(Boolean).map(g => chip(g, `data-p="${esc(g.name)}" data-c="${esc(c.name)}"`))
+        .concat(Object.keys(c.packs || {}).map(n => MAPPACKS.find(p => p.name === n)).filter(Boolean)
+          .map(p => chip(p, `data-p="${esc(p.name)}" data-c="${esc(c.name)}"`)));
+      return chips.length ? `<h2>Gauntlets &amp; Map Packs</h2><div style="display:flex;flex-wrap:wrap;gap:6px">${chips.join("")}</div>` : "";
+    })()}
 
     <h2>Levels</h2>
     <div class="tablebox">
       <table class="list" style="width:auto;min-width:0">
-        <tr>${TYPES.map(t => `<th class="c" style="background:var(--${t.key})">${t.name}</th>`).join("")}</tr>
-        <tr>${TYPES.map(t => `<td class="c${c[t.key] ? "" : " zero"}" style="background:var(--${t.key})">${c[t.key]}</td>`).join("")}</tr>
+        <tr><th class="c">Levels</th>${TYPES.map(t => `<th class="c" style="background:var(--${t.key})">${t.name}</th>`).join("")}</tr>
+        <tr>${levelsCell(c)}${TYPES.map(t => tierCell(c, t)).join("")}</tr>
       </table>
     </div>
 
@@ -777,6 +890,75 @@ function route() {
   window.scrollTo(0, 0);
 }
 
-window.addEventListener("hashchange", route);
+// ---------- level pop-up ----------
+const tip = document.createElement("div");
+tip.id = "tip";
+document.body.appendChild(tip);
+let tipCell = null;
+const canHover = window.matchMedia("(hover: hover)").matches;
+
+function hideTip() { tip.style.display = "none"; tipCell = null; }
+function placeTip(x, y) {
+  // x, y are viewport coordinates; keep the whole box on screen
+  const w = tip.offsetWidth, h = tip.offsetHeight;
+  let left = x + 16, top = y + 16;
+  if (left + w > window.innerWidth - 8) left = x - w - 16;
+  if (top + h > window.innerHeight - 8) top = y - h - 16;
+  left = Math.max(8, left); top = Math.max(8, top);
+  tip.style.left = (left + window.scrollX) + "px";
+  tip.style.top = (top + window.scrollY) + "px";
+}
+function showTip(td, e) {
+  if (td.dataset.h) {
+    // column header: totals for the whole server
+    if (td.dataset.h === "levels") {
+      const total = all.reduce((sum, c) => sum + c.levels, 0);
+      tip.innerHTML = `<b style="background:#e6e6e6">Levels</b><div>Total on the server: ${total}</div>`;
+    } else {
+      const t = TYPES.find(x => x.key === td.dataset.h);
+      const total = all.reduce((sum, c) => sum + c[t.key], 0);
+      const most = Math.max(...all.map(c => c[t.key]));
+      const names = all.filter(c => c[t.key] === most).map(c => c.name);
+      tip.innerHTML = `<b style="background:var(--${t.key})">${t.name}</b><div>Total on the server: ${total}</div>` +
+        (most > 0 ? `<div>Most: ${names.map(esc).join(", ")} (${most})</div>` : `<div>Most: nobody yet</div>`);
+    }
+  } else if (td.dataset.p) {
+    const pk = MAPPACKS.concat(GAUNTLETS).find(p => p.name === td.dataset.p);
+    const cr = all.find(x => x.name === td.dataset.c);
+    const lv = (cr && ((cr.packs && cr.packs[pk.name]) || (cr.gauntlets && cr.gauntlets[pk.name]))) || [];
+    tip.innerHTML = `<b style="background:${pk.bg};color:${pk.dark ? "#111" : "#fff"}">${esc(pk.name)} (${lv.length})</b>` + lv.map(n => `<div>${esc(n)}</div>`).join("");
+  } else if (td.dataset.t === "all") {
+    const list = allLevelsOf[td.dataset.c] || [];
+    tip.innerHTML = `<b style="background:#e6e6e6">Levels (${list.length})</b>` +
+      list.map(l => `<div><span class="sw" style="background:var(--${l[1]})"></span>${esc(l[0])}</div>`).join("");
+  } else {
+    const names = ((levelsOf[td.dataset.c] || {})[td.dataset.t]) || [];
+    const t = TYPES.find(x => x.key === td.dataset.t);
+    tip.innerHTML = `<b style="background:var(--${t.key})">${t.name} (${names.length})</b>` +
+      names.map(n => `<div>${esc(n)}</div>`).join("");
+  }
+  tip.style.display = "block";
+  tipCell = td;
+  if (canHover && e) placeTip(e.clientX, e.clientY);
+  else {
+    const r = td.getBoundingClientRect();
+    placeTip(r.left - 16, r.bottom - 12);
+  }
+}
+document.addEventListener("click", e => {
+  const td = e.target.closest(".tip");
+  if (td) { if (!canHover && tipCell === td) hideTip(); else if (!canHover) showTip(td, e); }
+  else if (!e.target.closest("#tip")) hideTip();
+});
+if (canHover) {
+  document.addEventListener("mouseover", e => {
+    const td = e.target.closest(".tip");
+    if (td) { if (td !== tipCell) showTip(td, e); }
+    else if (!e.target.closest("#tip")) hideTip();
+  });
+  document.addEventListener("mousemove", e => { if (tipCell) placeTip(e.clientX, e.clientY); });
+}
+
+window.addEventListener("hashchange", () => { hideTip(); route(); });
 route();
 </script>
