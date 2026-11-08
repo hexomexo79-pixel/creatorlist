@@ -1,30 +1,27 @@
 <title>Goldenfyre Creatorlist</title>
 
 <script>
-/* 
-   ex:
+/* example creator line:
    { name: "Beeguy", rate: 1, featured: 2, epic: 9, legendary: 5, mythic: 1,
      since: "March 2025", bestLevel: "Some Level",
-    
-     gauntlets: { "Prismatic Gauntlet": ["Level A"] },   // gauntlets they got into, with their levels there (gives Gauntlet Creator, listed on the profile)
-     packs: { "Arcade Trilogy": ["Level A", "Level B"] },   // map packs they are in, with their levels there (hover a pack to see them)
-     top1Demon: true,    // made a level that was top 1 on the demon list
-     mostLiked: true,    // Most Liked Level role
-     color: "#d9473c",   // optional: their own profile colour (default is gold)
+     gauntlets: { "Prismatic Gauntlet": ["Level A"] },   // gauntlets + the levels in them
+     packs: { "Arcade Trilogy": ["Level A"] },           // map packs + the levels in them
+     top1Demon: true,    // made a top 1 demon
+     mostLiked: true,    // most liked level role
+     color: "#d9473c",   // profile color (default gold)
      description: "idk",
      facts: ["First creator to get a mythic"] },
-   ===================================================================== */
+   ========================================== */
 
-const LAST_UPDATED = "November 5th, 2026";
+const LAST_UPDATED = "November 8th, 2026";
 
-// every profile uses this colour, unless a creator has their own  color: "#hex"
+// default profile color
 const DEFAULT_COLOR = "#e3a63b";
 
-// profile change form (shown on the home page)
+// profile change form link
 const PROFILE_FORM = "https://docs.google.com/forms/d/1NpXxjZQJBfApNI-GsScqj59VGiW2i7knS7r6YsF9K78/viewform";
 
-// gauntlets and map packs, shown as small chips on profiles (hover a pack for the levels).
-// bg can be a colour or a gradient; dark: true gives black text.
+// gauntlets + map packs. bg can be a color or gradient, dark: true = black text
 const GAUNTLETS = [
   { name: "Prismatic Gauntlet",   bg: "linear-gradient(90deg,#00d9c0,#1f6bff,#b04dff)" },
 ];
@@ -42,7 +39,7 @@ const CREATORS = [
     packs: { "Arcade Trilogy": ["Tumba", "Thumper", "Prismania"], "Pizza in the Oven": ["Every End Leashed"] },
     description: "Known for difficult levels with polished gameplay.",
     facts: ["Created Every End Leashed, the longest rated level (7:41)"] },
-  { name: "Electrow",        rate: 1, featured: 0, epic: 5, legendary: 1, mythic: 0, color: "#00d9c0", gauntlets: { "Prismatic Gauntlet": ["Reachout"] }, mappack: true,
+  { name: "Electrow",        rate: 1, featured: 0, epic: 6, legendary: 1, mythic: 0, color: "#00d9c0", gauntlets: { "Prismatic Gauntlet": ["Reachout"] }, mappack: true,
     packs: { "Pizza in the Oven": ["Save Me"] },
     description: "Known for her long effect layouts.",
     facts: ["Has the most XL-length levels"] },
@@ -55,7 +52,7 @@ const CREATORS = [
   { name: "Xc4pk",           rate: 1, featured: 5, epic: 0, legendary: 1, mythic: 0, color: "#3366ff", gauntlets: { "Prismatic Gauntlet": ["Xc4pk Adventures"] }, mappack: true,
     packs: { "30 Second Challenges": ["Cloudier", "Blank"] },
     description: "Has some of the best decoration on the server. He doesn't release much these days, but when he does, its peak." },
-  { name: "Firelia",         rate: 2, featured: 3, epic: 2, legendary: 2, mythic: 0, color: "#a8ff1a",
+  { name: "Firelia",         rate: 3, featured: 3, epic: 2, legendary: 2, mythic: 0, color: "#a8ff1a",
     description: "Makes well decorated levels quickly, often easy but they'll occasionally release an absurdly difficult level." },
   { name: "Wizard",          rate: 0, featured: 1, epic: 2, legendary: 2, mythic: 0, color: "#8a1fff", gauntlets: { "Prismatic Gauntlet": ["Colorsway"] },
     description: "Makes well polished easy modern levels.",
@@ -63,7 +60,7 @@ const CREATORS = [
   { name: "Quacc",           rate: 0, featured: 3, epic: 2, legendary: 0, mythic: 0, mostLiked: true, color: "#ffee00",
     description: "Heavily contributed to the community, both through his levels and through the server.",
     facts: ["Created the Goldenfyre demonlist", "Server admin"] },
-  { name: "Absoluteinf1",    rate: 1, featured: 1, epic: 1, legendary: 0, mythic: 0, color: "#ffd60a", page: true,
+  { name: "Absoluteinf1",    rate: 1, featured: 1, epic: 2, legendary: 0, mythic: 0, color: "#ffd60a", page: true,
     description: "An upcoming, improving creator trying to get a legendary or mythic level with minimal decorating experience." },
   { name: "Emmber",          rate: 1, featured: 5, epic: 0, legendary: 0, mythic: 0, color: "#ff8000", page: true,
     description: "Typically a layout creator who, despite the lacking decoration, puts a lot of time into the gameplay so that most people enjoy it." },
@@ -74,7 +71,7 @@ const CREATORS = [
   { name: "3Doffisa",        rate: 1, featured: 1, epic: 2, legendary: 0, mythic: 0, color: "#3ddc5a", page: true, monthly: true,
     description: "Contributed heavily to the community, created Miokii Always Clear and Hosted GDPS News..",
     facts: ["Currently hosting the Grarrief megacollab"] },
-  { name: "AltifyNeverDies", rate: 1, featured: 5, epic: 0, legendary: 0, mythic: 0, color: "#00e5ff", gauntlets: { "Prismatic Gauntlet": ["Colors"] }, page: true,
+  { name: "AltifyNeverDies", rate: 1, featured: 5, epic: 0, legendary: 0, mythic: 0, color: "#2be36b", gauntlets: { "Prismatic Gauntlet": ["Colors"] }, page: true,
     description: "A dedicated creator, despite being new, he's had a big impact on the community." },
   { name: "Alya",            rate: 0, featured: 1, epic: 1, legendary: 1, mythic: 0, color: "#9caf88", page: true,
     description: "A new creator who makes modern effect levels." },
@@ -114,41 +111,8 @@ const CREATORS = [
   { name: "nonnagon",        rate: 0, featured: 1, epic: 0, legendary: 0, mythic: 0 },
   { name: "cheese",          rate: 1, featured: 0, epic: 0, legendary: 0, mythic: 0 },
 ];
-/* end */
 
-/* =====================================================================
-   Levels that were the daily level or the weekly level.
-   Format:  ["Level name", "Creator"],
-   A creator with at least one weekly gets the "Weekly Demon" role.
-   (The daily list is kept for later, no role uses it right now.)
-   ===================================================================== */
-const DAILY_LEVELS = [
-  ["Cove", "JPCPro"],
-  ["Bauro", "Firelia"],
-  ["A Moment Apart", "Firelia"],
-  ["Wireframe", "Umi"],
-  ["Counting Stars", "Emmber"],
-  ["HowToLiveAGoodLife", "Beeguy"],
-  ["Abyss Angel", "Beeguy"],
-  ["Sweet Trip", "Beeguy"],
-  ["Speaker Happiness", "Emmber"],
-  ["Prismania", "Syne"],
-  ["Trailblazer", "GooeyG"],
-  ["Starfall", "Wizard"],
-  ["Xc4pk Adventures", "Xc4pk"],
-  ["Blank", "Xc4pk"],
-  ["Oblivion", "Spaace"],
-  ["Rock Right Now", "Hyperfixation"],
-  ["Reachout", "Electrow"],
-  ["Cloudier", "Xc4pk"],
-  ["My Big Garden", "Beeguy"],
-  ["Why Do You Do This", "Beeguy"],
-  ["In The Annexe", "Charlie11111"],
-  ["Not A Hot Rod", "xxLettucex"],
-  ["Harinezumi", "Pure"],
-  ["Starlit", "Lemonix"],
-  ["Coral Caved", "Pure"]
-];
+/* weekly levels. anyone with a weekly gets weekly demon */
 const WEEKLY_LEVELS = [
   ["Paparazzi", "Electrow"],
   ["Budgetscapes", "Beeguy"],
@@ -161,43 +125,15 @@ const WEEKLY_LEVELS = [
   ["No Surprises", "EpikGuy"]
 ];
 
-/* =====================================================================
-   (history tab)
-   Every rated level, oldest first. Add new ones at the BOTTOM.
-
-     ["Level name", "Creator", "Type", "YYYY-MM-DD"],
-
-   Types: R = rate, F = featured, E = epic, L = legendary, M = mythic
-   The date is the day it was rated (no time needed). Ratings from the
-   same day count in the order they're listed. A level with no date
-   still works: its date is estimated from the dated lines around it.
-   (Every level currently has an exact date from the rates channel.)
-   If a level gets rerated, change its letter. If it gets unrated,
-   delete its line.
-   ===================================================================== */
-
-const FIRST_RATE = "2026-06-29";
-const LAST_RATE  = "2026-11-05";
-const GROWTH = 1.5;
-
-// the creators drawn on the chart
-// History tab is hidden until v1.5. To release it: set this to true and
-// un-comment the "v1.5" links in the header and on the home page,
-// and the "v1.5" line in route().
-//
-// TODO for when History is released:
-//  - add role "Completionist": has at least one level in all 5 tiers
-//  - add role "Rising Star": gained 10 or more creator points in 1 month
-//  - later: a separate role board for roles that aren't self-explanatory
-//    (like these), and give those unique roles gradients instead of flat colours
-const SHOW_HISTORY = false;
-const HISTORY_CREATORS = ["Beeguy", "Syne", "EpikGuy", "Xc4pk"];
+/* every rated level, oldest first. add new ones at the BOTTOM
+   ["level", "creator", "R/F/E/L/M", "YYYY-MM-DD"],
+   rerated? change the letter. unrated? delete the line */
 
 const RATING_LOG = [
   ["No Surprises", "EpikGuy", "E", "2026-06-29"],
   ["Egg Never Clear RE", "EpikGuy", "R", "2026-06-29"],
   ["Gloriness", "EpikGuy", "E", "2026-06-29"],
-  ["Xenoscape", "Hortus", "L", "2026-06-29"],  // was really first that day; kept after EpikGuy's so Hortus doesn't show as top 1
+  ["Xenoscape", "Hortus", "L", "2026-06-29"],  // really first that day, kept after epikguys so hortus isnt top 1
   ["Brightness", "EpikGuy", "F", "2026-06-29"],
   ["Moonship Welters", "Goldenfyre101", "E", "2026-06-29"],
   ["Growing On Me", "qwerty2048", "E", "2026-06-29"],
@@ -346,8 +282,11 @@ const RATING_LOG = [
   ["1 Up", "Absoluteinf1", "E", "2026-10-19"],
   ["Tormented Sentience", "Goldenfyre101", "E", "2026-11-05"],
   ["My Pixel World", "Beeguy", "E", "2026-11-05"],
+  ["Only You", "Electrow", "E", "2026-11-06"],
+  ["Galaxy Madness", "Absoluteinf1", "E", "2026-11-07"],
+  ["Gilt Chin", "Firelia", "R", "2026-11-08"],
 ];
-/* ======================= END OF HISTORY DATA ======================= */
+/* end of data */
 </script>
 
 
@@ -401,7 +340,6 @@ header .wrap {
 .logo small { font-size: 11px; font-weight: 400; opacity: .7; }
 header nav { display: flex; gap: 20px; }
 header nav a { color: white; text-decoration: none; padding-bottom: 4px; }
-header nav span { color: white; opacity: .55; }
 
 main { padding-block: 20px 40px; }
 h1 { font-size: 34px; margin: 0 0 12px; }
@@ -427,10 +365,6 @@ a.name.plain:hover, a.name.plain:active { background: none; color: var(--link); 
   text-decoration: none;
   margin-right: 6px;
 }
-.btn.big { font-size: 22px; font-weight: bold; padding: 14px 32px; }
-.btn.sec { background: var(--panel); color: var(--text); border: 1px solid var(--tipline); font-size: 14px; padding: 5px 12px; }
-.btn.sec:hover { filter: brightness(.9); }
-.btn.off { background: #dddddd; color: #888888; }
 
 .muted { color: var(--muted); }
 .editor { margin: 6px 0; display: flex; align-items: center; gap: 8px; }
@@ -457,10 +391,7 @@ table { border-collapse: collapse; }
 .info td { padding: 3px 18px 3px 0; }
 .info td:first-child { font-weight: 700; text-transform: uppercase; }
 .tag { display: inline-block; font-size: 12px; color: white; padding: 2px 7px; margin: 10px 4px 0 0; }
-.cats { display: flex; flex-wrap: wrap; gap: 8px 26px; }
-.cats div { text-align: center; }
-.cats b { display: block; text-transform: uppercase; font-size: 13px; padding: 3px 8px; margin-bottom: 4px; color: #111; }
-/* home page: two columns on wide screens (phones stay one column) */
+/* home: two columns on wide screens */
 @media (min-width: 900px) {
   body.home header .wrap, body.home main.wrap { max-width: 1040px; }
   .homegrid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 56px; align-items: start; }
@@ -477,27 +408,20 @@ table { border-collapse: collapse; }
 .facts ul { margin: 0; padding-left: 20px; }
 .facts li { margin: 5px 0; }
 
-/* level pop-up */
+/* pop-up */
 .tip { cursor: pointer; }
 #tip { display: none; position: absolute; z-index: 10; background: var(--tipbg); color: var(--text); border: 1px solid var(--tipline); padding: 8px 12px; font-size: 14px; max-width: 280px; pointer-events: none; }
 #tip b { display: inline-block; color: #111; padding: 2px 8px; margin-bottom: 6px; }
 #tip div { padding: 2px 0; }
 #tip .sw { display: inline-block; width: 10px; height: 10px; margin-right: 7px; }
 
-/* history */
-.chart { width: 100%; max-width: 760px; height: auto; display: block; }
-.chart text { font-family: Arial, Helvetica, sans-serif; font-size: 11px; fill: var(--charttext); }
-.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 10px; font-size: 14px; }
-.legend span.sw { display: inline-block; width: 12px; height: 12px; margin-right: 5px; vertical-align: -1px; }
-.top1 td, .top1 th { padding: 5px 16px 5px 0; text-align: left; }
 </style>
 
 <header>
   <div class="wrap">
-    <a class="logo" href="#home">Goldenfyre CL <small>v1.3a</small></a>
+    <a class="logo" href="#home">Goldenfyre CL <small>v1.3b</small></a>
     <nav>
       <a href="#list" id="nav-list">List</a>
-      <!-- v1.5: <a href="#history" id="nav-history">History</a> -->
     </nav>
   </div>
 </header>
@@ -520,15 +444,14 @@ function slug(name) {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
 }
 
-// work out points, levels and ranks
-const dailyCreators = new Set(DAILY_LEVELS.map(l => l[1]));
+// points, levels, ranks
 const weeklyCreators = new Set(WEEKLY_LEVELS.map(l => l[1]));
 const all = CREATORS.map((c, i) => {
   const out = Object.assign({}, c, { order: i, levels: 0, points: 0, slug: slug(c.name),
-    daily: dailyCreators.has(c.name), weekly: weeklyCreators.has(c.name) });
-  out.gauntletCreator = Object.keys(c.gauntlets || {}).length > 0;   // Gauntlet Creator role
-  out.mappackCreator = !!c.mappack || Object.keys(c.packs || {}).length > 0;   // Mappack Creator role
-  out.expert = (Number(c.legendary) || 0) + (Number(c.mythic) || 0) > 0;   // Expert Creator role
+    weekly: weeklyCreators.has(c.name) });
+  out.gauntletCreator = Object.keys(c.gauntlets || {}).length > 0;
+  out.mappackCreator = !!c.mappack || Object.keys(c.packs || {}).length > 0;
+  out.expert = (Number(c.legendary) || 0) + (Number(c.mythic) || 0) > 0;
   TYPES.forEach(t => {
     const n = Number(c[t.key]) || 0;
     out[t.key] = n;
@@ -545,10 +468,10 @@ ranked.forEach((c, i) => {
   c.hasPage = c.rank <= 10 || c.page === true;
 });
 
-// which levels each creator has in each tier, from the rating log
+// levels per creator, from the log
 const LEVEL_KEY = { R: "rate", F: "featured", E: "epic", L: "legendary", M: "mythic" };
-const levelsOf = {};      // creator -> tier -> level names, newest first
-const allLevelsOf = {};   // creator -> every level [name, tier], newest first
+const levelsOf = {};      // creator -> tier -> names
+const allLevelsOf = {};   // creator -> all levels
 RATING_LOG.slice().reverse().forEach(r => {
   const key = LEVEL_KEY[r[2]];
   if (!levelsOf[r[1]]) levelsOf[r[1]] = {};
@@ -557,17 +480,17 @@ RATING_LOG.slice().reverse().forEach(r => {
   if (!allLevelsOf[r[1]]) allLevelsOf[r[1]] = [];
   allLevelsOf[r[1]].push([r[0], key]);
 });
-// the white "Levels" cell; tap or hover it to see every level
+// levels cell
 function levelsCell(c) {
   return `<td class="c${c.levels ? " tip" : ""}"${c.levels ? ` data-c="${esc(c.name)}" data-t="all"` : ""}>${c.levels}</td>`;
 }
-// a number cell; tap or hover it to see the levels
+// tier cell
 function tierCell(c, t) {
   const n = c[t.key];
   return `<td class="c${n ? " tip" : " zero"}" style="background:var(--${t.key})"${n ? ` data-c="${esc(c.name)}" data-t="${t.key}"` : ""}>${n}</td>`;
 }
 
-// record roles, worked out automatically (ties all get the role)
+// "most ..." roles (ties all get it)
 const RECORDS = [
   { name: "Most Rates",    get: c => c.rate,      color: "rate" },
   { name: "Most Features", get: c => c.featured,  color: "featured" },
@@ -577,7 +500,7 @@ const RECORDS = [
 ];
 RECORDS.forEach(r => r.max = Math.max(...all.map(r.get)));
 
-// roles that need an explanation; they get gradients instead of flat colours
+// special roles (gradients)
 const SPECIAL_ROLES = [
   { name: "Top 1 Level", flag: "top1Demon", bg: "linear-gradient(90deg,#fff3a3,#ffb81f,#f0542b)", dark: true,
     how: "For creators who have made a top 1 level, past and present." },
@@ -591,19 +514,15 @@ const SPECIAL_ROLES = [
     how: "For creators who have made a legendary or higher level." },
 ];
 
-// faint gradients, in the legendary and mythic colour families
-const MYTHIC_BG = "linear-gradient(90deg,#27aed0,#2299b9)";
 
-// top row of the Roles box
+// roles box, top row
 const ACHIEVEMENT_ROLES = [
   { name: "Top 1 Creator",              bg: "#d9473c" },
   { name: "Former Top 1 Creator",       bg: "#f27c1a" },
-  // hidden for now (Most Mythics covers it). To bring it back, un-comment this line and the one in profilePage():
-  // { name: "Mythic Creator",             bg: MYTHIC_BG },
   { name: "Weekly Demon",               bg: "#9b3dff" },
   { name: "Most Liked Level",           bg: "#22c55e" },
 ];
-// bottom row: the "Most ..." records
+// roles box, bottom row
 const RECORD_ROLES = [
   { name: "Most Rates",                 color: "rate" },
   { name: "Most Features",              color: "featured" },
@@ -612,10 +531,10 @@ const RECORD_ROLES = [
   { name: "Most Mythics",               color: "mythic" },
 ];
 
-// black text on bright colours, white text on dark ones
+// dark text on bright colors, white on dark ones
 function onColor(hex) {
   const n = parseInt(hex.slice(1), 16), r = n >> 16, g = (n >> 8) & 255, b = n & 255;
-  if (hex.toLowerCase() === DEFAULT_COLOR.toLowerCase()) return "#fff";   // keep the gold look
+  if (hex.toLowerCase() === DEFAULT_COLOR.toLowerCase()) return "#fff";   // keeps the gold look
   return (0.299 * r + 0.587 * g + 0.114 * b) > 150 ? "#111" : "#fff";
 }
 function accentStyle(c) {
@@ -703,8 +622,7 @@ function profilePage(c) {
     ${SPECIAL_ROLES.some(r => c[r.flag]) ? `<div>${SPECIAL_ROLES.filter(r => c[r.flag]).map(r => `<span class="tag" style="background:${r.bg}${r.dark ? ";color:#111" : ""}">${r.name}</span>`).join("")}</div>` : ""}
     <div style="margin-top:${SPECIAL_ROLES.some(r => c[r.flag]) ? "4px" : "0"}">
     ${c.rank === 1 ? `<span class="tag" style="background:#d9473c">Top 1 Creator</span>` : ""}
-    ${c.rank !== 1 && buildHistory().top1.some(t => t.name === c.name) ? `<span class="tag" style="background:#f27c1a">Former Top 1 Creator</span>` : ""}
-    ${/* c.mythic > 0 ? `<span class="tag" style="background:${MYTHIC_BG}">Mythic Creator</span>` : */ ""}
+    ${c.rank !== 1 && everTop1.has(c.name) ? `<span class="tag" style="background:#f27c1a">Former Top 1 Creator</span>` : ""}
     ${c.weekly ? `<span class="tag" style="background:#9b3dff">Weekly Demon</span>` : ""}
     ${c.mostLiked ? `<span class="tag" style="background:#22c55e">Most Liked Level</span>` : ""}
     ${RECORDS.filter(r => r.max > 0 && r.get(c) === r.max).map(r => `<span class="tag" style="${r.color ? `background:var(--${r.color});color:#111` : "background:#555"}">${r.name}</span>`).join("")}
@@ -734,169 +652,29 @@ function profilePage(c) {
   document.title = c.name + " - GCL";
 }
 
-// ---------- history ----------
-const LINE_COLORS = ["#e6194b", "#3cb44b", "#4363d8", "#f58231", "#911eb4",
-  "#42d4f4", "#f032e6", "#9a6324", "#808000", "#000075"];
+// anyone who ever led the list gets former top 1 creator
 const PTS = { R: 1, F: 2, E: 3, L: 4, M: 5 };
-
-function parseDay(str) {
-  const [y, m, d] = str.split("-").map(Number);
-  return new Date(y, m - 1, d);
-}
-function fmtDay(dt) {
-  return (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + String(dt.getFullYear()).slice(2);
-}
-
-function buildHistory() {
-  const start = parseDay(FIRST_RATE).getTime();
-  const end = parseDay(LAST_RATE).getTime();
-  const n = RATING_LOG.length;
-  // spread levels out so the rating rate grows linearly up to GROWTH x
-  const g = GROWTH - 1;
-  const spread = f => g === 0 ? f : (-1 + Math.sqrt(1 + 2 * g * f * (1 + g / 2))) / g;
-  const guess = RATING_LOG.map((r, i) => start + (end - start) * spread(n > 1 ? i / (n - 1) : 0));
-  // pin dated lines, and stretch the undated ones between pins
-  const pins = [{ i: 0, t: start }];
-  RATING_LOG.forEach((r, i) => { if (r[3]) pins.push({ i, t: parseDay(r[3]).getTime() }); });
-  pins.push({ i: n - 1, t: end });
-  const times = guess.slice();
-  for (let k = 0; k < pins.length - 1; k++) {
-    const a = pins[k], b = pins[k + 1];
-    const ga = guess[a.i], gb = guess[b.i];
-    for (let i = a.i; i <= b.i; i++) {
-      times[i] = RATING_LOG[i][3] ? parseDay(RATING_LOG[i][3]).getTime()
-        : a.t + (b.t - a.t) * (gb === ga ? 0 : (guess[i] - ga) / (gb - ga));
-    }
-  }
-  const events = RATING_LOG.map((r, i) => ({
-    level: r[0], creator: r[1], type: r[2], time: times[i],
-  })).sort((a, b) => a.time - b.time);
-
-  const order = {};
+const everTop1 = new Set();
+(() => {
+  const order = {}, pts = {}, lvls = {};
   CREATORS.forEach((c, i) => order[c.name] = i);
-  const pts = {}, lvls = {};
-  const series = {};
-  CREATORS.forEach(c => series[c.name] = [{ t: start, v: 0 }]);
-  const top1 = [];
-
-  events.forEach(e => {
-    pts[e.creator] = (pts[e.creator] || 0) + (PTS[e.type] || 0);
-    lvls[e.creator] = (lvls[e.creator] || 0) + 1;
-    if (series[e.creator]) series[e.creator].push({ t: e.time, v: pts[e.creator] });
-
-    const leader = Object.keys(pts).sort((a, b) =>
-      pts[b] - pts[a] || lvls[a] - lvls[b] || (order[a] ?? 999) - (order[b] ?? 999))[0];
-    const last = top1[top1.length - 1];
-    if (!last || last.name !== leader) {
-      if (last) last.to = e.time;
-      top1.push({ name: leader, from: e.time, to: null });
-    }
-  });
-  // the chart runs up to today, so the current top 1's reign keeps counting
-  const now = new Date();
-  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
-  const lastEvent = events.length ? events[events.length - 1].time : end;
-  return { start, end: Math.max(end, today, lastEvent), series, top1, pts, undated: RATING_LOG.filter(r => !r[3]).length };
-}
-
-let histShown = HISTORY_CREATORS.slice();   // who is on the chart (resets on reload)
-const histColor = {};
-function colorFor(name) {
-  if (!histColor[name]) {
-    const used = histShown.filter(n => n !== name).map(n => histColor[n]);
-    histColor[name] = LINE_COLORS.find(c => !used.includes(c)) || LINE_COLORS[Object.keys(histColor).length % LINE_COLORS.length];
-  }
-  return histColor[name];
-}
-
-function historyPage() {
-  const H = buildHistory();
-  histShown.forEach(colorFor);
-
-  const rows = H.top1.slice().reverse().map(seg => {
-    const to = seg.to ?? H.end;
-    const days = Math.max(1, Math.round((to - seg.from) / 86400000));
-    return `<tr><td><b>${esc(seg.name)}</b></td><td>${fmtDay(new Date(seg.from))}</td><td>${seg.to ? fmtDay(new Date(seg.to)) : "now"}</td><td>${days} day${days === 1 ? "" : "s"}</td></tr>`;
-  }).join("");
-
-  app.innerHTML = `
-    <h1>History</h1>
-    <p class="muted small">Creator points over time, from ${fmtDay(new Date(H.start))} to today (${fmtDay(new Date(H.end))}).</p>
-    <div id="chartbox"></div>
-    <div id="picker" style="margin:10px 0"></div>
-
-    <h2>Top 1 creators</h2>
-    <div class="tablebox">
-      <table class="top1">
-        <tr><th>Creator</th><th>From</th><th>To</th><th>Held for</th></tr>
-        ${rows}
-      </table>
-    </div>
-    ${H.undated ? `<p class="muted small" style="margin-top:14px">Dates for ${H.undated} of ${RATING_LOG.length} ratings are estimated.</p>` : ""}`;
-  document.title = "History - GCL";
-
-  function draw() {
-    const W = 760, HT = 380, L = 40, R = 12, T = 12, B = 30;
-    let maxV = 0;
-    histShown.forEach(n => H.series[n].forEach(p => maxV = Math.max(maxV, p.v)));
-    const yMax = Math.max(10, Math.ceil(maxV / 10) * 10);
-    const step = yMax > 100 ? 20 : 10;
-    const x = t => L + (W - L - R) * (t - H.start) / (H.end - H.start || 1);
-    const y = v => T + (HT - T - B) * (1 - v / yMax);
-
-    let svg = "";
-    for (let v = 0; v <= yMax; v += step) {
-      svg += `<line x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}" style="stroke:var(--grid1)"/>`;
-      svg += `<text x="${L - 6}" y="${y(v) + 4}" text-anchor="end">${v}</text>`;
-    }
-    const s0 = new Date(H.start);
-    for (let d = new Date(s0.getFullYear(), s0.getMonth() + 1, 1); d.getTime() <= H.end; d.setMonth(d.getMonth() + 1)) {
-      const xx = x(d.getTime());
-      svg += `<line x1="${xx}" x2="${xx}" y1="${T}" y2="${HT - B}" style="stroke:var(--grid2)"/>`;
-      svg += `<text x="${xx}" y="${HT - B + 16}" text-anchor="middle">${d.toLocaleString("en-US", { month: "short" })}</text>`;
-    }
-    svg += `<line x1="${L}" x2="${W - R}" y1="${HT - B}" y2="${HT - B}" style="stroke:var(--axis)"/>`;
-    svg += `<line x1="${L}" x2="${L}" y1="${T}" y2="${HT - B}" style="stroke:var(--axis)"/>`;
-    histShown.forEach(name => {
-      const pts = H.series[name];
-      let d = `M${x(pts[0].t)},${y(pts[0].v)}`;
-      for (let k = 1; k < pts.length; k++) d += ` H${x(pts[k].t)} V${y(pts[k].v)}`;
-      d += ` H${x(H.end)}`;
-      svg += `<path d="${d}" fill="none" stroke="${colorFor(name)}" stroke-width="2"/>`;
+  RATING_LOG.map((r, i) => ({ r, i }))
+    .sort((a, b) => (a.r[3] || "").localeCompare(b.r[3] || "") || a.i - b.i)
+    .forEach(({ r }) => {
+      pts[r[1]] = (pts[r[1]] || 0) + (PTS[r[2]] || 0);
+      lvls[r[1]] = (lvls[r[1]] || 0) + 1;
+      everTop1.add(Object.keys(pts).sort((x, y) =>
+        pts[y] - pts[x] || lvls[x] - lvls[y] || (order[x] ?? 999) - (order[y] ?? 999))[0]);
     });
-    const legend = histShown.map(name =>
-      `<span><span class="sw" style="background:${colorFor(name)}"></span>${esc(name)} (${H.pts[name] || 0}) <a href="#" class="rm" data-n="${esc(name)}" title="Remove">[x]</a></span>`).join("");
-    document.getElementById("chartbox").innerHTML =
-      `<svg class="chart" viewBox="0 0 ${W} ${HT}" role="img" aria-label="Creator points over time">${svg}</svg><div class="legend">${legend}</div>`;
-
-    const avail = CREATORS.map(c => c.name).filter(n => !histShown.includes(n) && (H.pts[n] || 0) > 0);
-    document.getElementById("picker").innerHTML =
-      `Add creator: <select id="addsel">${avail.map(n => `<option>${esc(n)}</option>`).join("")}</select> ` +
-      `<button id="addbtn">Add</button> <button id="resetbtn">Reset</button> <button id="clearbtn">Clear</button>`;
-    document.querySelectorAll("#chartbox .rm").forEach(a => a.onclick = e => {
-      e.preventDefault();
-      histShown = histShown.filter(n => n !== a.dataset.n);
-      draw();
-    });
-    document.getElementById("addbtn").onclick = () => {
-      const v = document.getElementById("addsel").value;
-      if (v) { histShown.push(v); draw(); }
-    };
-    document.getElementById("clearbtn").onclick = () => { histShown = []; draw(); };
-    document.getElementById("resetbtn").onclick = () => { histShown = HISTORY_CREATORS.slice(); draw(); };
-  }
-  draw();
-}
+})();
 
 function route() {
   const h = decodeURIComponent(location.hash.slice(1));
   document.body.classList.toggle("home", !h || h === "home");
-  document.getElementById("nav-list").className = (h && h !== "home" && h !== "history") ? "on" : "";
-  // v1.5: document.getElementById("nav-history").className = h === "history" ? "on" : "";
+  document.getElementById("nav-list").className = (h && h !== "home") ? "on" : "";
 
   if (!h || h === "home") homePage();
   else if (h === "list") listPage();
-  else if (h === "history" && SHOW_HISTORY) historyPage();
   else {
     const c = all.find(x => x.slug === h && x.hasPage);
     if (c) profilePage(c);
@@ -905,7 +683,7 @@ function route() {
   window.scrollTo(0, 0);
 }
 
-// ---------- level pop-up ----------
+// ---------- pop-up ----------
 const tip = document.createElement("div");
 tip.id = "tip";
 document.body.appendChild(tip);
@@ -914,7 +692,7 @@ const canHover = window.matchMedia("(hover: hover)").matches;
 
 function hideTip() { tip.style.display = "none"; tipCell = null; }
 function placeTip(x, y) {
-  // x, y are viewport coordinates; keep the whole box on screen
+  // keep the box on screen
   const w = tip.offsetWidth, h = tip.offsetHeight;
   let left = x + 16, top = y + 16;
   if (left + w > window.innerWidth - 8) left = x - w - 16;
@@ -925,7 +703,7 @@ function placeTip(x, y) {
 }
 function showTip(td, e) {
   if (td.dataset.h) {
-    // column header: totals for the whole server
+    // column header totals
     if (td.dataset.h === "levels") {
       const src = all;
       const total = src.reduce((sum, c) => sum + c.levels, 0);
