@@ -1,27 +1,21 @@
 <title>Goldenfyre Creatorlist</title>
 
 <script>
-/* example creator line:
+/* example:
    { name: "Beeguy", rate: 1, featured: 2, epic: 9, legendary: 5, mythic: 1,
      since: "March 2025", bestLevel: "Some Level",
-     gauntlets: { "Prismatic Gauntlet": ["Level A"] },   // gauntlets + the levels in them
-     packs: { "Arcade Trilogy": ["Level A"] },           // map packs + the levels in them
-     top1Demon: true,    // made a top 1 demon
-     mostLiked: true,    // most liked level role
-     color: "#d9473c",   // profile color (default gold)
-     description: "idk",
-     facts: ["First creator to get a mythic"] },
-   ========================================== */
+     gauntlets: { "Prismatic Gauntlet": ["Level A"] },
+     packs: { "Arcade Trilogy": ["Level A"] },
+     top1Demon: true, mostLiked: true,
+     color: "#d9473c", description: "idk", facts: ["idk"] },
+*/
 
 const LAST_UPDATED = "November 8th, 2026";
 
-// default profile color
 const DEFAULT_COLOR = "#e3a63b";
 
-// profile change form link
 const PROFILE_FORM = "https://docs.google.com/forms/d/1NpXxjZQJBfApNI-GsScqj59VGiW2i7knS7r6YsF9K78/viewform";
 
-// gauntlets + map packs. bg can be a color or gradient, dark: true = black text
 const GAUNTLETS = [
   { name: "Prismatic Gauntlet",   bg: "linear-gradient(90deg,#00d9c0,#1f6bff,#b04dff)" },
 ];
@@ -112,7 +106,6 @@ const CREATORS = [
   { name: "cheese",          rate: 1, featured: 0, epic: 0, legendary: 0, mythic: 0 },
 ];
 
-/* weekly levels. anyone with a weekly gets weekly demon */
 const WEEKLY_LEVELS = [
   ["Kinetic Disorption", "Goldenfyre101"],
   ["Paparazzi", "Electrow"],
@@ -126,15 +119,13 @@ const WEEKLY_LEVELS = [
   ["No Surprises", "EpikGuy"]
 ];
 
-/* every rated level, oldest first. add new ones at the BOTTOM
-   ["level", "creator", "R/F/E/L/M", "YYYY-MM-DD"],
-   rerated? change the letter. unrated? delete the line */
+/* ["level", "creator", "R/F/E/L/M", "YYYY-MM-DD"], */
 
 const RATING_LOG = [
   ["No Surprises", "EpikGuy", "E", "2026-06-29"],
   ["Egg Never Clear RE", "EpikGuy", "R", "2026-06-29"],
   ["Gloriness", "EpikGuy", "E", "2026-06-29"],
-  ["Xenoscape", "Hortus", "L", "2026-06-29"],  // really first that day, kept after epikguys so hortus isnt top 1
+  ["Xenoscape", "Hortus", "L", "2026-06-29"],
   ["Brightness", "EpikGuy", "F", "2026-06-29"],
   ["Moonship Welters", "Goldenfyre101", "E", "2026-06-29"],
   ["Growing On Me", "qwerty2048", "E", "2026-06-29"],
@@ -287,7 +278,6 @@ const RATING_LOG = [
   ["Galaxy Madness", "Absoluteinf1", "E", "2026-11-07"],
   ["Gilt Chin", "Firelia", "R", "2026-11-08"],
 ];
-/* end of data */
 </script>
 
 
@@ -372,7 +362,6 @@ a.name.plain:hover, a.name.plain:active { background: none; color: var(--link); 
 .editor svg { width: 18px; height: 18px; }
 .small { font-size: 13px; }
 
-/* list */
 .tablebox { overflow-x: auto; }
 table { border-collapse: collapse; }
 .list { width: 100%; min-width: 680px; }
@@ -388,11 +377,9 @@ table { border-collapse: collapse; }
 .list td.c.zero { background: var(--zero) !important; color: var(--text); font-weight: 400; }
 .list .rk { font-weight: 700; }
 
-/* profile */
 .info td { padding: 3px 18px 3px 0; }
 .info td:first-child { font-weight: 700; text-transform: uppercase; }
 .tag { display: inline-block; font-size: 12px; color: white; padding: 2px 7px; margin: 10px 4px 0 0; }
-/* home: two columns on wide screens */
 @media (min-width: 900px) {
   body.home header .wrap, body.home main.wrap { max-width: 1040px; }
   .homegrid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 56px; align-items: start; }
@@ -409,7 +396,6 @@ table { border-collapse: collapse; }
 .facts ul { margin: 0; padding-left: 20px; }
 .facts li { margin: 5px 0; }
 
-/* pop-up */
 .tip { cursor: pointer; }
 #tip { display: none; position: absolute; z-index: 10; background: var(--tipbg); color: var(--text); border: 1px solid var(--tipline); padding: 8px 12px; font-size: 14px; max-width: 280px; pointer-events: none; }
 #tip b { display: inline-block; color: #111; padding: 2px 8px; margin-bottom: 6px; }
@@ -445,7 +431,6 @@ function slug(name) {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
 }
 
-// points, levels, ranks
 const weeklyCreators = new Set(WEEKLY_LEVELS.map(l => l[1]));
 const all = CREATORS.map((c, i) => {
   const out = Object.assign({}, c, { order: i, levels: 0, points: 0, slug: slug(c.name),
@@ -469,10 +454,9 @@ ranked.forEach((c, i) => {
   c.hasPage = c.rank <= 10 || c.page === true;
 });
 
-// levels per creator, from the log
 const LEVEL_KEY = { R: "rate", F: "featured", E: "epic", L: "legendary", M: "mythic" };
-const levelsOf = {};      // creator -> tier -> names
-const allLevelsOf = {};   // creator -> all levels
+const levelsOf = {};
+const allLevelsOf = {};
 RATING_LOG.slice().reverse().forEach(r => {
   const key = LEVEL_KEY[r[2]];
   if (!levelsOf[r[1]]) levelsOf[r[1]] = {};
@@ -481,17 +465,14 @@ RATING_LOG.slice().reverse().forEach(r => {
   if (!allLevelsOf[r[1]]) allLevelsOf[r[1]] = [];
   allLevelsOf[r[1]].push([r[0], key]);
 });
-// levels cell
 function levelsCell(c) {
   return `<td class="c${c.levels ? " tip" : ""}"${c.levels ? ` data-c="${esc(c.name)}" data-t="all"` : ""}>${c.levels}</td>`;
 }
-// tier cell
 function tierCell(c, t) {
   const n = c[t.key];
   return `<td class="c${n ? " tip" : " zero"}" style="background:var(--${t.key})"${n ? ` data-c="${esc(c.name)}" data-t="${t.key}"` : ""}>${n}</td>`;
 }
 
-// "most ..." roles (ties all get it)
 const RECORDS = [
   { name: "Most Rates",    get: c => c.rate,      color: "rate" },
   { name: "Most Features", get: c => c.featured,  color: "featured" },
@@ -501,7 +482,6 @@ const RECORDS = [
 ];
 RECORDS.forEach(r => r.max = Math.max(...all.map(r.get)));
 
-// special roles (gradients)
 const SPECIAL_ROLES = [
   { name: "Top 1 Level", flag: "top1Demon", bg: "linear-gradient(90deg,#fff3a3,#ffb81f,#f0542b)", dark: true,
     how: "For creators who have made a top 1 level, past and present." },
@@ -516,14 +496,12 @@ const SPECIAL_ROLES = [
 ];
 
 
-// roles box, top row
 const ACHIEVEMENT_ROLES = [
   { name: "Top 1 Creator",              bg: "#d9473c" },
   { name: "Former Top 1 Creator",       bg: "#f27c1a" },
   { name: "Weekly Demon",               bg: "#9b3dff" },
   { name: "Most Liked Level",           bg: "#22c55e" },
 ];
-// roles box, bottom row
 const RECORD_ROLES = [
   { name: "Most Rates",                 color: "rate" },
   { name: "Most Features",              color: "featured" },
@@ -532,10 +510,9 @@ const RECORD_ROLES = [
   { name: "Most Mythics",               color: "mythic" },
 ];
 
-// dark text on bright colors, white on dark ones
 function onColor(hex) {
   const n = parseInt(hex.slice(1), 16), r = n >> 16, g = (n >> 8) & 255, b = n & 255;
-  if (hex.toLowerCase() === DEFAULT_COLOR.toLowerCase()) return "#fff";   // keeps the gold look
+  if (hex.toLowerCase() === DEFAULT_COLOR.toLowerCase()) return "#fff";
   return (0.299 * r + 0.587 * g + 0.114 * b) > 150 ? "#111" : "#fff";
 }
 function accentStyle(c) {
@@ -653,7 +630,6 @@ function profilePage(c) {
   document.title = c.name + " - GCL";
 }
 
-// anyone who ever led the list gets former top 1 creator
 const PTS = { R: 1, F: 2, E: 3, L: 4, M: 5 };
 const everTop1 = new Set();
 (() => {
@@ -684,7 +660,6 @@ function route() {
   window.scrollTo(0, 0);
 }
 
-// ---------- pop-up ----------
 const tip = document.createElement("div");
 tip.id = "tip";
 document.body.appendChild(tip);
@@ -693,7 +668,6 @@ const canHover = window.matchMedia("(hover: hover)").matches;
 
 function hideTip() { tip.style.display = "none"; tipCell = null; }
 function placeTip(x, y) {
-  // keep the box on screen
   const w = tip.offsetWidth, h = tip.offsetHeight;
   let left = x + 16, top = y + 16;
   if (left + w > window.innerWidth - 8) left = x - w - 16;
@@ -704,7 +678,6 @@ function placeTip(x, y) {
 }
 function showTip(td, e) {
   if (td.dataset.h) {
-    // column header totals
     if (td.dataset.h === "levels") {
       const src = all;
       const total = src.reduce((sum, c) => sum + c.levels, 0);
