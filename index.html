@@ -1,8 +1,8 @@
 <title>Goldenfyre Creatorlist</title>
 
 <script>
-/* ex:
-   { name: "Beeguy", rate: 1, featured: 2, epic: 9, legendary: 5, mythic: 1,
+/* example:
+   { name: "Beeguy",
      since: "March 2025", bestLevel: "Some Level",
      gauntlets: { "Prismatic Gauntlet": ["Level A"] },
      packs: { "Arcade Trilogy": ["Level A"] },
@@ -26,84 +26,84 @@ const MAPPACKS = [
 ];
 
 const CREATORS = [
-  { name: "Beeguy",          rate: 1, featured: 2, epic: 10, legendary: 5, mythic: 1, color: "#ffb6d0", monthly: true,
+  { name: "Beeguy", color: "#ffb6d0", monthly: true,
     description: "Consistently puts out high quality levels, with many in his Commatose-inspired style. Best known for his polished decoration.",
     facts: ["First and only creator to make a mythic"] },
-  { name: "Syne",            rate: 1, featured: 3, epic: 5, legendary: 3, mythic: 0, color: "#5ce8b5", gauntlets: { "Prismatic Gauntlet": ["Prismania"] }, monthly: true, mostLiked: true, mappack: true,
+  { name: "Syne", color: "#5ce8b5", gauntlets: { "Prismatic Gauntlet": ["Prismania"] }, monthly: true, mostLiked: true, mappack: true,
     packs: { "Arcade Trilogy": ["Tumba", "Thumper", "Prismania"], "Pizza in the Oven": ["Every End Leashed"] },
     description: "Known for difficult levels with polished gameplay.",
     facts: ["Created Every End Leashed, the longest rated level (7:41)"] },
-  { name: "Electrow",        rate: 1, featured: 0, epic: 6, legendary: 1, mythic: 0, color: "#00d9c0", gauntlets: { "Prismatic Gauntlet": ["Reachout"] }, mappack: true,
+  { name: "Electrow", color: "#00d9c0", gauntlets: { "Prismatic Gauntlet": ["Reachout"] }, mappack: true,
     packs: { "Pizza in the Oven": ["Save Me"] },
     description: "Known for her long effect layouts.",
     facts: ["Has the most XL-length levels"] },
-  { name: "JPCPro",          rate: 2, featured: 5, epic: 2, legendary: 0, mythic: 0, color: "#d1103a",
+  { name: "JPCPro", color: "#d1103a",
     description: "An up and coming creator who builds quickly and has improved a lot.",
     facts: ["Created the Caesium Factorial series"] },
-  { name: "EpikGuy",         rate: 3, featured: 2, epic: 3, legendary: 0, mythic: 0, top1Demon: true, color: "#e3a63b",
+  { name: "EpikGuy", top1Demon: true, color: "#e3a63b",
     description: "Known for difficult effect layouts. He rarely releases levels anymore, but when he does, they're worth playing.",
     facts: ["Created the Shining series", "Created EGG NEVER CLEAR RE, a former top 1 demon"] },
-  { name: "Xc4pk",           rate: 1, featured: 5, epic: 0, legendary: 1, mythic: 0, color: "#3366ff", gauntlets: { "Prismatic Gauntlet": ["Xc4pk Adventures"] }, mappack: true,
+  { name: "Xc4pk", color: "#3366ff", gauntlets: { "Prismatic Gauntlet": ["Xc4pk Adventures"] }, mappack: true,
     packs: { "30 Second Challenges": ["Cloudier", "Blank"] },
     description: "Has some of the best decoration on the server. He doesn't release much these days, but when he does, its peak." },
-  { name: "Firelia",         rate: 3, featured: 3, epic: 2, legendary: 2, mythic: 0, color: "#a8ff1a",
+  { name: "Firelia", color: "#a8ff1a",
     description: "Makes well decorated levels quickly, often easy but they'll occasionally release an absurdly difficult level." },
-  { name: "Wizard",          rate: 0, featured: 1, epic: 2, legendary: 2, mythic: 0, color: "#8a1fff", gauntlets: { "Prismatic Gauntlet": ["Colorsway"] },
+  { name: "Wizard", color: "#8a1fff", gauntlets: { "Prismatic Gauntlet": ["Colorsway"] },
     description: "Makes well polished easy modern levels.",
     facts: ["Created the legendaries Starfall and Colorsway"] },
-  { name: "Quacc",           rate: 0, featured: 3, epic: 2, legendary: 0, mythic: 0, mostLiked: true, color: "#ffee00",
+  { name: "Quacc", mostLiked: true, color: "#ffee00",
     description: "Heavily contributed to the community, both through his levels and through the server.",
     facts: ["Created the Goldenfyre demonlist", "Server admin"] },
-  { name: "Absoluteinf1",    rate: 1, featured: 1, epic: 2, legendary: 0, mythic: 0, color: "#ffd60a", page: true,
+  { name: "Absoluteinf1", color: "#ffd60a", page: true,
     description: "An upcoming, improving creator trying to get a legendary or mythic level with minimal decorating experience." },
-  { name: "Emmber",          rate: 1, featured: 5, epic: 0, legendary: 0, mythic: 0, color: "#ff8000", page: true,
+  { name: "Emmber", color: "#ff8000", page: true,
     description: "Typically a layout creator who, despite the lacking decoration, puts a lot of time into the gameplay so that most people enjoy it." },
-  { name: "Nange",           rate: 2, featured: 1, epic: 1, legendary: 1, mythic: 0, top1Demon: true, color: "#ffb04d", page: true, monthly: true,
+  { name: "Nange", top1Demon: true, color: "#ffb04d", page: true, monthly: true,
     description: "Likes making projects featuring iconic parts or themes :) I've made a few popular levels, but they wouldn't be as special without you guys. Thank you :3 rarr rarr! - Nange",
     facts: ["Created Goldenfyre Challenge, a former top 1 demon", "Started the rarr naming scheme for levels"] },
-  { name: "Pure",            rate: 1, featured: 1, epic: 2, legendary: 0, mythic: 0 },
-  { name: "3Doffisa",        rate: 1, featured: 1, epic: 2, legendary: 0, mythic: 0, color: "#3ddc5a", page: true, monthly: true,
+  { name: "Pure" },
+  { name: "3Doffisa", color: "#3ddc5a", page: true, monthly: true,
     description: "Contributed heavily to the community, created Miokii Always Clear and Hosted GDPS News..",
     facts: ["Currently hosting the Grarrief megacollab"] },
-  { name: "AltifyNeverDies", rate: 1, featured: 5, epic: 0, legendary: 0, mythic: 0, color: "#2be36b", gauntlets: { "Prismatic Gauntlet": ["Colors"] }, page: true,
+  { name: "AltifyNeverDies", color: "#2be36b", gauntlets: { "Prismatic Gauntlet": ["Colors"] }, page: true,
     description: "A dedicated creator, despite being new, he's had a big impact on the community." },
-  { name: "Alya",            rate: 0, featured: 1, epic: 1, legendary: 1, mythic: 0, color: "#9caf88", page: true,
+  { name: "Alya", color: "#9caf88", page: true,
     description: "A new creator who makes modern effect levels." },
-  { name: "[67] Spec",       rate: 0, featured: 0, epic: 1, legendary: 1, mythic: 0, color: "#721D75", page: true,
+  { name: "[67] Spec", color: "#721D75", page: true,
     description: "A simple layout creator who is very focused on gameplay.",
     facts: ["Has the most creator points of any creator with only 2 levels"] },
-  { name: "Luna",            rate: 1, featured: 1, epic: 0, legendary: 1, mythic: 0, color: "#1fa9ff", page: true,
+  { name: "Luna", color: "#1fa9ff", page: true,
     description: "A skillful creator who has recently started releasing more levels, recently creating her first legendary: Limbo but rarr ig" },
-  { name: "Goldenfyre101",   rate: 0, featured: 0, epic: 3, legendary: 0, mythic: 0, color: "#e3a63b", page: true,
+  { name: "Goldenfyre101", color: "#e3a63b", page: true,
     description: "The owner of the server, he doesnt upload often but his levels are always really fun to play.",
     facts: ["Owner of the Goldenfyre GDPS"] },
-  { name: "ShinobiAkira",    rate: 1, featured: 1, epic: 1, legendary: 0, mythic: 0, mostLiked: true, mappack: true, page: true,
+  { name: "ShinobiAkira", mostLiked: true, mappack: true, page: true,
     packs: { "30 Second Challenges": ["Alessia High"] } },
-  { name: "xxLettucex",      rate: 1, featured: 1, epic: 1, legendary: 0, mythic: 0 },
-  { name: "AFiVGDUP",        rate: 0, featured: 1, epic: 1, legendary: 0, mythic: 0 },
-  { name: "Hortus",          rate: 0, featured: 0, epic: 0, legendary: 1, mythic: 0, page: true,
+  { name: "xxLettucex" },
+  { name: "AFiVGDUP" },
+  { name: "Hortus", page: true,
     facts: ["Created Xenoscape, the first legendary"] },
-  { name: "GooeyG",          rate: 0, featured: 2, epic: 0, legendary: 0, mythic: 0 },
-  { name: "Gamer862",        rate: 1, featured: 0, epic: 1, legendary: 0, mythic: 0, top1Demon: true, color: "#ff1a1a", page: true,
+  { name: "GooeyG" },
+  { name: "Gamer862", top1Demon: true, color: "#ff1a1a", page: true,
     facts: ["Created The Abyss, the current top 1 demon"] },
-  { name: "Unnatural",       rate: 0, featured: 2, epic: 0, legendary: 0, mythic: 0 },
-  { name: "Lemonix",         rate: 0, featured: 0, epic: 0, legendary: 1, mythic: 0, color: "#ffe11a", page: true,
+  { name: "Unnatural" },
+  { name: "Lemonix", color: "#ffe11a", page: true,
     facts: ["Created Starlit, the second legendary"] },
-  { name: "[CLN] Ke2",       rate: 1, featured: 1, epic: 0, legendary: 0, mythic: 0 },
-  { name: "Hyperfixation",   rate: 3, featured: 0, epic: 0, legendary: 0, mythic: 0, color: "#b24dff", page: true },
-  { name: "qwerty2048",      rate: 0, featured: 0, epic: 1, legendary: 0, mythic: 0, mappack: true, page: true,
+  { name: "[CLN] Ke2" },
+  { name: "Hyperfixation", color: "#b24dff", page: true },
+  { name: "qwerty2048", mappack: true, page: true,
     packs: { "Pizza in the Oven": ["Growing On Me"] } },
-  { name: "Kimichii",        rate: 0, featured: 0, epic: 1, legendary: 0, mythic: 0, page: true,
+  { name: "Kimichii", page: true,
     description: "A creator who does her best to make fun and balanced gameplay, and is learning the basics of decoration.",
     facts: ["Created Fast Travel, an epic rated layout"] },
-  { name: "Umi",             rate: 0, featured: 0, epic: 1, legendary: 0, mythic: 0 },
-  { name: "Willow",          rate: 0, featured: 0, epic: 1, legendary: 0, mythic: 0 },
-  { name: "Spaace",          rate: 0, featured: 0, epic: 1, legendary: 0, mythic: 0 },
-  { name: "RecorderChannel", rate: 2, featured: 0, epic: 0, legendary: 0, mythic: 0 },
-  { name: "Lumez",           rate: 0, featured: 1, epic: 0, legendary: 0, mythic: 0 },
-  { name: "Charlie11111",    rate: 0, featured: 1, epic: 0, legendary: 0, mythic: 0 },
-  { name: "nonnagon",        rate: 0, featured: 1, epic: 0, legendary: 0, mythic: 0 },
-  { name: "cheese",          rate: 1, featured: 0, epic: 0, legendary: 0, mythic: 0 },
+  { name: "Umi" },
+  { name: "Willow" },
+  { name: "Spaace" },
+  { name: "RecorderChannel" },
+  { name: "Lumez" },
+  { name: "Charlie11111" },
+  { name: "nonnagon" },
+  { name: "cheese" },
 ];
 
 const WEEKLY_LEVELS = [
@@ -433,18 +433,27 @@ function slug(name) {
 }
 
 const weeklyCreators = new Set(WEEKLY_LEVELS.map(l => l[1]));
-const all = CREATORS.map((c, i) => {
+const LEVEL_KEY = { R: "rate", F: "featured", E: "epic", L: "legendary", M: "mythic" };
+const counts = {};
+RATING_LOG.forEach(r => {
+  const c = counts[r[1]] = counts[r[1]] || {};
+  c[LEVEL_KEY[r[2]]] = (c[LEVEL_KEY[r[2]]] || 0) + 1;
+});
+const known = new Set(CREATORS.map(c => c.name));
+Object.keys(counts).filter(n => !known.has(n)).forEach(n => console.warn("not in CREATORS, added automatically:", n));
+const people = CREATORS.concat(Object.keys(counts).filter(n => !known.has(n)).map(n => ({ name: n })));
+const all = people.filter(c => counts[c.name]).map((c, i) => {
   const out = Object.assign({}, c, { order: i, levels: 0, points: 0, slug: slug(c.name),
     weekly: weeklyCreators.has(c.name) });
-  out.gauntletCreator = Object.keys(c.gauntlets || {}).length > 0;
-  out.mappackCreator = !!c.mappack || Object.keys(c.packs || {}).length > 0;
-  out.expert = (Number(c.legendary) || 0) + (Number(c.mythic) || 0) > 0;
   TYPES.forEach(t => {
-    const n = Number(c[t.key]) || 0;
+    const n = counts[c.name][t.key] || 0;
     out[t.key] = n;
     out.levels += n;
     out.points += n * t.pts;
   });
+  out.gauntletCreator = Object.keys(c.gauntlets || {}).length > 0;
+  out.mappackCreator = !!c.mappack || Object.keys(c.packs || {}).length > 0;
+  out.expert = out.legendary + out.mythic > 0;
   return out;
 });
 const ranked = all
@@ -455,7 +464,6 @@ ranked.forEach((c, i) => {
   c.hasPage = c.rank <= 10 || c.page === true;
 });
 
-const LEVEL_KEY = { R: "rate", F: "featured", E: "epic", L: "legendary", M: "mythic" };
 const levelsOf = {};
 const allLevelsOf = {};
 RATING_LOG.slice().reverse().forEach(r => {
@@ -635,7 +643,7 @@ const PTS = { R: 1, F: 2, E: 3, L: 4, M: 5 };
 const everTop1 = new Set();
 (() => {
   const order = {}, pts = {}, lvls = {};
-  CREATORS.forEach((c, i) => order[c.name] = i);
+  all.forEach((c, i) => order[c.name] = i);
   RATING_LOG.map((r, i) => ({ r, i }))
     .sort((a, b) => (a.r[3] || "").localeCompare(b.r[3] || "") || a.i - b.i)
     .forEach(({ r }) => {
